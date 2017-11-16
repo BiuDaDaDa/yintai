@@ -7,7 +7,19 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    fetchHomeData () {
+      this.$request({
+        type: 'get',
+        url: '',
+        headers: {},
+        params: {},
+        success: function () {},
+        failed: function () {}
+      })
+    }
+  }
 }
 </script>
 
