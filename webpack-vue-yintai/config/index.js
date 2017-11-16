@@ -11,7 +11,16 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-
+      '/api':{
+        target:'https://m.yintai.com',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/api' : '/Services/Proxy.ashx'
+        },
+        headers:{
+          Host:'m.yintai.com'
+        }
+      }
     },
 
     // Various Dev Server settings
