@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <pin-zhi-xb></pin-zhi-xb>
+    <img src="./common/img/shangchangtk/title.png" alt="" class="img-title">
     <router-view/>
+    <footer-hui></footer-hui>
+    <yt-footer></yt-footer>
   </div>
 </template>
 
 <script>
-  import PinZhiXb from './components/index/PinZhiXB'
+  import FooterHui from './components/common/FooterHui'
+  import YtFooter from './components/common/YtFooter'
   export default {
     name: 'app',
     components: {
-      PinZhiXb
+      FooterHui,
+      YtFooter
     },
     mounted () {
       var date1 = new Date()
@@ -33,4 +37,12 @@
 
 <style>
   @import "common/css/reset.less";
+  body{
+    overflow-x: hidden;
+  }
+  .img-title{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+  }
 </style>
