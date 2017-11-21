@@ -1,6 +1,6 @@
 <template>
 <div>
-  大图
+  小图
 </div>
 </template>
 

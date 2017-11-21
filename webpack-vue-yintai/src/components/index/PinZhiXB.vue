@@ -31,12 +31,10 @@
         <div class="index_nav">
           <div class="nav_box">
             <div class="nav_img" v-for="myNavImg in myNav" :key="myNav.itemid">
-              <!--<router-link :to="/ShangChangTK" class="nav_btn">-->
-              <a href="###" class="nav_btn">
+              <router-link :to="'/' + myNavImg.itemid" class="nav_btn">
                 <img :src="myNavImg.imgurl" alt="">
                 <p>{{myNavImg.imgname}}</p>
-              </a>
-              <!--</router-link>-->
+              </router-link>
             </div>
           </div>
         </div>
@@ -354,11 +352,6 @@
 <script>
   export default {
     name: '',
-//    computed: {
-//      shangchang () {
-//        return `${this.PinZhi}/${this.$route.params}${this.ShangChang}`
-//      }
-//    },
     data () {
       return {
         thisdata: null,
@@ -368,8 +361,6 @@
         myImg: '',
         myNav: '',
         arr: []
-//        PinZhi: '/',
-//        ShangChang: '/ShangChangTK'
       }
     },
     mounted () {
@@ -396,7 +387,6 @@
           this.tagArr = res.data.data.templatelist
           this.myImg = res.data.data.bannerlist
           this.myNav = res.data.data.templatelist[0].items
-//          console.log(this.tagArr)
         },
         failed: function (err) {
           console.log(err)
