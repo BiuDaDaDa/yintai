@@ -62,11 +62,11 @@
           <div class="area-title">
             <span>推荐类目</span>
           </div>
-          <div @click="SecondPage(index)" class="category-item" v-for="(j,index) in thisdataCate">
-            <img :src="j.imageurl">
-            <div>
-              <span>{{j.name}}</span>
-            </div>
+          <div @click="SecondPage(index,undf)" class="category-item" v-for="(j,index) in thisdataCate">
+              <img :src="j.imageurl">
+              <div>
+                <span>{{j.name}}</span>
+              </div>
           </div>
         </div>
         <!--推荐品牌-->
@@ -105,7 +105,8 @@
         thisdataCategory: '',
         loadid: 88,
         jump: '',
-        undf: ''
+        undf: '',
+        foodsName: ''
       }
     },
     methods: {
@@ -143,13 +144,18 @@
           }
         })
       },
+      // 推荐类目
       SecondPage: function (index) {
         this.jump = this.thisdataCate[index].jumpurl
         this.undf = this.jump.split('N')[1].split('%')[1].split('D')[1].split('&')[0]
         console.log(this.undf)
+        this.foodsName = this.thisdataCate[index].name
+        this.myid = this.foodsName
+        console.log(this.foodsName)
+        this.$router.push({ path: `/21023304/${this.myid}` })
         this.$request({
           type: 'get',
-          url: `api?r=201711221103&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A0%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D10001888%22%2C%22keyword%22%3A%22%22%7D`,
+          url: `api?r=201711221103&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A0%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.undf}%22%2C%22keyword%22%3A%22%22%7D`,
           header: {},
           params: {},
           success: function (res) {

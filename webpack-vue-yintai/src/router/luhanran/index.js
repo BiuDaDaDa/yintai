@@ -2,6 +2,7 @@ import Login from '@/components/Login/Login'
 import Registration from '@/components/Login/Registration'
 import ForgetPassword from '@/components/Login/ForgetPassword'
 import Fenlei from '@/components/category/Fenlei'
+import FenleiSearch from '@/components/category/FenleiSearch'
 
 export default [
   {
@@ -23,5 +24,10 @@ export default [
     path: '/Fenlei',
     name: 'Fenlei',
     component: Fenlei
+  },
+  {
+    path: '/FenleiSearch',
+    name: 'FenleiSearch',
+    component: FenleiSearch
   }
 ]

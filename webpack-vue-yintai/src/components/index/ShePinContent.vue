@@ -155,6 +155,7 @@
       }
       let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
       date2 = `${date1.getFullYear()}${date1.getMonth()}${date1.getDate()}${date1.getMinutes()}`
+      console.log(this.$route.params.id)
       this.$request({
         type: 'get',
         url: `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B"order_type"%3A0%2C"page_index"%3A1%2C"displaycount"%3A30%2C"query_string"%3A"N%3D10001884%2B60827091"%2C"keyword"%3A""%7D`,

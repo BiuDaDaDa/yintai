@@ -18,6 +18,6 @@
 
 <style scoped lang="less">
 .ad{
-  height:150px;
+  /*height:150px;*/
 }
 </style>

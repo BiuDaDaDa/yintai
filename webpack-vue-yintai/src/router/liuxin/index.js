@@ -8,7 +8,7 @@ Vue.component(Popup.name, Popup)
 Vue.component(Header.name, Header)
 export default [
   {
-    path: '/21023304/',
+    path: '/21023304/:id?',
     name: 'ShePin',
     component: ShePin
   }

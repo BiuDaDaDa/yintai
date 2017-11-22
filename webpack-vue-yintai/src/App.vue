@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-    <footer-hui></footer-hui>
+    <footer-hui v-if="fthui"></footer-hui>
     <yt-footer></yt-footer>
   </div>
 </template>
@@ -11,6 +11,11 @@
   import YtFooter from './components/common/YtFooter'
   export default {
     name: 'app',
+    data () {
+      return {
+        fthui: true
+      }
+    },
     components: {
       FooterHui,
       YtFooter
@@ -24,12 +29,16 @@
         headers: {},
         params: {},
         success: function (res) {
-          console.log(res.data)
+//          console.log(res.data)
         },
         failed: function (err) {
           console.log(err)
         }
       })
+      if (window.location.href === 'http://localhost:8080/fenlei' ||
+        window.location.href === 'http://localhost:8080/fenleiSearch') {
+        this.fthui = false
+      }
     }
   }
 </script>
