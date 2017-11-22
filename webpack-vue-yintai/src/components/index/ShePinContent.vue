@@ -1,0 +1,488 @@
+<template>
+  <div id="saleProduct" >
+    <mt-header class="barhead" title="奢品">
+      <router-link to="/" slot="left">
+        <mt-button class="iconback" icon="back"></mt-button>
+      </router-link>
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
+    <div id="nav"  class="nav">
+      <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'">默认</mt-button>
+      <mt-button class="nav-items" @click.native.prevent="active = 'tab-container2'" @click="reloadRequest(5)">销量</mt-button>
+      <mt-button class="nav-items" @click.native.prevent="active = 'tab-container3'" @click="reloadRequest(a1)">折扣
+        <div>
+          <i class="iconfont icon-up-copy" :id="'colorup' + colorup1" ></i>
+          <i class="iconfont icon-down" :id="'colordown' + colordown1"></i>
+        </div>
+      </mt-button>
+      <mt-button class="nav-items" @click.native.prevent="active = 'tab-container4'" @click="reloadRequest(a2)">价格
+        <div>
+          <i class="iconfont icon-up-copy" :id="'colorup' + colorup2"></i>
+          <i class="iconfont icon-down" :id="'colordown' + colordown2"></i>
+        </div>
+      </mt-button>
+      <mt-button class="nav-items" @click.native.prevent="active = 'tab-container5'" @click="rightlistisShow">筛选</mt-button>
+    </div>
+    <div class="YTloading" v-show="!isload"><img src="../../assets/h5-loading.gif" alt=""></div>
+    <div class="page-tab-container">
+      <mt-tab-container class="page-tabbar-tab-container" v-model="active"  v-show="isload">
+        <mt-tab-container-item id="tab-container1" class="item" >
+          <ul class="sp-ul">
+            <li class="sp-li" v-for="saleproduct in arr['product_list']" infinite-scroll-distance="10">
+              <div class="sp-li-info">
+                <div class="info-img">
+                  <img :src="saleproduct.midimageurl" alt="">
+                </div>
+                <div class="info-text">
+                  <div>{{ saleproduct.name }}</div>
+                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
+                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </mt-tab-container-item>
+        <mt-tab-container-item id="tab-container2" class="item" v-show="isload">
+          <ul class="sp-ul"  infinite-scroll-distance="10">
+            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
+              <div class="sp-li-info">
+                <div class="info-img">
+                  <img :src="saleproduct.midimageurl" alt="">
+                </div>
+                <div class="info-text">
+                  <div>{{ saleproduct.name }}</div>
+                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
+                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </mt-tab-container-item>
+        <mt-tab-container-item id="tab-container3" class="item" v-show="isload">
+          <ul class="sp-ul"  infinite-scroll-distance="10">
+            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
+              <div class="sp-li-info">
+                <div class="info-img">
+                  <img :src="saleproduct.midimageurl" alt="">
+                </div>
+                <div class="info-text">
+                  <div>{{ saleproduct.name }}</div>
+                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
+                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </mt-tab-container-item>
+        <mt-tab-container-item id="tab-container4" class="item" v-show="isload">
+          <ul class="sp-ul"  infinite-scroll-distance="10">
+            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
+              <div class="sp-li-info">
+                <div class="info-img">
+                  <img :src="saleproduct.midimageurl" alt="">
+                </div>
+                <div class="info-text">
+                  <div>{{ saleproduct.name }}</div>
+                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
+                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </mt-tab-container-item>
+        <mt-tab-container-item id="tab-container5" v-show="isload">
+          <mt-popup v-model="rightlist" position="right" class="yt-sp-rightlist"  v-show="isshowlist">
+            <div class="rl-list">
+              <div class="rl-list-head">
+                <span class="headbox1 color-pink"><i class="iconfont icon-true"></i>专柜同款</span>
+                <span class="headbox1 color-gray"><i class="iconfont icon-true"></i>专柜同款</span>
+              </div>
+
+              <div class="rl-list-con1" v-for="(list, index) in arr1['filter_group']" >
+                <div @click="con(index+1)">{{list.title}}<i class="iconfont icon-down1"></i></div>
+                <!--<div><p v-show=`rlcon+${index+1}` v-for="(listli, key) in list.items">{{listli.name}}</p></div>-->
+              </div>
+            </div>
+          </mt-popup>
+        </mt-tab-container-item>
+      </mt-tab-container>
+    </div>
+  </div>
+</template>
+
+<script>
+  import Vue from 'vue'
+  import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
+  Vue.component(Header.name, Header)
+  Vue.use(InfiniteScroll)
+  Vue.component(Navbar.name, Navbar)
+  Vue.component(TabItem.name, TabItem)
+  Vue.component(Popup.name, Popup)
+  export default {
+    name: '',
+    data () {
+      return {
+        active: 'tab-container1',
+        arr: {},
+        arr1: {},
+        isload: false,
+        isshowlist: false,
+        a1: 3,
+        a1up: 0,
+        a2: 7,
+        a2up: 0,
+        a: null,
+        rightlist: false,
+        rlcon1: false,
+        rlcon2: false,
+        rlcon3: false,
+        rlcon4: false,
+        colorup1: 0,
+        colorup2: 0,
+        colordown1: 0,
+        colordown2: 0
+      }
+    },
+    mounted () {
+      let date1 = new Date()
+      let datehour = date1.getHours()
+      let dateminute = date1.getMinutes()
+      if (datehour < 10) {
+        datehour = `0${datehour}`
+      }
+      if (dateminute < 10) {
+        dateminute = `0${dateminute}`
+      }
+      let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
+      date2 = `${date1.getFullYear()}${date1.getMonth()}${date1.getDate()}${date1.getMinutes()}`
+      this.$request({
+        type: 'get',
+        url: `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B"order_type"%3A0%2C"page_index"%3A1%2C"displaycount"%3A30%2C"query_string"%3A"N%3D10001884%2B60827091"%2C"keyword"%3A""%7D`,
+        headers: {},
+        params: {},
+        success: function (res) {
+          this.arr = res.data.data
+          this.isload = true
+        },
+        failed: function (err) {
+          console.log(err)
+        }
+      })
+    },
+    methods: {
+      rightlistisShow () {
+        this.rightlist = !this.rightlist
+//        this.isshowlist = true
+      },
+      loadMore () {
+        this.loading = true
+        setTimeout(() => {
+          let last = this.list[this.list.length - 1]
+          for (let i = 1; i <= 10; i++) {
+            this.list.push(last + i)
+          }
+          this.loading = false
+        }, 2500)
+      },
+      reloadRequest (a) {
+        if (a === 3) {
+          if (this.colorup1 === this.colordown1) {
+            this.colorup1 = 1
+          } else {
+            this.colorup1 = Math.abs(this.colorup1 - 1)
+            this.colordown1 = Math.abs(this.colordown1 - 1)
+          }
+          this.colorup2 = 0
+          this.colordown2 = 0
+          this.a = a + this.a1up
+          console.log(this.a)
+          if (this.a1up === 0) {
+            this.a1up++
+          } else {
+            this.a1up--
+          }
+        }
+        if (a === 7) {
+          if (this.colorup2 === this.colordown2) {
+            this.colorup2 = 1
+          } else {
+            this.colorup2 = Math.abs(this.colorup2 - 1)
+            this.colordown2 = Math.abs(this.colordown2 - 1)
+          }
+          this.colorup1 = 0
+          this.colordown1 = 0
+          this.a = a + this.a2up
+          console.log(this.a)
+          if (this.a2up === 0) {
+            this.a2up++
+          } else {
+            this.a2up--
+          }
+          this.a = a + this.a2up
+          console.log(this.a)
+        }
+        this.isload = false
+        let date1 = new Date()
+        let datehour = date1.getHours()
+        let dateminute = date1.getMinutes()
+        if (datehour < 10) {
+          datehour = `0${datehour}`
+        }
+        if (dateminute < 10) {
+          dateminute = `0${dateminute}`
+        }
+        let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
+        date2 = `${date1.getFullYear()}${date1.getMonth()}${date1.getDate()}${date1.getMinutes()}`
+        this.$request({
+          type: 'get',
+          url: `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B"order_type"%3A${this.a}%2C"page_index"%3A1%2C"displaycount"%3A30%2C"query_string"%3A"N%3D10001884%2B60827091"%2C"keyword"%3A""%7D`,
+          headers: {},
+          params: {},
+          success: function (res) {
+            this.arr1 = res.data.data
+            this.isload = true
+          },
+          failed: function (err) {
+            console.log(err)
+          }
+        })
+      },
+      con (k) {
+        if (k === 1) {
+          this.rlcon1 = !this.rlcon1
+          this.rlcon2 = false
+          this.rlcon3 = false
+          this.rlcon4 = false
+        }
+        if (k === 2) {
+          this.rlcon2 = !this.rlcon2
+          this.rlcon1 = false
+          this.rlcon3 = false
+          this.rlcon4 = false
+        }
+        if (k === 3) {
+          this.rlcon3 = !this.rlcon3
+          this.rlcon1 = false
+          this.rlcon2 = false
+          this.rlcon4 = false
+        }
+        if (k === 4) {
+          this.rlcon4 = !this.rlcon4
+          this.rlcon1 = false
+          this.rlcon3 = false
+          this.rlcon2 = false
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped lang="less">
+  @import "../../common/css/index";
+  #saleProduct{
+    .barhead{
+      background-color: #fff;
+      color: black;
+      font-weight: 800;
+    }
+    #nav{
+      width: 100%;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      border-top:0.5px solid @product-price-title-description-color;
+      border-bottom:1px solid @product-price-title-description-color;
+      font-size: @font-size;
+      padding: 4px;
+      .nav-items:focus{
+        border-bottom: 2px solid @more-product-straightDown-bgcolor;
+      }
+      .nav-items:last-child{
+        border: none;
+      }
+      .nav-items{
+        border-right:1px solid grey ;
+        line-height: 30px;
+        text-align: center;
+        width: 19.3%;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        float: left;
+        background-color: white;
+        height:30px;
+        font-size: @font-size-medium;
+        color: @more-product-introduce-color;
+        div{
+          display: inline-block;
+          position: relative;
+          .co1, .co2{
+            color: @more-product-straightDown-bgcolor;
+          }
+          i{
+            display: block;
+            position: absolute;
+            font-size: @font-size-small;
+            color: @product-price-title-description-color;
+          }
+          .icon-up-copy{
+            top:-24px;
+          }
+          .icon-down{
+            top:-16px;
+          }
+          #colorup0, #colordown0{
+            color: @color-light-gray;
+          }
+          #colorup1, #colordown1{
+            color: @index-StraightDown-bgcolor;
+          }
+        }
+      }
+    }
+    .YTloading{
+      position: fixed;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      text-align: center;
+      img{
+        width: 84px;
+        position: fixed;
+        margin: auto;
+        top:0px;
+        bottom: 0;
+        left:0;
+        right:0;
+      }
+    }
+    .page-tabbar-tab-container{
+      width: 100%;
+      height:100%;
+      .sp-ul{
+        .sp-li{
+          height: 142px;
+          width: 100%;
+          border-bottom :1px dashed #b2b2b2;
+          .sp-li-info{
+            padding: 8px;
+            .info-img{
+              float: left;
+              display: inline-block;
+              img{
+                width: 90px;
+                margin-right: 8px;
+                border: @border-color-type;
+              }
+            }
+            .info-text{
+              padding-left: 8px;
+              .oldprice{
+                color: @color-light-gray;
+                text-decoration: line-through;
+                margin:8px;
+                font-size: @font-size;
+              }
+              .newprice{
+                color: @color-sale-red;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+      .yt-sp-rightlist{
+        background-color:@color-bgc-footer ;
+        width:80%;
+        height:100%;
+        .rl-list{
+          background-color: #fff;
+          padding: 10px;
+          .rl-list-head{
+            margin: 20px 0;
+            .headbox1{
+              border-radius: 5px;
+              padding: 8px 20px;
+              margin:10px;
+            }
+          }
+          .rl-list-con1{
+            font-size: @font-size;
+            color: gray;
+            border-top: 0.5px solid @color-bgc-footer;
+            padding:13px;
+            div{
+              position: relative;
+              padding: 5px;
+              p{
+                padding: 10px;
+                border-bottom: 1px solid @color-bgc-footer ;
+              }
+              p:last-child{
+                border: none;
+                padding-bottom: 0px;
+              }
+              i{
+                position: absolute;
+                right:10px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .color-pink{
+      border:1px solid @product-policy-color-color;
+      color:  @product-policy-color-color;
+      i{
+        display:inline-block;
+      }
+    }
+    .color-gray{
+      border: 1px solid @color-light-gray;
+      color: @color-light-gray;
+      i{
+        display: none;
+      }
+    }
+  }
+  .page-tabbar-tab-container{
+    width: 100%;
+    height:100%;
+    .sp-ul{
+      .sp-li{
+        height: 142px;
+        width: 100%;
+        border-bottom :1px dashed #b2b2b2;
+        .sp-li-info{
+          padding: 8px;
+          .info-img{
+            float: left;
+            display: inline-block;
+            img{
+              width: 90px;
+              margin-right: 8px;
+              border: @border-color-type;
+            }
+          }
+          .info-text{
+            padding-left: 8px;
+            .oldprice{
+              color: @color-light-gray;
+              text-decoration: line-through;
+              margin:8px;
+              font-size: @font-size;
+            }
+            .newprice{
+              color: @color-sale-red;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
