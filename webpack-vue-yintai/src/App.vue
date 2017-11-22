@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./common/img/shangchangtk/title.png" alt="" class="img-title">
     <router-view/>
     <footer-hui></footer-hui>
     <yt-footer></yt-footer>
