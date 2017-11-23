@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="wrap" v-if="thisdata != null && thisdata1 != '' && thisdata6 != '' && myImg != '' && myNav != '' && tagArr != '' && arr != ''">
     <!-- 首页固定标题 -- 大图滚动 -->
     <div class="box">
@@ -41,11 +40,7 @@
         </div>
       </div>
     </div>
-
-
-=======
   <div class="wrap" v-if="thisdata != null">
->>>>>>> 9a527c5aae3603af7ec1975c2670232852fc461b
     <!-- 品质箱包 -- 精选好货 -->
     <div class="pinzhi-xb">
       <div class="pinzhi-xb-header">
@@ -108,6 +103,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -159,7 +155,6 @@
     background-color: rgb(237, 237, 237);
   }
 
-<<<<<<< HEAD
   .search_box {
     width: 100%;
     background-color: #fff;
@@ -566,12 +561,6 @@
       }
     }
   }
-
-
-
-
-=======
->>>>>>> 9a527c5aae3603af7ec1975c2670232852fc461b
   .pinzhi-xb-header-A {
     width: 100%;
   }

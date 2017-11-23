@@ -1,6 +1,6 @@
 <template>
   <div id="saleProduct" >
-    <mt-header class="barhead" title="奢品">
+    <mt-header class="barhead" :title="this.getHeadTitle">
       <router-link to="/" slot="left">
         <mt-button class="iconback " icon="back"></mt-button>
       </router-link>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+  import Bus from '../../common/js/eventBus'
   import Vue from 'vue'
   import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
   Vue.component(Header.name, Header)
@@ -93,7 +94,9 @@
         colorup2: 0,
         colordown1: 0,
         colordown2: 0,
-        tabID: 1
+        tabID: 1,
+        getgoodsID: '',
+        getHeadTitle: ''
       }
     },
     methods: {
@@ -176,7 +179,7 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D10001884%2B60827091%22%2C%22keyword%22%3A%22%22%7D`
+        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.getgoodsID}%2B60827091%22%2C%22keyword%22%3A%22%22%7D`
         console.log(this.url)
         this.$request({
           type: 'get',
@@ -218,6 +221,12 @@
           this.rlcon2 = false
         }
       }
+    },
+    created () {
+      Bus.$on('xinxin', function (undf, foodnum) {
+        this.getgoodsID = undf
+        this.getHeadTitle = foodnum
+      })
     },
     mounted () {
       this.reloadRequest(0)

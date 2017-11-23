@@ -3,27 +3,27 @@
   <i class="iconfont icon-up" @click="returnTop"></i>
   <ul>
     <li>
-    <!--<li @click="indexs">-->
+    <li @click="indexs">
       <div><i class="icon-home iconfont" ></i></div>
       <div>首页</div>
     </li>
     <li>
-    <!--<li @click="limitBuy">-->
+    <li @click="limitBuy">
       <div><i class="icon-icon-buy iconfont" ></i></div>
       <div>抢先</div>
     </li>
     <li>
-    <!--<li @click="categorys">-->
+    <li @click="categorys">
       <div><i class="icon-categorynormal iconfont" ></i></div>
       <div>分类 </div>
     </li>
     <li>
-    <!--<li @click="shoppingCar">-->
+    <li @click="shoppingcart">
       <div><i class="icon-cart iconfont" ></i></div>
       <div>购物车</div>
     </li>
     <li>
-    <!--<li @click="userinfo">-->
+    <li @click="userinfo">
       <div><i class="icon-user iconfont" ></i></div>
       <div>我的银泰</div>
     </li>
@@ -41,21 +41,21 @@
   export default {
     name: '',
     methods: {
-//      indexs () {
-//        this.$router.push('/')
-//      },
-//      limitBuy () {
-//        this.$router.push('/limitbuy')
-//      },
-//      categorys () {
-//        this.$router.push('/category')
-//      },
-//      shoppingcart () {
-//        this.$router.push('/shoppingcart')
-//      },
-//      userinfo () {
-//        this.$router.push('/userinfo')
-//      },
+      indexs () {
+        this.$router.push('/')
+      },
+      limitBuy () {
+        this.$router.push('/limitbuy')
+      },
+      categorys () {
+        this.$router.push('/category')
+      },
+      shoppingcart () {
+        this.$router.push('/shoppingcar')
+      },
+      userinfo () {
+        this.$router.push('/userinfo')
+      },
       returnTop () {
         document.documentElement.scrollTop = 0
       }

@@ -134,20 +134,6 @@
         this.$refs.tabt[indexOne].style.color = '#e5004f'
         this.$refs.tabt[indexOne].style.borderRight = 'none'
         this.loadid = this.thisdata[indexOne].id
-        this.$request({
-          type: 'get',
-          url: `api?r=0.1610714925740102&methodName=products.category.getchildcategory_3.0.0&method=products.category.getchildcategory&ver=3.0.0&categoryid=${this.loadid}`,
-          header: {},
-          params: {},
-          success: function (res) {
-            this.thisdataCate = res.data.data.recommend.categoryrecommend
-            this.thisdataBrands = res.data.data.brand.brandrecommend
-            this.thisdataCategory = res.data.data.more.morerecommend
-          },
-          failed: function (err) {
-            console.log(err)
-          }
-        })
       },
       // 推荐类目
       SecondPage: function (index) {

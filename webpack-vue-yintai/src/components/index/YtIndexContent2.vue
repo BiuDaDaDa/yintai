@@ -40,7 +40,7 @@
 </template>
 
 <script>
-//  import bus from '../common/eventBus'
+  import bus from '../common/eventBus'
   export default {
     name: 'YtIndexContent2',
     data () {
