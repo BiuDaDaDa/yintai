@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <img src="./common/img/shangchangtk/title.png" alt="" class="img-title">
+    <!--<img src="./common/img/shangchangtk/title.png" alt="" class="img-title">-->
+    <!--<footer-hui></footer-hui>-->
+    <!--<yt-footer></yt-footer>-->
     <router-view/>
-    <footer-hui></footer-hui>
-    <yt-footer></yt-footer>
   </div>
 </template>
 

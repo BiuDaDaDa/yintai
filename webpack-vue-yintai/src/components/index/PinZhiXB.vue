@@ -41,241 +41,6 @@
       </div>
     </div>
 
-    <!-- 大图滚动 -- 潮流女装上部分 -->
-    <div class="index-content">
-      <div class="listImg1" @click="redirectMoreBK">
-        <img :src="arr.templatelist[2].items[0].imgurl" @click="redirectMoreBK" alt="">
-      </div>
-      <div class="listImg2">
-        <a href="" v-for="item in arr.templatelist[3].items">
-          <div class="LI2_imgbox">
-            <div class="LI2-tag" v-for="tag in item.extra.productdetail.prmotionlist">
-              {{tag.plabel}}
-            </div>
-            <img :src="item.imgurl" alt="">
-            <div class="LI2_info">
-              <p class="LI2-intro">{{item.extra.productdetail.name}}</p>
-              <p class="LI2-price">￥{{item.extra.productdetail.price}}</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="listImg1">
-        <img :src="arr.templatelist[5].items[0].imgurl" alt="">
-      </div>
-      <div class="listImg3">
-        <a href="" v-for="item in arr.templatelist[6].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-      <div class="listImg3">
-        <a href="" v-for="item in arr.templatelist[7].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-      <div class="listImg1">
-        <img :src="arr.templatelist[8].items[0].imgurl" alt="">
-      </div>
-
-      <div class="listImg1">
-        <img :src="arr.templatelist[10].items[0].imgurl" alt="">
-      </div>
-      <div class="listImg3">
-        <a href="" v-for="item in arr.templatelist[11].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-      <div class="listImg4">
-        <a href="" v-for="item in arr.templatelist[12].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-      <div class="listImg1">
-        <img :src="arr.templatelist[14].items[0].imgurl" alt="">
-      </div>
-      <div class="listImg5">
-        <div>
-          <img :src="arr.templatelist[15].items[0].imgurl" alt="">
-          <img :src="arr.templatelist[15].items[1].imgurl" alt="">
-        </div>
-        <div>
-          <img :src="arr.templatelist[15].items[2].imgurl" alt="">
-        </div>
-
-      </div>
-      <div class="listImg4">
-        <a href="" v-for="item in arr.templatelist[16].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-      <div class="listImg1">
-        <img :src="arr.templatelist[17].items[0].imgurl" alt="">
-      </div>
-      <div class="listImg1">
-        <img :src="arr.templatelist[19].items[0].imgurl" alt="">
-      </div>
-      <div class="listImg3">
-        <a href="" v-for="item in arr.templatelist[20].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-
-      <div class="listImg4">
-        <a href="" v-for="item in arr.templatelist[21].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-      <div class="listImg1">
-        <img :src="arr.templatelist[23].items[0].imgurl" alt="">
-      </div>
-      <div class="listImg3">
-        <a href="" v-for="item in arr.templatelist[24].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-
-      <div class="listImg3">
-        <a href="" v-for="item in arr.templatelist[25].items">
-          <img :src="item.imgurl" alt="">
-        </a>
-      </div>
-
-    </div>
-
-    <!-- 潮流女装 -- 品质箱包 -->
-    <div class="index_tag">
-      <!--潮流女装-->
-      <div class="tag_women">
-        <div class="women_top">
-          <img :src="tagArr[27]['items'][0]['imgurl']" alt="">
-        </div>
-        <div class="women_content">
-          <div class="women_content1">
-            <div class="women_left">
-              <a href=""><img :src="tagArr[28]['items'][0]['imgurl']"></a>
-            </div>
-            <div class="women_right">
-              <a href=""><img :src="tagArr[28]['items'][1]['imgurl']"></a>
-              <a href=""><img :src="tagArr[28]['items'][2]['imgurl']"></a>
-            </div>
-          </div>
-          <div class="women_content2">
-            <div class="women_content2_box" v-for="content2 in tagArr[29]['items']" :key="tagArr[29]['items'].itemid">
-              <a href="">
-                <img :src="content2.imgurl" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="women_bottom">
-          <div class="women_bottom_box">
-            <a href=""><img :src="tagArr[30]['items'][0]['imgurl']"></a>
-          </div>
-        </div>
-      </div>
-      <!--运动达人-->
-      <div class="tag_sport">
-        <div class="sport_top">
-          <img :src="tagArr[32]['items'][0]['imgurl']" alt="">
-        </div>
-        <div class="sport_content">
-          <div class="sport_content1">
-            <div class="sport_right">
-              <a href=""><img :src="tagArr[33]['items'][0]['imgurl']"></a>
-              <a href=""><img :src="tagArr[33]['items'][1]['imgurl']"></a>
-            </div>
-            <div class="sport_left">
-              <a href=""><img :src="tagArr[33]['items'][2]['imgurl']"></a>
-            </div>
-          </div>
-          <div class="sport_content2">
-            <div class="sport_content2_box" v-for="content2 in tagArr[34]['items']" :key="tagArr[34]['items'].itemid">
-              <a href="">
-                <img :src="content2.imgurl" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="sport_bottom">
-          <div class="sport_bottom_box">
-            <a href=""><img :src="tagArr[35]['items'][0]['imgurl']"></a>
-          </div>
-        </div>
-      </div>
-      <!--精品男装-->
-      <div class="tag_men">
-        <div class="men_top">
-          <img :src="tagArr[37]['items'][0]['imgurl']" alt="">
-        </div>
-        <div class="men_content">
-          <div class="men_content1">
-            <div class="men_left">
-              <a href=""><img :src="tagArr[38]['items'][0]['imgurl']"></a>
-            </div>
-            <div class="men_right">
-              <a href=""><img :src="tagArr[38]['items'][1]['imgurl']"></a>
-              <a href=""><img :src="tagArr[38]['items'][2]['imgurl']"></a>
-            </div>
-          </div>
-          <div class="men_content2">
-            <div class="men_content2_box" v-for="content2 in tagArr[39]['items']" :key="tagArr[39]['items'].itemid">
-              <a href="">
-                <img :src="content2.imgurl" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--时尚鞋靴-->
-      <div class="tag_shoe">
-        <div class="shoe_top">
-          <img :src="tagArr[41]['items'][0]['imgurl']" alt="">
-        </div>
-        <div class="shoe_content">
-          <div class="shoe_content1">
-            <div class="shoe_right">
-              <a href=""><img :src="tagArr[42]['items'][0]['imgurl']"></a>
-              <a href=""><img :src="tagArr[42]['items'][1]['imgurl']"></a>
-            </div>
-            <div class="shoe_left">
-              <a href=""><img :src="tagArr[42]['items'][2]['imgurl']"></a>
-            </div>
-          </div>
-          <div class="shoe_content2">
-            <div class="shoe_content2_box" v-for="content2 in tagArr[43]['items']" :key="tagArr[43]['items'].itemid">
-              <a href="">
-                <img :src="content2.imgurl" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--品质箱包-->
-      <div class="tag_package">
-        <div class="package_top">
-          <img :src="tagArr[45]['items'][0]['imgurl']" alt="">
-        </div>
-        <div class="package_content">
-          <div class="package_content1">
-            <div class="package_left">
-              <a href=""><img :src="tagArr[46]['items'][0]['imgurl']"></a>
-            </div>
-            <div class="package_right">
-              <a href=""><img :src="tagArr[46]['items'][1]['imgurl']"></a>
-              <a href=""><img :src="tagArr[46]['items'][2]['imgurl']"></a>
-            </div>
-          </div>
-          <div class="package_content2">
-            <div class="package_content2_box" v-for="content2 in tagArr[47]['items']" :key="tagArr[47]['items'].itemid">
-              <a href="">
-                <img :src="content2.imgurl" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- 品质箱包 -- 精选好货 -->
     <div class="pinzhi-xb">
@@ -567,8 +332,8 @@
           background-color: @index-StraightDown-bgcolor;
           padding: 7px;
           position: absolute;
-          top: 0px;
-          left: 0px;
+          top: 0;
+          left: 0;
           font-size: @font-size-small;
           color: @index-StraightDown-color;
         }
@@ -632,14 +397,12 @@
   .index_tag .tag_women, .tag_men, .tag_shoe, .tag_package, .tag_sport {
     width: 100%;
   }
-
   .tag_women .women_top {
     width: 100%;
     img {
       width: 100%;
     }
   }
-
   .tag_women .women_content {
     width: 100%;
     .women_content1 {
@@ -672,7 +435,6 @@
       }
     }
   }
-
   .tag_women .women_bottom {
     width: 100%;
     .women_bottom_box {
@@ -682,14 +444,12 @@
       }
     }
   }
-
   .tag_sport .sport_top {
     width: 100%;
     img {
       width: 100%;
     }
   }
-
   .tag_sport .sport_content {
     width: 100%;
     .sport_content1 {
@@ -722,7 +482,6 @@
       }
     }
   }
-
   .tag_sport .sport_bottom {
     width: 100%;
     .sport_bottom_box {
@@ -732,14 +491,12 @@
       }
     }
   }
-
   .tag_package .package_top {
     width: 100%;
     img {
       width: 100%;
     }
   }
-
   .tag_package .package_content {
     width: 100%;
     .package_content1 {
@@ -772,14 +529,12 @@
       }
     }
   }
-
   .tag_shoe .shoe_top {
     width: 100%;
     img {
       width: 100%;
     }
   }
-
   .tag_shoe .shoe_content {
     width: 100%;
     .shoe_content1 {
@@ -812,14 +567,12 @@
       }
     }
   }
-
   .tag_men .men_top {
     width: 100%;
     img {
       width: 100%;
     }
   }
-
   .tag_men .men_content {
     width: 100%;
     .men_content1 {
@@ -852,6 +605,9 @@
       }
     }
   }
+
+
+
 
   .pinzhi-xb-header-A {
     width: 100%;
