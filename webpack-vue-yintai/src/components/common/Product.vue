@@ -1,14 +1,14 @@
 <template>
-  <div class="prd_wrap" v-if="myArr!= null">
+  <div class="wrap" v-if="myArr!= null">
     <div class="prd_title">
       <!--<i class="iconfont icon-houtui"></i>-->
       <!--<span>商品详情</span>-->
       <!--<i class="iconfont icon-more"></i>-->
     </div>
     <div class="box">
-      <div class="index_content">
+      <div class="content">
         <!-- 商品轮播图 -->
-        <div class="index_scrollimg">
+        <div class="scrollimg">
           <mt-swipe :auto="3000">
             <mt-swipe-item v-for="prdImg in myArr.largeimgurls" :key="myArr.itemcode ">
               <div class="imgBox">
@@ -37,28 +37,76 @@
             </p>
           </div>
         </div>
+        <!--活动-->
+        <div class="active">
+          <span>活动</span>
+        </div>
         <!--已选绑定-->
         <div class="prd_choose">
           <div class="aaa">
-          <span class="span1">已选：</span>
-          <span class="color">"{{}}"</span>
-          <span class="size">"{{}}"</span>
-          <p class="choose_cont">
-            <span class="cont">{{}}</span>
-            <span>件</span>
-          </p>
+            <span class="span1">已选：</span>
+            <span class="color">"{{}}"</span>
+            <span class="size">"{{}}"</span>
+            <p class="choose_cont">
+              <span class="cont">{{}}</span>
+              <span>件</span>
+            </p>
           </div>
         </div>
-
-        <!---->
       </div>
+    </div>
+    <!--选项-->
+    <div class="prd_move">
+      <!--颜色分类-->
+      <div class="move_color">
+        <div class="xuanxiang">颜色分类：</div>
+        <div class="myPrdChoose">
+        <span>
+          黑/红色
+        </span>
+        </div>
+      </div>
+      <!--尺码-->
+      <div class="move_size">
+        <div class="sizetop">
+          <div class="xuanxiang">尺码：</div>
+          <span class="xuanxiang">尺码说明</span>
+        </div>
+        <div class="myPrdChoose">
+          <span>37</span>
+        </div>
+      </div>
+      <!--数量-->
+      <div class="move_count">
+        <div class="xuanxiang">数量：</div>
+        <div id="my_count">
+          <span class="add btn">-</span>
+          <span class="mycount">{{}}</span>
+          <span class="sub btn">+</span>
+        </div>
+      </div>
+    </div>
+    <!--品牌-->
+    <div class="brand">
+      <div class="brandLeft">
+        品牌：{{}}
+      </div>
+      <div class="brandright">
+        <img src="" alt="">
+        <i></i>
+        >
+      </div>
+    </div>
+    <!--图文介绍-->
+    <div class="prd_introduction">
+      <div class="title">图文介绍</div>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: '',
+    name: 'CommonPrd',
     data () {
       return {
         myArr: null
@@ -87,14 +135,14 @@
 
 <style scoped lang="less">
   @import "../../common/css/index";
-  .prd_wrap{
+  .wrap{
     background-color: #f1f1f1;
   }
   .prd_title {
     margin-bottom: 10px;
     background-color: #fff;
   }
-  .index_scrollimg {
+  .scrollimg {
     background-color: #fff;
     width: 100%;
     height: 320px;
@@ -166,13 +214,92 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      border-bottom: 1px dashed @category-leftlist-unchose-color;
+      border-bottom: 1px dashed #dbdbdb;
       span{
         margin-right: 5px;
       }
       .span1{
         color: @index-boom-introduce-color;
       }
+    }
+  }
+  .prd_move{
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    .move_color{
+      width: 100%;
+      .xuanxiang{
+        padding: 10px 0;
+      }
+    }
+  }
+  .move_size{
+    width: 100%;
+    .sizetop{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+  }
+  .move_count{
+    padding: 10px 10px 0 10px;
+    align-items: center;
+    #my_count{
+      width: 100%;
+      padding-top: 10px;
+      .btn{
+        display: inline-block;
+        border: 1px solid #666;
+        border-radius: 3px;
+        margin: 0 5px 5px 0;
+        min-width: 30px;
+        height: 30px;
+        background-color: #fff;
+        color: #666;
+        font-size: 25px;
+        font-weight: 500;
+        -moz-box-align: center;
+        text-align: center;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .myPrdChoose{
+    color: #ff6d9d;
+    border-bottom: 1px dashed #dbdbdb;
+    padding: 0 0 6px 15px;
+    span{
+      display: inline-block;
+      padding: 7px 7px;
+      border: 1px solid #666;
+      border-radius: 3px;
+      margin: 0 5px 5px 0;
+      min-width: 30px;
+      background-color: #fff;
+      color: #666;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+  .xuanxiang{
+    color: @index-boom-introduce-color;
+  }
+  .brand{
+    padding: 10px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .prd_introduction{
+    height:  45px;;
+    background-color: #fff;
+    text-align: center;
+    color: @index-boom-introduce-color;
+    .title{
+      line-height: 40px;
     }
   }
 </style>
