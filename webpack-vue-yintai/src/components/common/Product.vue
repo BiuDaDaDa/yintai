@@ -21,8 +21,9 @@
         <div class="name_box">
           <div class="prd_name">
             <div class="title">{{myArr.name}}</div>
-            <div class="like">
-              <i class="iconfont icon-heart"></i>
+            <div class="like" @click="Prdlike">
+              <i class="iconfont icon-heart" v-show="isShow"></i>
+              <i class="iconfont icon-heart1" v-show="!isShow"></i>
             </div>
           </div>
           <div class="prd_price">
@@ -45,10 +46,10 @@
         <div class="prd_choose">
           <div class="aaa">
             <span class="span1">已选：</span>
-            <span class="color">"{{}}"</span>
-            <span class="size">"{{}}"</span>
+            <span class="color">"{{color}}"</span>
+            <span class="size">"{{size}}"</span>
             <p class="choose_cont">
-              <span class="cont">{{}}</span>
+              <span class="cont">{{count}}</span>
               <span>件</span>
             </p>
           </div>
@@ -61,9 +62,7 @@
       <div class="move_color">
         <div class="xuanxiang">颜色分类：</div>
         <div class="myPrdChoose">
-        <span>
-          黑/红色
-        </span>
+          <span @click="mycolor" v-model="color">{{color}}</span>
         </div>
       </div>
       <!--尺码-->
@@ -73,16 +72,16 @@
           <span class="xuanxiang">尺码说明</span>
         </div>
         <div class="myPrdChoose">
-          <span>37</span>
+          <span @click="mysize" v-model="size">{{size}}</span>
         </div>
       </div>
       <!--数量-->
       <div class="move_count">
         <div class="xuanxiang">数量：</div>
         <div id="my_count">
-          <span class="add btn">-</span>
-          <span class="mycount">{{}}</span>
-          <span class="sub btn">+</span>
+          <span class="add btn" @click="sub">-</span>
+          <span class="mycount">{{count}}</span>
+          <span class="sub btn" @click="add">+</span>
         </div>
       </div>
     </div>
@@ -107,12 +106,16 @@
 <script>
   export default {
     name: 'CommonPrd',
-    data () {
+    data() {
       return {
-        myArr: null
+        myArr: null,
+        isShow: true,
+        color: '黑/红色',
+        size: '37',
+        count: 0
       }
     },
-    mounted () {
+    mounted() {
       this.$request(
         {
           type: 'get',
@@ -128,20 +131,42 @@
           }
         }
       )
-    }
+    },
+    methods: {
+      Prdlike: function () {
+        this.isShow = !this.isShow
+      },
+//    选择商品颜色
+      mycolor () {
 
+      },
+      mysize () {
+
+      },
+      add(){
+        this.count += 1
+      },
+      sub(){
+        if(this.count > 0 ){
+          this.count--
+        }
+      }
+    }
   }
 </script>
 
 <style scoped lang="less">
   @import "../../common/css/index";
-  .wrap{
+
+  .wrap {
     background-color: #f1f1f1;
   }
+
   .prd_title {
     margin-bottom: 10px;
     background-color: #fff;
   }
+
   .scrollimg {
     background-color: #fff;
     width: 100%;
@@ -154,7 +179,8 @@
       width: 240px;
     }
   }
-  .name_box{
+
+  .name_box {
     background-color: #fff;
     padding: 10px 10px 0;
     margin-bottom: 10px;
@@ -179,9 +205,13 @@
           font-size: 30px;
           font-weight: bolder;
         }
+        .icon-heart1 {
+          font-size: 30px;
+          color: #ffaad4;
+        }
       }
     }
-    .prd_price{
+    .prd_price {
       height: 42px;
       padding: 8px 0;
       display: flex;
@@ -190,65 +220,69 @@
       position: relative;
       color: @color-light-gray;
       font-size: @font-size;
-      .p1{
+      .p1 {
         color: @login-button-color;
         margin-right: 11px;
-        span{
+        span {
           font-size: @font-size-large;
         }
       }
-      .p3{
+      .p3 {
         position: absolute;
         right: 0;
       }
     }
   }
-  .prd_choose{
+
+  .prd_choose {
     background-color: #fff;
     width: 100%;
     padding: 0 10px;
     height: 40px;
     box-sizing: border-box;
-    .aaa{
+    .aaa {
       height: 100%;
       display: flex;
       justify-content: flex-start;
       align-items: center;
       border-bottom: 1px dashed #dbdbdb;
-      span{
+      span {
         margin-right: 5px;
       }
-      .span1{
+      .span1 {
         color: @index-boom-introduce-color;
       }
     }
   }
-  .prd_move{
+
+  .prd_move {
     background-color: white;
     padding: 10px;
     margin-bottom: 10px;
-    .move_color{
+    .move_color {
       width: 100%;
-      .xuanxiang{
+      .xuanxiang {
         padding: 10px 0;
       }
     }
   }
-  .move_size{
+
+  .move_size {
     width: 100%;
-    .sizetop{
+    .sizetop {
       display: flex;
       justify-content: space-between;
       padding: 10px 0;
     }
   }
-  .move_count{
+
+  .move_count {
     padding: 10px 10px 0 10px;
     align-items: center;
-    #my_count{
+    #my_count {
       width: 100%;
       padding-top: 10px;
-      .btn{
+      .btn {
         display: inline-block;
         border: 1px solid #666;
         border-radius: 3px;
@@ -265,11 +299,12 @@
       }
     }
   }
-  .myPrdChoose{
+
+  .myPrdChoose {
     color: #ff6d9d;
     border-bottom: 1px dashed #dbdbdb;
     padding: 0 0 6px 15px;
-    span{
+    span {
       display: inline-block;
       padding: 7px 7px;
       border: 1px solid #666;
@@ -282,10 +317,12 @@
       text-align: center;
     }
   }
-  .xuanxiang{
+
+  .xuanxiang {
     color: @index-boom-introduce-color;
   }
-  .brand{
+
+  .brand {
     padding: 10px;
     background-color: #fff;
     display: flex;
@@ -293,12 +330,13 @@
     align-items: center;
     margin-bottom: 10px;
   }
-  .prd_introduction{
-    height:  45px;;
+
+  .prd_introduction {
+    height: 45px;;
     background-color: #fff;
     text-align: center;
     color: @index-boom-introduce-color;
-    .title{
+    .title {
       line-height: 40px;
     }
   }
