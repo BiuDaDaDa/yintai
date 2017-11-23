@@ -92,6 +92,7 @@
 </template>
 
 <script>
+  import Bus from '../../common/js/eventBus'
   export default {
     name: '',
     data () {
@@ -150,9 +151,9 @@
         this.undf = this.jump.split('N')[1].split('%')[1].split('D')[1].split('&')[0]
         console.log(this.undf)
         this.foodsName = this.thisdataCate[index].name
+        Bus.$emit('xinxin', this.undf, this.foodsName)
         this.myid = this.foodsName
-        console.log(this.foodsName)
-        this.$router.push({ path: `/21023304/${this.myid}` })
+        this.$router.push({ path: `/Sales/${this.myid}` })
         this.$request({
           type: 'get',
           url: `api?r=201711221103&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A0%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.undf}%22%2C%22keyword%22%3A%22%22%7D`,

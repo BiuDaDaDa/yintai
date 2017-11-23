@@ -111,6 +111,7 @@
 </template>
 
 <script>
+  import Bus from '../../common/js/eventBus'
   import Vue from 'vue'
   import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
   Vue.component(Header.name, Header)
@@ -168,6 +169,12 @@
         failed: function (err) {
           console.log(err)
         }
+      })
+    },
+    created () {
+      Bus.$on('xinxin', function (undf, foodnum) {
+        console.log('unde' + undf)
+        console.log(foodnum)
       })
     },
     methods: {

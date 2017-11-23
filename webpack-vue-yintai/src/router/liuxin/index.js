@@ -1,4 +1,4 @@
-import ShePin from '@/components/index/ShePin'
+import Sales from '@/components/index/ShePin'
 import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
 import Vue from 'vue'
 Vue.use(InfiniteScroll)
@@ -8,8 +8,8 @@ Vue.component(Popup.name, Popup)
 Vue.component(Header.name, Header)
 export default [
   {
-    path: '/21023304/:id?',
-    name: 'ShePin',
-    component: ShePin
+    path: '/Sales/:id?',
+    name: 'Sales',
+    component: Sales
   }
 ]

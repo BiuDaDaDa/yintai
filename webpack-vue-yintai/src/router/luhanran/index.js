@@ -1,7 +1,7 @@
 import Login from '@/components/Login/Login'
 import Registration from '@/components/Login/Registration'
 import ForgetPassword from '@/components/Login/ForgetPassword'
-import Fenlei from '@/components/category/Fenlei'
+import CateGory from '@/components/category/Fenlei'
 import FenleiSearch from '@/components/category/FenleiSearch'
 
 export default [
@@ -21,9 +21,9 @@ export default [
     component: ForgetPassword
   },
   {
-    path: '/Fenlei',
-    name: 'Fenlei',
-    component: Fenlei
+    path: '/CateGory',
+    name: 'CateGory',
+    component: CateGory
   },
   {
     path: '/FenleiSearch',
