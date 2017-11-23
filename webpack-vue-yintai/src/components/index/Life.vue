@@ -1,8 +1,9 @@
 <template>
   <div class="life-wrap" v-if="thisdata != null">
     <div class="mask" v-if="ShowMask" @click="clickContent"></div>
-
+    <div class="mask2" v-if="ShowMask2" @click="closeChange"></div>
     <div class="life">
+
       <div class="life-top">
         <img src="../../common/img/shangchangtk/arrow-left.png" alt="" class="life-top1">
         <div class="life-top2">{{thisdata.data.pagetitle}}</div>
@@ -27,14 +28,28 @@
           </li>
         </ul>
       </div>
+
       <div class="life-footer-a-clone" v-if="isClone">
         <div class="life-footer-a-div-clone">
           <div v-for="ite in thisdata8" class="life-footer-a-div1-clone">{{ite['extra']['navigationname']}}</div>
-          <img src="../../common/img/life/arrow-down.png" alt="" class="life-footer-a-arrow-clone">
+          <img src="../../common/img/life/arrow-down.png" alt="" class="life-footer-a-arrow-clone" @click="openChange">
+        </div>
+      </div>
+
+      <div class="life-change" v-if="isChange">
+        <div class="life-change-top">
+          <div class="life-change-top-left">切换楼层</div>
+          <div class="life-change-top-right">
+            <img src="../../common/img/shangchangtk/arrow-top.png" alt="" @click="closeChange">
+          </div>
+        </div>
+        <div class="life-change-bottom">
+          <div v-for="ite in thisdata8" class="life-change-bottom-div">{{ite['extra']['navigationname']}}</div>
         </div>
       </div>
 
       <div class="desk"></div>
+
       <div class="life-header" v-for="(img,index) in thisdata1" v-if="index<3">
         <img :src="img['items'][0]['imgurl']" alt="">
       </div>
@@ -42,28 +57,32 @@
       <div class="life-content">
         <div class="life-content1">
           <img :src="thisdata1[3]['items'][0]['imgurl']" alt="" class="life-content1-a">
-          <div class="life-content-bb">
-            <div class="life-content-b" v-for="item in thisdata4">
-              <img :src="item['imgurl']" alt="" class="life-content-b1">
-              <div class="life-content-b2">{{item['extra']['productdetail']['name']}}</div>
-              <div class="life-content-b3">
-                <span>￥ {{item['extra']['productdetail']['price']}}.00</span>
+          <div class="big">
+            <div class="life-content-bb">
+              <div class="life-content-b" v-for="item in thisdata4">
+                <img :src="item['imgurl']" alt="" class="life-content-b1">
+                <div class="life-content-b2">{{item['extra']['productdetail']['name']}}</div>
+                <div class="life-content-b3">
+                  <span>￥ {{item['extra']['productdetail']['price']}}.00</span>
+                </div>
+                <div class="life-content1-manjian" v-for="aa in item.extra.productdetail.prmotionlist">{{aa.plabel}}</div>
               </div>
-              <div class="life-content1-manjian" v-for="aa in item.extra.productdetail.prmotionlist">{{aa.plabel}}</div>
             </div>
           </div>
         </div>
 
         <div class="life-content1">
           <img :src="thisdata1[5]['items'][0]['imgurl']" alt="" class="life-content1-a">
-          <div class="life-content-bb">
-            <div class="life-content-b" v-for="item in thisdata6">
-              <img :src="item['imgurl']" alt="" class="life-content-b1">
-              <div class="life-content-b2">{{item['extra']['productdetail']['name']}}</div>
-              <div class="life-content-b3">
-                <span>￥ {{item['extra']['productdetail']['price']}}.00</span>
+          <div class="big">
+            <div class="life-content-bb">
+              <div class="life-content-b" v-for="item in thisdata6">
+                <img :src="item['imgurl']" alt="" class="life-content-b1">
+                <div class="life-content-b2">{{item['extra']['productdetail']['name']}}</div>
+                <div class="life-content-b3">
+                  <span>￥ {{item['extra']['productdetail']['price']}}.00</span>
+                </div>
+                <div class="life-content1-manjian" v-for="aa in item.extra.productdetail.prmotionlist">{{aa.plabel}}</div>
               </div>
-              <div class="life-content1-manjian" v-for="aa in item.extra.productdetail.prmotionlist">{{aa.plabel}}</div>
             </div>
           </div>
         </div>
@@ -116,6 +135,7 @@
         thisdata4: '',
         Showlist: false,
         ShowMask: false,
+        ShowMask2: false,
         arr: [
           {'id': '21-473-6689'},
           {'id': '20-791-7073'},
@@ -123,16 +143,27 @@
           {'id': '21-473-3042'}
         ],
         scroll: '',
-        isClone: false,
+        isClone: true,
         isHui: false,
         isSee: true,
-        isShow: false
+        isShow: false,
+        isChange: false
       }
     },
     mounted () {
+      var date1 = new Date()
+      var datehour = date1.getHours()
+      var dateminute = date1.getMinutes()
+      if (datehour < 10) {
+        datehour = `0${datehour}`
+      }
+      if (dateminute < 10) {
+        dateminute = `0${dateminute}`
+      }
+      var date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
       this.$request({
         type: 'get',
-        url: 'api?r=201711200853&os=HTML5&client_v=1.0.0&pageid=30002069&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
+        url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=30002069&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,
         header: {},
         params: {},
         success: function (res) {
@@ -174,6 +205,16 @@
       clickContent () {
         this.Showlist = false
         this.ShowMask = false
+      },
+      openChange () {
+        this.isChange = true
+        this.isClone = false
+        this.ShowMask2 = true
+      },
+      closeChange () {
+        this.isChange = false
+        this.isClone = true
+        this.ShowMask2 = false
       }
     }
   }
@@ -186,14 +227,8 @@
     0% {
       opacity: 0;
     }
-    25% {
-      opacity: 0.25;
-    }
     50% {
       opacity: 0.5;
-    }
-    75% {
-      opacity: 0.75;
     }
     100% {
       opacity: 1;
@@ -210,10 +245,18 @@
     left: 0;
     background-color: rgba(39, 44, 47, 0.7);
     z-index: 30;
-    animation: move1 1s linear;
-    /*transition: all ease 0.4s;*/
-    /*transition-property: opacity;*/
-    /*transition-duration: 1s;*/
+    animation: move1 0.1s linear;
+  }
+  .mask2{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(39, 44, 47, 0.5);
+    z-index: 30;
   }
 
   .life-wrap {
@@ -222,10 +265,6 @@
 
   img {
     margin-top: -3px;
-  }
-
-  .desk {
-    height: 108px;
   }
 
   .life-top {
@@ -237,7 +276,6 @@
     box-sizing: border-box;
     border-bottom: @border-color-more;
     position: fixed;
-    margin-top: 70px;
     z-index: 100;
     ul {
       position: absolute;
@@ -246,10 +284,7 @@
       background-color: white;
       list-style: none;
       padding: 0 5px 5px 5px;
-      animation: move1 1s linear;
-      /*transition: all ease 0.4s;*/
-      /*transition-property: opacity;*/
-      /*transition-duration: 1s;*/
+      animation: move1 0.1s linear;
       li {
         border-top: 1px solid rgb(193, 193, 193);
         padding: 8px;
@@ -277,8 +312,9 @@
     margin-bottom: 3px;
     background-color: white;
     position: fixed;
-    top: 105px;
+    top: 35px;
     z-index: 500;
+    border-top: 1px solid rgb(193, 193, 193);
     .life-footer-a-div-clone {
       width: 90%;
       position: relative;
@@ -299,6 +335,47 @@
     }
   }
 
+  .life-change{
+    width: 100%;
+    position: fixed;
+    top: 35px;
+    background-color: white;
+    z-index: 500;
+    .life-change-top{
+      overflow: hidden;
+      display: inline-flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 5px 10px;
+      box-sizing: border-box;
+      .life-change-top-left{
+        float: left;
+        margin-top: 5px;
+        color:@index-boom-introduce-color;
+        font-size:@font-size;
+        font-weight: bolder;
+      }
+      .life-change-top-right{
+        float: right;
+        img{
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+    .life-change-bottom{
+      display: inline-flex;
+      justify-content: space-between;
+      width: 90%;
+      padding: 5px 10px 10px 20px;
+      box-sizing: border-box;
+      .life-change-bottom-div{
+        color:@product-price-title-price-color;
+        font-size:15px;
+      }
+    }
+  }
+
   .life-top1 {
     width: 15px;
     height: 15px;
@@ -313,12 +390,17 @@
     width: 20px;
     height: 20px;
   }
+
   .life-top4 {
     width: 20px;
     height: 20px;
     position: absolute;
     top: 10px;
     right: 15px;
+  }
+
+  .desk {
+    height: 38px;
   }
 
   .life-header {
@@ -339,6 +421,10 @@
 
   .life-content1-a {
     width: 100%;
+  }
+
+  .big{
+    overflow-x:scroll;
   }
 
   .life-content-bb {
@@ -390,10 +476,10 @@
     margin-bottom: 3px;
     background-color: white;
     position: relative;
-    .hui{
+    .hui {
       height: 34px;
       width: 100%;
-      background-color: rgb(237,237,237);
+      background-color: rgb(237, 237, 237);
       position: absolute;
       top: 44px;
       left: 0;

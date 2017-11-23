@@ -1,9 +1,15 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <!--<img src="./common/img/shangchangtk/title.png" alt="" class="img-title">-->
     <!--<footer-hui></footer-hui>-->
     <!--<yt-footer></yt-footer>-->
     <router-view/>
+=======
+    <router-view/>
+    <footer-hui v-if="fthui"></footer-hui>
+    <yt-footer></yt-footer>
+>>>>>>> 9a527c5aae3603af7ec1975c2670232852fc461b
   </div>
 </template>
 
@@ -12,6 +18,11 @@
   import YtFooter from './components/common/YtFooter'
   export default {
     name: 'app',
+    data () {
+      return {
+        fthui: true
+      }
+    },
     components: {
       FooterHui,
       YtFooter
@@ -25,12 +36,16 @@
         headers: {},
         params: {},
         success: function (res) {
-          console.log(res.data)
+//          console.log(res.data)
         },
         failed: function (err) {
           console.log(err)
         }
       })
+      if (window.location.href === 'http://localhost:8080/fenlei' ||
+        window.location.href === 'http://localhost:8080/fenleiSearch') {
+        this.fthui = false
+      }
     }
   }
 </script>

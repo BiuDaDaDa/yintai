@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="wrap" v-if="thisdata != null && thisdata1 != '' && thisdata6 != '' && myImg != '' && myNav != '' && tagArr != '' && arr != ''">
     <!-- 首页固定标题 -- 大图滚动 -->
     <div class="box">
@@ -42,49 +43,47 @@
     </div>
 
 
+=======
+  <div class="wrap" v-if="thisdata != null">
+>>>>>>> 9a527c5aae3603af7ec1975c2670232852fc461b
     <!-- 品质箱包 -- 精选好货 -->
     <div class="pinzhi-xb">
       <div class="pinzhi-xb-header">
         <div class="pinzhi-xb-header-A">
           <div class="pinzhi-xb-hA-top">
             <div class="pinzhi-xb-hA-top-left">
-              <img :src="thisdata[0]['items'][0]['imgurl']" alt="">
-              <img :src="thisdata[0]['items'][1]['imgurl']" alt="">
+              <img :src="thisdata0[0]['imgurl']" alt="">
+              <img :src="thisdata0[1]['imgurl']" alt="">
             </div>
             <div class="pinzhi-xb-hA-top-right">
-              <img :src="thisdata[0]['items'][2]['imgurl']" alt="">
+              <img :src="thisdata0[2]['imgurl']" alt="">
             </div>
           </div>
           <div class="pinzhi-xb-hA-content">
             <img v-for="val in thisdata1" :src="val['imgurl']" alt="">
           </div>
           <div class="pinzhi-xb-hA-footer">
-            <mt-swipe :auto="4000">
-              <mt-swipe-item><img :src="thisdata[2]['items'][0]['imgurl']" alt=""></mt-swipe-item>
-              <mt-swipe-item><img :src="thisdata[2]['items'][1]['imgurl']" alt=""></mt-swipe-item>
-            </mt-swipe>
+            <img :src="thisdata3[0]['imgurl']" alt="">
           </div>
         </div>
       </div>
+
       <div class="pinzhi-xb-content">
         <div class="pinzhi-xb-content-A">
-          <div class="pinzhi-xb-cA-top-top">
-            <img :src="thisdata[4]['items'][0]['imgurl']" alt="">
-          </div>
           <div class="pinzhi-xb-cA-top">
             <div class="pinzhi-xb-cA-top-left">
-              <img :src="thisdata[5]['items'][0]['imgurl']" alt="">
+              <img :src="thisdata4[0]['imgurl']" alt="">
             </div>
             <div class="pinzhi-xb-cA-top-right">
-              <img :src="thisdata[5]['items'][1]['imgurl']" alt="">
-              <img :src="thisdata[5]['items'][2]['imgurl']" alt="">
+              <img :src="thisdata4[1]['imgurl']" alt="">
+              <img :src="thisdata4[2]['imgurl']" alt="">
             </div>
           </div>
           <div class="pinzhi-xb-cA-content">
-            <img v-for="val6 in thisdata6" :src="val6['imgurl']" alt="">
+            <img v-for="val5 in thisdata5" :src="val5['imgurl']" alt="">
           </div>
           <div class="pinzhi-xb-cA-footer">
-            <img :src="thisdata[7]['items'][0]['imgurl']" alt="">
+            <img :src="thisdata7[0]['imgurl']" alt="">
           </div>
         </div>
       </div>
@@ -92,14 +91,10 @@
 
     <!-- 精选好货 -->
     <div class="jingxuan-hh">
-      <div class="jingxuan-hh-header">
-        <img :src="thisdata[9]['items'][0]['imgurl']" alt="">
-      </div>
-
       <div class="jingxuan-hh-content">
-        <div class="jingxuan-hh-content-A" v-for="(aa,index) in thisdata" v-if="index>9">
+        <div class="jingxuan-hh-content-A" v-for="(aa, index) in thisdata" v-if="index>7">
           <div class="jingxuan-hh-content-A-left" v-for="bb in aa.items">
-            <img :src="bb.imgurl" alt="">
+            <img :src="bb['imgurl']" alt="">
             <div class="jingxuan-hh-content-A-left-a">{{bb['extra']['productdetail']['name']}}</div>
             <div class="jingxuan-hh-content-A-left-b">
               <span class="jx-c-left-b1">￥</span>
@@ -107,6 +102,7 @@
               <span class="jx-c-left-b3">￥</span>
               <span class="jx-c-left-b4">{{bb['extra']['productdetail']['marketprice']}}.00</span>
             </div>
+            <div class="pink" v-for="cc in bb['extra']['productdetail']['prmotionlist']">{{cc['plabel']}}</div>
           </div>
         </div>
       </div>
@@ -119,44 +115,10 @@
     name: '',
     data () {
       return {
-        thisdata: null,
-        thisdata1: '',
-        thisdata6: '',
-        tagArr: null,
-        myImg: '',
-        myNav: '',
-        arr: []
+        thisdata: null
       }
     },
     mounted () {
-      this.$request({
-        type: 'get',
-        url: 'api?r=201711171029&os=HTML5&client_v=1.0.0&pageid=104001&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=2',
-        headers: {},
-        params: {},
-        success: function (res) {
-          this.thisdata = res.data.data.templatelist
-          this.thisdata1 = this.thisdata[1].items
-          this.thisdata6 = this.thisdata[6].items
-        },
-        failed: function (err) {
-          console.log(err)
-        }
-      })
-      this.$request({
-        type: 'get',
-        url: 'api?r=201711161814&os=HTML5&client_v=1.0.0&pageid=104001&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
-        headers: {},
-        params: {},
-        success: function (res) {
-          this.tagArr = res.data.data.templatelist
-          this.myImg = res.data.data.bannerlist
-          this.myNav = res.data.data.templatelist[0].items
-        },
-        failed: function (err) {
-          console.log(err)
-        }
-      })
       var date1 = new Date()
       var datehour = date1.getHours()
       var dateminute = date1.getMinutes()
@@ -167,27 +129,25 @@
         dateminute = `0${dateminute}`
       }
       var date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-      date2 = `${date1.getFullYear()}${date1.getMonth()}${date1.getDate()}${date1.getMinutes()}`
       this.$request({
         type: 'get',
-        url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=104001&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,
+        url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=104001&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=2`,
         headers: {},
         params: {},
         success: function (res) {
-          this.arr = res.data.data
-          console.log(res.data.data)
-          this.isloading = true
+          this.thisdata = res.data.data.templatelist
+          this.thisdata0 = this.thisdata[0].items
+          this.thisdata1 = this.thisdata[1].items
+          this.thisdata3 = this.thisdata[3].items
+          this.thisdata4 = this.thisdata[4].items
+          this.thisdata5 = this.thisdata[5].items
+          this.thisdata7 = this.thisdata[7].items
+          this.thisdata8 = this.thisdata[8].items
         },
         failed: function (err) {
           console.log(err)
         }
       })
-    },
-    methods: {
-      redirectMoreBK () {
-        console.log('toredirect')
-        this.$router.push('/SalesCustomList')
-      }
     }
   }
 </script>
@@ -199,6 +159,7 @@
     background-color: rgb(237, 237, 237);
   }
 
+<<<<<<< HEAD
   .search_box {
     width: 100%;
     background-color: #fff;
@@ -609,6 +570,8 @@
 
 
 
+=======
+>>>>>>> 9a527c5aae3603af7ec1975c2670232852fc461b
   .pinzhi-xb-header-A {
     width: 100%;
   }
@@ -654,8 +617,8 @@
 
   .pinzhi-xb-hA-footer {
     width: 100%;
-    height: 100px;
     background-color: white;
+    margin-top: 5px;
   }
 
   .pinzhi-xb-hA-footer img {
@@ -664,6 +627,7 @@
 
   .pinzhi-xb-content-A {
     width: 100%;
+    margin-top: 2px;
   }
 
   .pinzhi-xb-cA-top-top {
@@ -693,7 +657,7 @@
   .pinzhi-xb-cA-top-right {
     width: 50%;
     float: left;
-    border-bottom: 2px solid rgb(237, 237, 237);
+    /*border-bottom: 1px solid rgb(237, 237, 237);*/
   }
 
   .pinzhi-xb-cA-top-right img {
@@ -704,16 +668,20 @@
   .pinzhi-xb-cA-content {
     width: 100%;
     display: inline-flex;
+    justify-content: space-between;
   }
 
   .pinzhi-xb-cA-content img {
     width: 33%;
     height: 100%;
     object-fit: cover;
+    vertical-align: middle;
   }
 
   .pinzhi-xb-cA-footer {
     width: 100%;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
 
   .pinzhi-xb-cA-footer img {
@@ -748,6 +716,16 @@
     float: left;
     background-color: #fff;
     margin-bottom: 5px;
+    position: relative;
+    .pink{
+      position: absolute;
+      top: -2px;
+      left: 0;
+      background-color: @index-StraightDown-bgcolor;
+      color: white;
+      font-size: @font-size-small;
+      padding:8px;
+    }
   }
 
   .jingxuan-hh-content-A-left img {

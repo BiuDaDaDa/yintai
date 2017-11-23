@@ -2,7 +2,7 @@
   <div class="vip-wrap" v-if="thisdata != null">
     <div class="vip-top">
       <img src="../../common/img/shangchangtk/arrow-left.png" alt="" class="vip-top1">
-      <div class="shangchang-tk-top2">{{thisdata.data.pagetitle}}</div>
+      <div class="vip-top2">{{thisdata.data.pagetitle}}</div>
       <img src="../../common/img/shangchangtk/shenglue.png" alt="" class="vip-top3">
     </div>
     <div class="vip">
@@ -45,9 +45,19 @@
       }
     },
     mounted () {
+      var date1 = new Date()
+      var datehour = date1.getHours()
+      var dateminute = date1.getMinutes()
+      if (datehour < 10) {
+        datehour = `0${datehour}`
+      }
+      if (dateminute < 10) {
+        dateminute = `0${dateminute}`
+      }
+      var date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
       this.$request({
         type: 'get',
-        url: 'api?r=201711181549&os=HTML5&client_v=1.0.0&pageid=30001970&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
+        url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=30001970&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,
         header: {},
         params: {},
         success: function (res) {
@@ -81,7 +91,6 @@
     box-sizing: border-box;
     border-bottom: @border-color-more;
     position: fixed;
-    top: 68px;
     line-height: 40px;
   }
 

@@ -7,6 +7,8 @@
         <img src="../../common/img/shangchangtk/shenglue.png" alt="" class="shangchang-tk-top3">
       </div>
 
+      <div class="desk"></div>
+
       <div class="shangchang-tk-header">
         <div class="shangchang-tk-header-A" v-for="val in thisdata2">
           <img :src="val['imgurl']" alt="">
@@ -53,9 +55,19 @@
       }
     },
     mounted () {
+      var date1 = new Date()
+      var datehour = date1.getHours()
+      var dateminute = date1.getMinutes()
+      if (datehour < 10) {
+        datehour = `0${datehour}`
+      }
+      if (dateminute < 10) {
+        dateminute = `0${dateminute}`
+      }
+      var date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
       this.$request({
         type: 'get',
-        url: 'api?r=201711171747&os=HTML5&client_v=1.0.0&pageid=30000365&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
+        url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=30000365&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,
         header: {},
         params: {},
         success: function (res) {
@@ -87,7 +99,6 @@
     box-sizing: border-box;
     border-bottom: @border-color-more;
     position: fixed;
-    margin-top: 70px;
   }
 
   .shangchang-tk-top1 {
@@ -105,9 +116,12 @@
     height: 20px;
   }
 
+  .desk{
+    height: 38px;
+  }
+
   .shangchang-tk-header {
     width: 100%;
-    margin-top: 106px;
     background-color: white;
     display: inline-flex;
     justify-content: space-around;
