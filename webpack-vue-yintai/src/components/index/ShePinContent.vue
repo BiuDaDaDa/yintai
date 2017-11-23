@@ -2,12 +2,12 @@
   <div id="saleProduct" >
     <mt-header class="barhead" title="奢品">
       <router-link to="/" slot="left">
-        <mt-button class="iconback" icon="back"></mt-button>
+        <mt-button class="iconback " icon="back"></mt-button>
       </router-link>
       <mt-button icon="more" slot="right"></mt-button>
     </mt-header>
-    <div id="nav"  class="nav">
-      <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'">默认</mt-button>
+    <div id="nav" class="nav">
+      <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container2'" @click="reloadRequest(5)">销量</mt-button>
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container3'" @click="reloadRequest(a1)">折扣
         <div>
@@ -26,57 +26,9 @@
     <div class="YTloading" v-show="!isload"><img src="../../assets/h5-loading.gif" alt=""></div>
     <div class="page-tab-container">
       <mt-tab-container class="page-tabbar-tab-container" v-model="active"  v-show="isload">
-        <mt-tab-container-item id="tab-container1" class="item" >
+        <mt-tab-container-item :id="'tab-container'+this.tabID" class="item" >
           <ul class="sp-ul">
-            <li class="sp-li" v-for="saleproduct in arr['product_list']" infinite-scroll-distance="10">
-              <div class="sp-li-info">
-                <div class="info-img">
-                  <img :src="saleproduct.midimageurl" alt="">
-                </div>
-                <div class="info-text">
-                  <div>{{ saleproduct.name }}</div>
-                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="tab-container2" class="item" v-show="isload">
-          <ul class="sp-ul"  infinite-scroll-distance="10">
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
-              <div class="sp-li-info">
-                <div class="info-img">
-                  <img :src="saleproduct.midimageurl" alt="">
-                </div>
-                <div class="info-text">
-                  <div>{{ saleproduct.name }}</div>
-                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="tab-container3" class="item" v-show="isload">
-          <ul class="sp-ul"  infinite-scroll-distance="10">
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
-              <div class="sp-li-info">
-                <div class="info-img">
-                  <img :src="saleproduct.midimageurl" alt="">
-                </div>
-                <div class="info-text">
-                  <div>{{ saleproduct.name }}</div>
-                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="tab-container4" class="item" v-show="isload">
-          <ul class="sp-ul"  infinite-scroll-distance="10">
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
+            <li class="sp-li" v-for="saleproduct in arr1['product_list']">
               <div class="sp-li-info">
                 <div class="info-img">
                   <img :src="saleproduct.midimageurl" alt="">
@@ -97,7 +49,6 @@
                 <span class="headbox1 color-pink"><i class="iconfont icon-true"></i>专柜同款</span>
                 <span class="headbox1 color-gray"><i class="iconfont icon-true"></i>专柜同款</span>
               </div>
-
               <div class="rl-list-con1" v-for="(list, index) in arr1['filter_group']" >
                 <div @click="con(index+1)">{{list.title}}<i class="iconfont icon-down1"></i></div>
                 <!--<div><p v-show=`rlcon+${index+1}` v-for="(listli, key) in list.items">{{listli.name}}</p></div>-->
@@ -111,7 +62,6 @@
 </template>
 
 <script>
-  import Bus from '../../common/js/eventBus'
   import Vue from 'vue'
   import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
   Vue.component(Header.name, Header)
@@ -132,7 +82,8 @@
         a1up: 0,
         a2: 7,
         a2up: 0,
-        a: null,
+        a: 0,
+        url: '',
         rightlist: false,
         rlcon1: false,
         rlcon2: false,
@@ -141,46 +92,13 @@
         colorup1: 0,
         colorup2: 0,
         colordown1: 0,
-        colordown2: 0
+        colordown2: 0,
+        tabID: 1
       }
-    },
-    mounted () {
-      let date1 = new Date()
-      let datehour = date1.getHours()
-      let dateminute = date1.getMinutes()
-      if (datehour < 10) {
-        datehour = `0${datehour}`
-      }
-      if (dateminute < 10) {
-        dateminute = `0${dateminute}`
-      }
-      let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-      date2 = `${date1.getFullYear()}${date1.getMonth()}${date1.getDate()}${date1.getMinutes()}`
-      console.log(this.$route.params.id)
-      this.$request({
-        type: 'get',
-        url: `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B"order_type"%3A0%2C"page_index"%3A1%2C"displaycount"%3A30%2C"query_string"%3A"N%3D10001884%2B60827091"%2C"keyword"%3A""%7D`,
-        headers: {},
-        params: {},
-        success: function (res) {
-          this.arr = res.data.data
-          this.isload = true
-        },
-        failed: function (err) {
-          console.log(err)
-        }
-      })
-    },
-    created () {
-      Bus.$on('xinxin', function (undf, foodnum) {
-        console.log('unde' + undf)
-        console.log(foodnum)
-      })
     },
     methods: {
       rightlistisShow () {
         this.rightlist = !this.rightlist
-//        this.isshowlist = true
       },
       loadMore () {
         this.loading = true
@@ -193,7 +111,30 @@
         }, 2500)
       },
       reloadRequest (a) {
+        this.isload = false
+        if (a === 0) {
+          this.tabID = 1
+          this.a = 0
+          this.colorup2 = 0
+          this.colordown2 = 0
+          this.colorup1 = 0
+          this.colordown1 = 0
+        } else if (a === 5) {
+          this.tabID = 2
+          this.a = 5
+          this.colorup2 = 0
+          this.colordown2 = 0
+          this.colorup1 = 0
+          this.colordown1 = 0
+        }
         if (a === 3) {
+          this.a = a + this.a1up
+          this.tabID = 3
+          if (this.a1up === 0) {
+            this.a1up++
+          } else {
+            this.a1up--
+          }
           if (this.colorup1 === this.colordown1) {
             this.colorup1 = 1
           } else {
@@ -202,15 +143,11 @@
           }
           this.colorup2 = 0
           this.colordown2 = 0
-          this.a = a + this.a1up
           console.log(this.a)
-          if (this.a1up === 0) {
-            this.a1up++
-          } else {
-            this.a1up--
-          }
         }
         if (a === 7) {
+          this.a = a + this.a2up
+          this.tabID = 4
           if (this.colorup2 === this.colordown2) {
             this.colorup2 = 1
           } else {
@@ -219,17 +156,16 @@
           }
           this.colorup1 = 0
           this.colordown1 = 0
-          this.a = a + this.a2up
-          console.log(this.a)
           if (this.a2up === 0) {
             this.a2up++
           } else {
             this.a2up--
           }
-          this.a = a + this.a2up
+          this.colorup1 = 0
+          this.colordown1 = 0
           console.log(this.a)
         }
-        this.isload = false
+        console.log(this.tabID)
         let date1 = new Date()
         let datehour = date1.getHours()
         let dateminute = date1.getMinutes()
@@ -240,10 +176,11 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        date2 = `${date1.getFullYear()}${date1.getMonth()}${date1.getDate()}${date1.getMinutes()}`
+        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D10001884%2B60827091%22%2C%22keyword%22%3A%22%22%7D`
+        console.log(this.url)
         this.$request({
           type: 'get',
-          url: `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B"order_type"%3A${this.a}%2C"page_index"%3A1%2C"displaycount"%3A30%2C"query_string"%3A"N%3D10001884%2B60827091"%2C"keyword"%3A""%7D`,
+          url: this.url,
           headers: {},
           params: {},
           success: function (res) {
@@ -281,6 +218,9 @@
           this.rlcon2 = false
         }
       }
+    },
+    mounted () {
+      this.reloadRequest(0)
     }
   }
 </script>
@@ -454,42 +394,6 @@
       color: @color-light-gray;
       i{
         display: none;
-      }
-    }
-  }
-  .page-tabbar-tab-container{
-    width: 100%;
-    height:100%;
-    .sp-ul{
-      .sp-li{
-        height: 142px;
-        width: 100%;
-        border-bottom :1px dashed #b2b2b2;
-        .sp-li-info{
-          padding: 8px;
-          .info-img{
-            float: left;
-            display: inline-block;
-            img{
-              width: 90px;
-              margin-right: 8px;
-              border: @border-color-type;
-            }
-          }
-          .info-text{
-            padding-left: 8px;
-            .oldprice{
-              color: @color-light-gray;
-              text-decoration: line-through;
-              margin:8px;
-              font-size: @font-size;
-            }
-            .newprice{
-              color: @color-sale-red;
-              font-weight: 700;
-            }
-          }
-        }
       }
     }
   }

@@ -1,8 +1,15 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
+    <!--<img src="./common/img/shangchangtk/title.png" alt="" class="img-title">-->
+    <!--<footer-hui></footer-hui>-->
+    <!--<yt-footer></yt-footer>-->
+    <router-view/>
+=======
     <router-view/>
     <footer-hui v-if="fthui"></footer-hui>
     <yt-footer></yt-footer>
+>>>>>>> 9a527c5aae3603af7ec1975c2670232852fc461b
   </div>
 </template>
 
