@@ -26,57 +26,9 @@
     <div class="YTloading" v-show="!isload"><img src="../../assets/h5-loading.gif" alt=""></div>
     <div class="page-tab-container">
       <mt-tab-container class="page-tabbar-tab-container" v-model="active"  v-show="isload">
-        <mt-tab-container-item id="tab-container1" class="item" >
+        <mt-tab-container-item :id="'tab-container'+this.tabID" class="item" >
           <ul class="sp-ul">
-            <li class="sp-li" v-for="saleproduct in arr['product_list']">
-              <div class="sp-li-info">
-                <div class="info-img">
-                  <img :src="saleproduct.midimageurl" alt="">
-                </div>
-                <div class="info-text">
-                  <div>{{ saleproduct.name }}</div>
-                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="tab-container2" class="item" v-show="isload">
-          <ul class="sp-ul"  >
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
-              <div class="sp-li-info">
-                <div class="info-img">
-                  <img :src="saleproduct.midimageurl" alt="">
-                </div>
-                <div class="info-text">
-                  <div>{{ saleproduct.name }}</div>
-                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="tab-container3" class="item" v-show="isload">
-          <ul class="sp-ul">
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
-              <div class="sp-li-info">
-                <div class="info-img">
-                  <img :src="saleproduct.midimageurl" alt="">
-                </div>
-                <div class="info-text">
-                  <div>{{ saleproduct.name }}</div>
-                  <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="tab-container4" class="item" v-show="isload">
-          <ul class="sp-ul">
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']" >
+            <li class="sp-li" v-for="saleproduct in arr1['product_list']">
               <div class="sp-li-info">
                 <div class="info-img">
                   <img :src="saleproduct.midimageurl" alt="">
@@ -140,7 +92,8 @@
         colorup1: 0,
         colorup2: 0,
         colordown1: 0,
-        colordown2: 0
+        colordown2: 0,
+        tabID: 1
       }
     },
     methods: {
@@ -160,12 +113,14 @@
       reloadRequest (a) {
         this.isload = false
         if (a === 0) {
+          this.tabID = 1
           this.a = 0
           this.colorup2 = 0
           this.colordown2 = 0
           this.colorup1 = 0
           this.colordown1 = 0
         } else if (a === 5) {
+          this.tabID = 2
           this.a = 5
           this.colorup2 = 0
           this.colordown2 = 0
@@ -173,6 +128,8 @@
           this.colordown1 = 0
         }
         if (a === 3) {
+          this.a = a + this.a1up
+          this.tabID = 3
           if (this.a1up === 0) {
             this.a1up++
           } else {
@@ -186,10 +143,11 @@
           }
           this.colorup2 = 0
           this.colordown2 = 0
-          this.a = a + this.a1up
           console.log(this.a)
         }
         if (a === 7) {
+          this.a = a + this.a2up
+          this.tabID = 4
           if (this.colorup2 === this.colordown2) {
             this.colorup2 = 1
           } else {
@@ -205,9 +163,9 @@
           }
           this.colorup1 = 0
           this.colordown1 = 0
-          this.a = a + this.a2up
           console.log(this.a)
         }
+        console.log(this.tabID)
         let date1 = new Date()
         let datehour = date1.getHours()
         let dateminute = date1.getMinutes()
@@ -218,7 +176,7 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D10001905%2B60827091%22%2C%22keyword%22%3A%22%22%7D`
+        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D10001884%2B60827091%22%2C%22keyword%22%3A%22%22%7D`
         console.log(this.url)
         this.$request({
           type: 'get',
