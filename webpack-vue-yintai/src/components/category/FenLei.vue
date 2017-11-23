@@ -40,8 +40,8 @@
       <div class="search">
         <div class="sea-min">
           <div class="sea-txt">
-            <input type="text" placeholder="搜索商品or品牌" id="txtKeyword">
-            <span id="btnSearch"><img src="../../assets/luhanran/FlSearch.png" alt=""></span>
+            <input type="text" ref="keyWordSearch" placeholder="搜索商品or品牌" id="txtKeyword">
+            <span @click="KSearch" id="btnSearch"><img src="../../assets/luhanran/FlSearch.png" alt=""></span>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
           <div class="area-title">
             <span>推荐类目</span>
           </div>
-          <div @click="SecondPage(index,undf)" class="category-item" v-for="(j,index) in thisdataCate">
+          <div @click="SecondPage(index)" class="category-item" v-for="(j,index) in thisdataCate">
               <img :src="j.imageurl">
               <div>
                 <span>{{j.name}}</span>
@@ -75,14 +75,14 @@
             <span>推荐品牌</span>
           </div>
 
-          <div class="brand-item" v-for="(x,two) in thisdataBrands">
+          <div @click="brands(two)" class="brand-item" v-for="(x,two) in thisdataBrands">
             <img :src="x.imageurl">
           </div>
         </div>
         <!--更多类目-->
         <div class="more-category-right-padding">
           <div class="area-title"><span>更多类目</span></div>
-          <div class="category-item-more" v-for="(y,three) in thisdataCategory">
+          <div @click="more(three)" class="category-item-more" v-for="(y,three) in thisdataCategory">
             <span>{{y.name}}</span>
           </div>
         </div>
@@ -107,7 +107,11 @@
         loadid: 88,
         jump: '',
         undf: '',
-        foodsName: ''
+        foodsName: '',
+        brandsUrl: '',
+        brandsName: '',
+        moreUrl: '',
+        moreName: ''
       }
     },
     methods: {
@@ -154,20 +158,27 @@
         Bus.$emit('xinxin', this.undf, this.foodsName)
         this.myid = this.foodsName
         this.$router.push({ path: `/Sales/${this.myid}` })
-        this.$request({
-          type: 'get',
-          url: `api?r=201711221103&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A0%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.undf}%22%2C%22keyword%22%3A%22%22%7D`,
-          header: {},
-          params: {},
-          success: function (res) {
-            this.thisdataCate = res.data.data.recommend.categoryrecommend
-            this.thisdataBrands = res.data.data.brand.brandrecommend
-            this.thisdataCategory = res.data.data.more.morerecommend
-          },
-          failed: function (err) {
-            console.log(err)
-          }
-        })
+      },
+      brands: function (two) {
+        this.brandsUrl = this.thisdataBrands[two].jumpurl.split('N')[1].split('d')[1]
+        this.brandsName = this.thisdataBrands[two].name
+        Bus.$emit('xinxin', this.brandsUrl, this.brandsName)
+        this.brandsID = this.brandsName
+        this.$router.push({path: `/Sales/${this.brandsID}`})
+      },
+      more: function (three) {
+        this.moreUrl = this.thisdataCategory[three].jumpurl.split('N')[1].split('D')[1].split('%')[0]
+        this.moreName = this.thisdataCategory[three].name
+        Bus.$emit('xinxin', this.moreUrl, this.moreName)
+        this.moreID = this.moreName
+        this.$router.push({path: `/Sales/${this.moreID}`})
+      },
+      KSearch: function () {
+        let urlAdress = this.$refs.keyWordSearch.value
+        let urlCoding = encodeURI(urlAdress)
+        console.log(urlCoding)
+        Bus.$emit('xinxin', urlCoding, urlAdress)
+        this.$router.push({path: `/Sales/${urlAdress}`})
       }
     },
     mounted () {
