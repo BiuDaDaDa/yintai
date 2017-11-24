@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" v-if="myArr!= null">
+  <div class="wrap" v-if="myArr != null && newArr != null">
     <div class="prd_title">
       <!--<i class="iconfont icon-houtui"></i>-->
       <!--<span>商品详情</span>-->
@@ -10,7 +10,7 @@
         <!-- 商品轮播图 -->
         <div class="scrollimg">
           <mt-swipe :auto="3000">
-            <mt-swipe-item v-for="prdImg in myArr.largeimgurls" :key="myArr.itemcode ">
+            <mt-swipe-item v-for="(prdImg,index) in newArr[chooseIndex].middleimgurls" :key="index">
               <div class="imgBox">
                 <img :src="prdImg" alt="">
               </div>
@@ -62,7 +62,8 @@
       <div class="move_color">
         <div class="xuanxiang">颜色分类：</div>
         <div class="myPrdChoose">
-          <span @click="mycolor" v-model="color">{{color}}</span>
+          <span :class="{active:index == num}" v-for="(value,index) in newArr"
+                @click="chooseColor(index,value)" :key="index">{{value.value}}</span>
         </div>
       </div>
       <!--尺码-->
@@ -71,8 +72,9 @@
           <div class="xuanxiang">尺码：</div>
           <span class="xuanxiang">尺码说明</span>
         </div>
-        <div class="myPrdChoose">
-          <span @click="mysize" v-model="size">{{size}}</span>
+        <div class="myPrdChooseSize">
+          <span :class="{activeSize:index == num1}" v-for="(value,index) in newArr[chooseIndex].size"
+                @click="chooseSize(value,index)" :key="index">{{value.newValue}}</span>
         </div>
       </div>
       <!--数量-->
@@ -80,7 +82,7 @@
         <div class="xuanxiang">数量：</div>
         <div id="my_count">
           <span class="add btn" @click="sub">-</span>
-          <span class="mycount">{{count}}</span>
+          <span id="mycount">{{count}}</span>
           <span class="sub btn" @click="add">+</span>
         </div>
       </div>
@@ -88,17 +90,43 @@
     <!--品牌-->
     <div class="brand">
       <div class="brandLeft">
-        品牌：{{}}
+        品牌：{{myArrAll.brandname}}
       </div>
       <div class="brandright">
-        <img src="" alt="">
-        <i></i>
-        >
+        <img :src="myArrAll.brandurl" alt="">
+        <span>></span>
       </div>
     </div>
     <!--图文介绍-->
     <div class="prd_introduction">
       <div class="title">图文介绍</div>
+      <div class="xiangqing">
+        <iframe class="product-tuwen" src="https://item.yintai.com/h5/21-464-9994.html?env=ish5"
+                style="height: 5134px;"></iframe>
+      </div>
+    </div>
+    <div class="prd_module">
+      <div class="go_car">
+        <a href="">
+          <i class="iconfont icon-shoppingcart"></i>
+          <p>购物车</p>
+        </a>
+      </div>
+      <div class="prd_other">
+        <div class="add_car">加入购物车</div>
+        <div class="now_buy">立即购买</div>
+      </div>
+    </div>
+    <!--收藏成功蒙版-->
+    <div class="successLike" v-show="likeShow">
+      <div class="likecontent">
+        <div class="div1"><span>温馨提示</span></div>
+        <div class="div2">
+          <span v-show="likeor">收藏成功!</span>
+          <span v-show="!likeor">取消收藏成功!</span>
+        </div>
+        <div class="div3" @click="sure"><span>确定</span></div>
+      </div>
     </div>
   </div>
 </template>
@@ -106,25 +134,61 @@
 <script>
   export default {
     name: 'CommonPrd',
-    data () {
+    data: function () {
       return {
         myArr: null,
+        myArrAll: null,
         isShow: true,
-        color: '黑/红色',
-        size: '37',
-        count: 0
+        color: null,
+        size: null,
+        count: 0,
+        brands: null,
+        newArr: null,
+        chooseIndex: 0,
+        num: null,
+        num1: null,
+        likeShow: false,
+        likeor: true
       }
     },
-    mounted () {
+    mounted: function () {
       this.$request(
         {
           type: 'get',
-          url: 'api?data=%7B%22itemcode%22%3A%2221-478-9896%22%2C%22userid%22%3A%22D11TQyXIrOHYEnjbyvGGS%2BBydLcgfIaq7Ellu%2FRbwcReyDX1e4Juf3FNGMalejrT6a7klAdP1iIADQ8vtvpHwg%3D%3D%22%7D&userid=D11TQyXIrOHYEnjbyvGGS%2BBydLcgfIaq7Ellu%2FRbwcReyDX1e4Juf3FNGMalejrT6a7klAdP1iIADQ8vtvpHwg%3D%3D&methodName=products.getproductdetail_1.0.0&method=products.getproductdetail&ver=1.0.0&r=201711221711',
+          url: 'api?data=%7B%22itemcode%22%3A%2221-478-9896%22%2C%22userid%22%3A%22%22%7D&userid=&methodName=products.getproductdetail_1.0.0&method=products.getproductdetail&ver=1.0.0&r=20171124901',
           headers: {},
           params: {},
           success: function (res) {
             this.myArr = res.data.data.products[0]
-            console.log(this.myArr)
+            this.brands = res.data.data.products
+            this.myArrAll = res.data.data
+            // 存放新的数组
+            let allGoods = {}
+            let array = []
+            for (let i = 0; i < this.brands.length; i++) {
+              let mybrand = this.brands[i]
+              let mode = mybrand.imageitemcode
+              let value = mybrand['skuproperty'][0]['value']
+              let newValue = mybrand['skuproperty'][1]['value']
+              let middleimgurls = mybrand.middleimgurls
+              if (typeof allGoods[mode] === 'undefined') {
+                let newBrand = {
+                  value,
+                  middleimgurls,
+                  size: [{newValue}]
+                }
+                allGoods[mode] = [mybrand]
+//              console.log(allGoods[mode])
+                array.push(newBrand)
+              } else {
+//              allGoods[mode].push(brand)
+                array[array.length - 1].size.push({newValue})
+              }
+            }
+//          console.log(allGoods)
+//          console.log(array)
+            this.newArr = array
+            console.log(this.newArr)
           },
           failed: function (err) {
             console.log(err)
@@ -135,18 +199,30 @@
     methods: {
       Prdlike: function () {
         this.isShow = !this.isShow
+        this.likeShow = true
+        if (this.isShow) {
+          this.likeor = false
+        } else {
+          this.likeor = true
+        }
+      },
+      sure: function () {
+        this.likeShow = false
       },
 //    选择商品颜色
-      mycolor () {
-
+      chooseColor: function (index, value) {
+        this.chooseIndex = index
+        this.color = value.value
+        this.num = index
       },
-      mysize () {
-
+      chooseSize: function (value, index) {
+        this.size = value.newValue
+        this.num1 = index
       },
-      add () {
+      add: function () {
         this.count += 1
       },
-      sub () {
+      sub: function () {
         if (this.count > 0) {
           this.count--
         }
@@ -297,6 +373,10 @@
         text-align: center;
         box-sizing: border-box;
       }
+      #mycount {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
@@ -316,6 +396,48 @@
       font-size: 14px;
       text-align: center;
     }
+    .active {
+      display: inline-block;
+      padding: 7px 7px;
+      border: 1px solid #e5004f;
+      color: #ff6d9d;
+      border-radius: 3px;
+      margin: 0 5px 5px 0;
+      min-width: 30px;
+      background-color: #fff;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  .myPrdChooseSize {
+    color: #ff6d9d;
+    border-bottom: 1px dashed #dbdbdb;
+    padding: 0 0 6px 15px;
+    span {
+      display: inline-block;
+      padding: 7px 7px;
+      border: 1px solid #666;
+      border-radius: 3px;
+      margin: 0 5px 5px 0;
+      min-width: 30px;
+      background-color: #fff;
+      color: #666;
+      font-size: 14px;
+      text-align: center;
+    }
+    .activeSize {
+      display: inline-block;
+      padding: 7px 7px;
+      border: 1px solid #e5004f;
+      color: #ff6d9d;
+      border-radius: 3px;
+      margin: 0 5px 5px 0;
+      min-width: 30px;
+      background-color: #fff;
+      font-size: 14px;
+      text-align: center;
+    }
   }
 
   .xuanxiang {
@@ -323,21 +445,133 @@
   }
 
   .brand {
-    padding: 10px;
+    padding: 0 10px;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    color: #666;
+    height: 45px;
+    box-sizing: border-box;
+  }
+
+  .brandright {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      height: 100%;
+    }
   }
 
   .prd_introduction {
-    height: 45px;;
     background-color: #fff;
     text-align: center;
     color: @index-boom-introduce-color;
     .title {
       line-height: 40px;
+    }
+    .xiangqing {
+      width: 100%;
+      .product-tuwen {
+        width: 100%;
+      }
+    }
+  }
+
+  .prd_module {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    height: 45px;
+    background-color: #fff;
+    .go_car {
+      border-top: 1px solid #d2d2d2;
+      padding: 3px 5px;
+      text-align: center;
+      width: 15%;
+      box-sizing: border-box;
+      .icon-shoppingcart {
+        color: #e5004f;
+        font-size: 24px;
+      }
+      p {
+        margin-top: 3px;
+        font-size: 12px;
+      }
+    }
+    .prd_other {
+      width: 85%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      line-height: 40px;
+      .add_car {
+        width: 50%;
+        height: 100%;
+        background-color: #e5004f;
+        color: #fff;
+      }
+      .now_buy {
+        width: 50%;
+        height: 100%;
+        background-color: #FF7039;
+        color: #fff;
+      }
+    }
+  }
+
+  .successLike {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+
+  .likecontent {
+    width: 80%;
+    max-width: 360px;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    .div1 {
+      text-align: center;
+      padding: 15px 15px 0;
+      font-size: 20px;
+      color: rgb(51, 51, 51);
+    }
+    .div2 {
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 15px;
+      color: rgb(102, 102, 102);
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+    .div3 {
+      overflow: hidden;
+      border-top: 1px solid rgb(230, 230, 230);
+      font-size: 17px;
+      text-align: center;
+      line-height: 38px;
+      float: left;
+      box-sizing: border-box;
+      background-color: transparent;
+      padding: 0 15px;
+      color: rgb(255, 59, 127);
+      width: 100%;
+      border-bottom-left-radius: 6px;
     }
   }
 </style>
