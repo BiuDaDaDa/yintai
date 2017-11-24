@@ -99,6 +99,7 @@
           this.newArr = allArr
           console.dir(this.newArr)
           this.thisdata8 = this.thisdata[8].items
+          this.thisdata = true
         },
         failed: function (err) {
           console.log(err)

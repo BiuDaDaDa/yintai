@@ -9,7 +9,7 @@ Vue.component(Popup.name, Popup)
 Vue.component(Header.name, Header)
 export default [
   {
-    path: '/Sales/:id?',
+    path: '/Sales',
     name: 'Sales',
     component: Sales
   },

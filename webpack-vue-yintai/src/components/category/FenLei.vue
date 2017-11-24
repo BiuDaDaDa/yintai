@@ -184,8 +184,9 @@
         })
       },
       KSearch: function () {
-        let urlAdress = this.$refs.keyWordSearch.value
-        let urlCoding = encodeURI(urlAdress)
+        let urlCoding = this.$refs.keyWordSearch.value
+        let urlAdress = encodeURI(urlCoding)
+        console.log(urlAdress, urlCoding)
         this.$router.push({
           path: '/Sales',
           query: {
