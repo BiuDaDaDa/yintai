@@ -79,7 +79,7 @@
           console.log(err)
         }
       })
-    },
+    }
   }
 </script>
 

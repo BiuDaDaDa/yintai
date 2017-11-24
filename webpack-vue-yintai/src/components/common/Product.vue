@@ -101,8 +101,6 @@
     <div class="prd_introduction">
       <div class="title">图文介绍</div>
       <div class="xiangqing">
-        <iframe class="product-tuwen" src="https://item.yintai.com/h5/21-464-9994.html?env=ish5"
-                style="height: 5134px;"></iframe>
       </div>
     </div>
     <div class="prd_module">

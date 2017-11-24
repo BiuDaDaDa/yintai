@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e38d697d-40cc-4cfd-87b7-17f00997cae0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/category/FenleiSearch.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/category/FenleiSearch.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent0.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent0.vue" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Product.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2161">
+              <caret line="226" column="7" lean-forward="true" selection-start-line="226" selection-start-column="7" selection-end-line="226" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="YtIndexContent0.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent0.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="59" column="51" lean-forward="false" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#mt-swipe-item#0;n#mt-swipe#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#2172#2219#0" expanded="false" />
+                <element signature="e#2540#2565#0" expanded="false" />
+                <element signature="e#2596#2737#0" expanded="false" />
+                <element signature="e#2770#2951#0" expanded="false" />
+                <element signature="e#2983#3128#0" expanded="false" />
+                <element signature="e#3166#3238#0" expanded="false" />
+                <element signature="e#3256#3314#0" expanded="false" />
+                <element signature="e#3334#3375#0" expanded="false" />
+                <element signature="e#3401#3441#0" expanded="false" />
+                <element signature="e#3455#3554#0" expanded="false" />
+                <element signature="e#3577#3622#0" expanded="false" />
+                <element signature="e#3649#3671#0" expanded="false" />
+                <element signature="e#3696#3720#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FenleiSearch.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/category/FenleiSearch.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent0.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/category/FenleiSearch.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/webpack-vue-yintai/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="288" />
+    <option name="y" value="23" />
+    <option name="width" value="1882" />
+    <option name="height" value="973" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="category" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v8.7.0/bin/node" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e38d697d-40cc-4cfd-87b7-17f00997cae0" name="Default" comment="" />
+      <created>1511515558035</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1511515558035</updated>
+      <workItem from="1511515566568" duration="1750000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1750000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="288" y="23" width="1882" height="973" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24986567" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent1.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent0.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="59" column="51" lean-forward="false" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#mt-swipe-item#0;n#mt-swipe#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#2172#2219#0" expanded="false" />
+            <element signature="e#2540#2565#0" expanded="false" />
+            <element signature="e#2596#2737#0" expanded="false" />
+            <element signature="e#2770#2951#0" expanded="false" />
+            <element signature="e#2983#3128#0" expanded="false" />
+            <element signature="e#3166#3238#0" expanded="false" />
+            <element signature="e#3256#3314#0" expanded="false" />
+            <element signature="e#3334#3375#0" expanded="false" />
+            <element signature="e#3401#3441#0" expanded="false" />
+            <element signature="e#3455#3554#0" expanded="false" />
+            <element signature="e#3577#3622#0" expanded="false" />
+            <element signature="e#3649#3671#0" expanded="false" />
+            <element signature="e#3696#3720#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/category/FenleiSearch.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="81" column="5" lean-forward="true" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2161">
+          <caret line="226" column="7" lean-forward="true" selection-start-line="226" selection-start-column="7" selection-end-line="226" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
