@@ -3,10 +3,10 @@
     <div class="footer-hui-wrap">
       <div class="footer-hui-header">
         <div class="footer-hui-header-top">
-          <div><span>首页</span></div>
-          <div><span>分类</span></div>
-          <div><span>购物车</span></div>
-          <div><span>我的</span></div>
+          <div @click="indexs"><span>首页</span></div>
+          <div @click="categorys"><span>分类</span></div>
+          <div @click="shoppingcart"><span>购物车</span></div>
+          <div @click="userinfo"><span>我的</span></div>
         </div>
         <div class="footer-hui-header-bottom">
           <div class="footer-hui-header-bottom-left">
@@ -26,7 +26,7 @@
 
 <script>
   export default {
-    name: 'FooterHui'
+    name: 'FooterHui',
 //    computed: {
 //      shouye () {
 //        return
@@ -35,6 +35,26 @@
 //    data () {
 //      return
 //    }
+    methods: {
+      indexs () {
+        this.$router.push('/')
+      },
+      limitBuy () {
+        this.$router.push('/limitbuy')
+      },
+      categorys () {
+        this.$router.push('/category')
+      },
+      shoppingcart () {
+        this.$router.push('/shoppingcar')
+      },
+      userinfo () {
+        this.$router.push('/userinfo')
+      },
+      returnTop () {
+        document.documentElement.scrollTop = 0
+      }
+    }
   }
 </script>
 
