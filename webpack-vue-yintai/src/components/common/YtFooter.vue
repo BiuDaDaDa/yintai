@@ -1,33 +1,32 @@
 <template>
 <div id="footer">
   <i class="iconfont icon-up" @click="returnTop"></i>
-  <ul>
-    <li>
-    <li @click="indexs">
+  <div class="nav-ul">
+    <button @click="indexs" class="nav-list">
       <div><i class="icon-home iconfont" ></i></div>
       <div>首页</div>
-    </li>
-    <li>
-    <li @click="limitBuy">
+    </button>
+
+    <button @click="limitBuy" class="nav-list">
       <div><i class="icon-icon-buy iconfont" ></i></div>
       <div>抢先</div>
-    </li>
-    <li>
-    <li @click="categorys">
+    </button>
+
+    <button @click="categorys" class="nav-list">
       <div><i class="icon-categorynormal iconfont" ></i></div>
       <div>分类 </div>
-    </li>
-    <li>
-    <li @click="shoppingcart">
+    </button>
+
+    <button @click="shoppingcart" class="nav-list">
       <div><i class="icon-cart iconfont" ></i></div>
       <div>购物车</div>
-    </li>
-    <li>
-    <li @click="userinfo">
+    </button>
+
+    <button @click="userinfo" class="nav-list">
       <div><i class="icon-user iconfont" ></i></div>
       <div>我的银泰</div>
-    </li>
-  </ul>
+    </button>
+  </div>
 </div>
 </template>
 
@@ -76,24 +75,30 @@
       font-size: 40px;
       color: rgba(0,0,0,.3);
     }
-    ul{
+    .nav-ul{
       box-shadow:-19px 6px 20px 0px #444;
       background-color: #fff;
-      justify-content:space-between;
+      justify-content:space-around;
       display: flex;
       align-content: center;
-      padding-top:5px;
-      padding-bottom: 8px;
-      li{
-        width: 19%;
+      padding:5px 0;
+      .nav-list{
         display: inline-block;
+        width: 100%;
         font-size: 15px;
         color: #666;
         height:100%;
         cursor: pointer;
         text-align: center;
+        border:none;
         .iconfont{
           font-size: 26px;
+        }
+        na-list:active{
+          .iconfont{
+            color: @color-user-red;
+          }
+          border-bottom: 1px solid @color-sale-red ;
         }
         div:nth-child(1){
           padding-bottom: 5px;
