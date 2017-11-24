@@ -92,7 +92,6 @@
 </template>
 
 <script>
-  import Bus from '../../common/js/eventBus'
   export default {
     name: '',
     data () {
@@ -154,9 +153,8 @@
         this.jump = this.thisdataCate[index].jumpurl
         this.undf = this.jump.split('N')[1].split('%')[1].split('D')[1].split('&')[0]
         this.foodsName = this.thisdataCate[index].name
-//        console.log(this.foodsName)
         this.$router.push({
-          path: `/FenleiSearch`,
+          path: `/Sales`,
           query: {
             title: this.foodsName,
             urlName: this.undf
@@ -166,23 +164,35 @@
       brands: function (two) {
         this.brandsUrl = this.thisdataBrands[two].jumpurl.split('N')[1].split('d')[1]
         this.brandsName = this.thisdataBrands[two].name
-        Bus.$emit('xinxin1', this.brandsUrl, this.brandsName)
-        this.brandsID = this.brandsName
-        this.$router.push({path: `/Sales/${this.brandsID}`})
+        this.$router.push({
+          path: '/Sales',
+          query: {
+            title: this.brandsName,
+            urlName: this.brandsUrl
+          }
+        })
       },
       more: function (three) {
         this.moreUrl = this.thisdataCategory[three].jumpurl.split('N')[1].split('D')[1].split('%')[0]
         this.moreName = this.thisdataCategory[three].name
-        Bus.$emit('xinxin2', this.moreUrl, this.moreName)
-        this.moreID = this.moreName
-        this.$router.push({path: `/Sales/${this.moreID}`})
+        this.$router.push({
+          path: '/Sales',
+          query: {
+            title: this.moreName,
+            urlName: this.moreUrl
+          }
+        })
       },
       KSearch: function () {
         let urlAdress = this.$refs.keyWordSearch.value
         let urlCoding = encodeURI(urlAdress)
-        console.log(urlCoding)
-        Bus.$emit('xinxin3', urlCoding, urlAdress)
-        this.$router.push({path: `/Sales/${urlAdress}`})
+        this.$router.push({
+          path: '/Sales',
+          query: {
+            title: urlCoding,
+            urlName: urlAdress
+          }
+        })
       }
     },
     mounted () {
