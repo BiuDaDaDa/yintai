@@ -106,7 +106,7 @@
 <script>
   export default {
     name: 'CommonPrd',
-    data() {
+    data () {
       return {
         myArr: null,
         isShow: true,
@@ -115,7 +115,7 @@
         count: 0
       }
     },
-    mounted() {
+    mounted () {
       this.$request(
         {
           type: 'get',
@@ -143,11 +143,11 @@
       mysize () {
 
       },
-      add(){
+      add () {
         this.count += 1
       },
-      sub(){
-        if(this.count > 0 ){
+      sub () {
+        if (this.count > 0) {
           this.count--
         }
       }

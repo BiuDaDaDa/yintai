@@ -1,10 +1,30 @@
 <template>
   <div class="shangchang-tk-wrap" v-if="thisdata != null">
+    <div class="mask" v-if="ShowMask" @click="clickContent"></div>
     <div class="shangchang-tk">
       <div class="shangchang-tk-top">
         <img src="../../common/img/shangchangtk/arrow-left.png" alt="" class="shangchang-tk-top1">
         <div class="shangchang-tk-top2">{{thisdata.data.pagetitle}}</div>
-        <img src="../../common/img/shangchangtk/shenglue.png" alt="" class="shangchang-tk-top3">
+        <img src="../../common/img/shangchangtk/shenglue.png" alt="" class="shangchang-tk-top3" @click="clickList">
+        <img src="../../common/img/shangchangtk/pink-shenglue.png" alt="" class="shangchang-tk-top4" @click="closeList" v-if="isShow">
+        <ul v-if="Showlist">
+          <li>
+            <i class="iconfont icon-home"></i>
+            <span>银泰首页</span>
+          </li>
+          <li>
+            <i class="iconfont icon-categorynormal"></i>
+            <span>分类</span>
+          </li>
+          <li>
+            <i class="iconfont icon-cart"></i>
+            <span>购物车</span>
+          </li>
+          <li>
+            <i class="iconfont icon-user"></i>
+            <span>我的银泰</span>
+          </li>
+        </ul>
       </div>
 
       <div class="desk"></div>
@@ -51,7 +71,10 @@
       return {
         thisdata: null,
         thisdata1: '',
-        thisdata2: ''
+        thisdata2: '',
+        Showlist: false,
+        ShowMask: false,
+        isShow: false
       }
     },
     mounted () {
@@ -79,13 +102,51 @@
           console.log(err)
         }
       })
+    },
+    methods: {
+      clickContent () {
+        this.Showlist = false
+        this.ShowMask = false
+      },
+      clickList () {
+        this.Showlist = true
+        this.ShowMask = true
+        this.isShow = true
+      },
+      closeList () {
+        this.Showlist = false
+        this.ShowMask = false
+        this.isShow = false
+      }
     }
   }
 </script>
 
 <style scoped lang="less">
   @import "../../common/css/index";
-
+  @-webkit-keyframes move1 {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(39, 44, 47, 0.7);
+    z-index: 30;
+    animation: move1 0.1s linear;
+  }
   .shangchang-tk-wrap {
     background-color: rgb(237, 237, 237);
   }
@@ -99,6 +160,35 @@
     box-sizing: border-box;
     border-bottom: @border-color-more;
     position: fixed;
+    z-index: 100;
+    ul {
+      position: absolute;
+      top: 38px;
+      right: 0;
+      background-color: white;
+      list-style: none;
+      padding: 0 5px 5px 5px;
+      animation: move1 0.1s linear;
+      li {
+        border-top: 1px solid rgb(193, 193, 193);
+        padding: 8px;
+        i {
+          color: @index-boom-introduce-color;
+          font-size: 25px;
+        }
+        .icon-user {
+          font-size: 18px;
+          margin-left: -5px;
+        }
+        .icon-home {
+          color: rgb(83, 83, 83);
+        }
+        span {
+          color: @index-boom-introduce-color;
+          font-size: @font-size-medium;
+        }
+      }
+    }
   }
 
   .shangchang-tk-top1 {
@@ -114,6 +204,13 @@
   .shangchang-tk-top3 {
     width: 20px;
     height: 20px;
+  }
+  .shangchang-tk-top4 {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
   }
 
   .desk{
