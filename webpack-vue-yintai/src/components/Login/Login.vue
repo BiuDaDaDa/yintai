@@ -136,23 +136,6 @@
           alert('请输入正确的手机号')
         } else if (userPassword) {
         }
-        this.$request({
-          type: 'post',
-          url: 'login/loginByPassport',
-          header: {},
-          params: {},
-          data: {
-            userLogin,
-            userPassword
-          },
-          success: function (res) {
-            this.thisdata = res.data
-            console.log(this.thisdata)
-          },
-          failed: function (err) {
-            console.log(err)
-          }
-        })
       }
     }
   }
