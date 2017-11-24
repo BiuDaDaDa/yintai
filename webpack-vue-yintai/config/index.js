@@ -20,9 +20,18 @@ module.exports = {
         headers:{
           Host:'m.yintai.com'
         }
-      }
+      // },
+      // '/login':{
+      //   target:'https://user-facade-prod.yintai.com',
+      //   changeOrigin:true,
+      //   pathRewrite:{
+      //     '^/login' : '/facade/json/com.yintai.user/User'
+      //   },
+      //   headers:{
+      //     Host:'user-facade-prod.yintai.com'
+      //   }
+      // }
     },
-
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.HOST, if port is in use, a free one will be determined

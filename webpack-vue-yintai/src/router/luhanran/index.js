@@ -6,7 +6,7 @@ import FenleiSearch from '@/components/category/FenleiSearch'
 
 export default [
   {
-    path: '/login',
+    path: '/userinfo',
     name: 'Login',
     component: Login
   },
@@ -26,7 +26,7 @@ export default [
     component: CateGory
   },
   {
-    path: '/FenleiSearch',
+    path: `/FenleiSearch`,
     name: 'FenleiSearch',
     component: FenleiSearch
   }

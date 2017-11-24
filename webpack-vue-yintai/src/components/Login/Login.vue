@@ -4,7 +4,9 @@
     </div>
     <div class="header">
       <div class="header-left">
-        <img class="login-header-left" src="../../assets/luhanran/loginleft.png" alt="">
+        <router-link to="/">
+          <img class="login-header-left" src="../../assets/luhanran/loginleft.png" alt="">
+        </router-link>
       </div>
       <div class="header-center">
         <span class="login-header-center">登录</span>
@@ -134,6 +136,23 @@
           alert('请输入正确的手机号')
         } else if (userPassword) {
         }
+        this.$request({
+          type: 'post',
+          url: 'login/loginByPassport',
+          header: {},
+          params: {},
+          data: {
+            userLogin,
+            userPassword
+          },
+          success: function (res) {
+            this.thisdata = res.data
+            console.log(this.thisdata)
+          },
+          failed: function (err) {
+            console.log(err)
+          }
+        })
       }
     }
   }
