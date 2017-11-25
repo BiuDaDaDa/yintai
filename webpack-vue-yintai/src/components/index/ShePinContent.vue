@@ -27,7 +27,7 @@
       <mt-tab-container class="page-tabbar-tab-container" v-model="active"  v-show="isload">
         <mt-tab-container-item :id="'tab-container'+this.tabID" class="item" >
           <ul class="sp-ul">
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']">
+            <li @click="jumpThird(index)" class="sp-li" v-for="(saleproduct,index) in arr1['product_list']">
               <div class="sp-li-info">
                 <div class="info-img">
                   <img :src="saleproduct.midimageurl" alt="">
@@ -105,6 +105,18 @@
 //      Popup
 //    },
     methods: {
+      jumpThird: function (index) {
+        let inputUrl = this.arr1.product_list[index].itemcode.split('-')
+        let inputUrlOne = inputUrl[1]
+        let inputUrlTwo = inputUrl[2]
+        this.$router.push({
+          path: '/prd',
+          query: {
+            title1: inputUrlOne,
+            title2: inputUrlTwo
+          }
+        })
+      },
       rightlistisShow () {
         this.rightlist = !this.rightlist
       },
