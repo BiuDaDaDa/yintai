@@ -106,14 +106,11 @@
 //    },
     methods: {
       jumpThird: function (index) {
-        let inputUrl = this.arr1.product_list[index].itemcode.split('-')
-        let inputUrlOne = inputUrl[1]
-        let inputUrlTwo = inputUrl[2]
+        let inputUrl = this.arr1.product_list[index].itemcode
         this.$router.push({
           path: '/prd',
           query: {
-            title1: inputUrlOne,
-            title2: inputUrlTwo
+            title: inputUrl
           }
         })
       },
