@@ -63,7 +63,7 @@
   .footer-hui-wrap{
     background-color: rgb(237,237,237);
     padding-top: 15px;
-    margin-bottom:50px;
+    margin-bottom:75px;
   }
   .footer-hui-header{
     width: 100%;
