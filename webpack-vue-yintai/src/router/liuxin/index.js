@@ -1,5 +1,6 @@
 import Sales from '@/components/index/ShePin'
 import Index from '@/components/index/YtIndex'
+import ShoppingCar from '@/components/shoppingcar/ShoppingCar'
 import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
 import Vue from 'vue'
 Vue.use(InfiniteScroll)
@@ -9,7 +10,7 @@ Vue.component(Popup.name, Popup)
 Vue.component(Header.name, Header)
 export default [
   {
-    path: '/Sales/:id?',
+    path: '/Sales',
     name: 'Sales',
     component: Sales
   },
@@ -17,5 +18,10 @@ export default [
     path: '/',
     name: 'Index',
     component: Index
+  },
+  {
+    path: '/shoppingcar',
+    name: 'ShoppingCar',
+    component: ShoppingCar
   }
 ]

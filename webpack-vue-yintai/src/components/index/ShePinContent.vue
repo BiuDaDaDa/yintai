@@ -1,11 +1,10 @@
 <template>
-  <div id="saleProduct" >
-    <mt-header class="barhead" :title="this.getHeadTitle">
-      <router-link to="/" slot="left">
-        <mt-button class="iconback " icon="back"></mt-button>
-      </router-link>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
+  <div id="saleProduct">
+    <div class="listTitle">
+      <div class="list" @click="returnLastPage"><i class="iconfont icon-back"></i></div>
+      <div class="list">{{uname}}</div>
+      <div class="list"> <img class="neither" src="../../assets/luhanran/loginfenlei.png" alt=""></div>
+    </div>
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container2'" @click="reloadRequest(5)">销量</mt-button>
@@ -62,18 +61,19 @@
 </template>
 
 <script>
-  import Bus from '../../common/js/eventBus'
   import Vue from 'vue'
-  import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
+  import Router from 'vue-router'
+  import { TabContainer, TabContainerItem, Header } from 'mint-ui'
+  Vue.use(Router)
+  Vue.component(TabContainer.name, TabContainer)
+  Vue.component(TabContainerItem.name, TabContainerItem)
   Vue.component(Header.name, Header)
-  Vue.use(InfiniteScroll)
-  Vue.component(Navbar.name, Navbar)
-  Vue.component(TabItem.name, TabItem)
-  Vue.component(Popup.name, Popup)
   export default {
     name: '',
     data () {
       return {
+        components: {
+        },
         active: 'tab-container1',
         arr: {},
         arr1: {},
@@ -95,10 +95,15 @@
         colordown1: 0,
         colordown2: 0,
         tabID: 1,
-        getgoodsID: '',
-        getHeadTitle: ''
+        urlName: this.$route.query.urlName,
+        uname: this.$route.query.title
       }
     },
+//    component: {
+//      Header,
+//      TabItem,
+//      Popup
+//    },
     methods: {
       rightlistisShow () {
         this.rightlist = !this.rightlist
@@ -179,7 +184,7 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.getgoodsID}%2B60827091%22%2C%22keyword%22%3A%22%22%7D`
+        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.urlName}%2B60827091%22%2C%22keyword%22%3A%22${this.uname}%22%7D`
         console.log(this.url)
         this.$request({
           type: 'get',
@@ -220,13 +225,10 @@
           this.rlcon3 = false
           this.rlcon2 = false
         }
+      },
+      returnLastPage () {
+        this.$router.go(-1)
       }
-    },
-    created () {
-      Bus.$on('xinxin', function (undf, foodnum) {
-        this.getgoodsID = undf
-        this.getHeadTitle = foodnum
-      })
     },
     mounted () {
       this.reloadRequest(0)
@@ -315,6 +317,9 @@
         left:0;
         right:0;
       }
+    }
+    .icon-back{
+      color: @color-light-gray;
     }
     .page-tabbar-tab-container{
       width: 100%;
@@ -405,5 +410,13 @@
         display: none;
       }
     }
+    .listTitle{
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+      padding: 10px;
+      font-size: @font-size-medium;
+    }
+
   }
 </style>

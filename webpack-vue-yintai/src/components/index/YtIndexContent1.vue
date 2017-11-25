@@ -1,13 +1,7 @@
 <template>
   <div class="index-content" v-if="isloading">
     <div :class="'contentlist'+index" v-for="(arrs, index) in arr['templatelist']" v-if="index<9&&arrs.items&&(arrs.bottommargin!=10)">
-
-      <!--<div v-if="arrs.templatetype=='FuncAreaFiveImg'" class="funcfive">-->
-        <!--<div v-for="(arritems, key) in arrs.items" class="ff">-->
-          <!--<img :src="arritems.imgurl" alt="">-->
-          <!--<p>{{arritems.imgname}}</p>-->
-        <!--</div>-->
-      <!--</div>-->
+      <!-- title图-->
       <img v-if="arrs.templatetype=='FloorHead'" v-for="(arritems, key) in arrs.items" class="listone" :src="arritems.imgurl" alt="">
 
       <div id="outer" v-if="arrs.templatetype=='ProductSingleRow'" >
@@ -23,6 +17,7 @@
       <div v-if="arrs.templatetype=='TwoImgAverage'" class="listimg22"  >
         <img v-for="(arritems, key) in arrs.items" :src="arritems.imgurl" alt="" :class="'lefttwo'+key">
       </div>
+      <!--轮播图-->
       <div v-if="arrs.templatetype=='CarouselFigure'" class="listimgrow">
         <mt-swipe :auto="4000">
           <mt-swipe-item v-for="(arritems, key) in arrs.items" :class="'cf'+key">
@@ -35,13 +30,10 @@
 </template>
 
 <script>
-  import { Navbar, TabItem, InfiniteScroll, Header, Popup, Swipe, SwipeItem } from 'mint-ui'
+  import { InfiniteScroll, Swipe, SwipeItem } from 'mint-ui'
   import Vue from 'vue'
   Vue.use(InfiniteScroll)
-  Vue.component(Navbar.name, Navbar)
-  Vue.component(TabItem.name, TabItem)
-  Vue.component(Popup.name, Popup)
-  Vue.component(Header.name, Header)
+
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)
   export default {
@@ -53,16 +45,16 @@
       }
     },
     mounted () {
-      var date1 = new Date()
-      var datehour = date1.getHours()
-      var dateminute = date1.getMinutes()
+      let date1 = new Date()
+      let datehour = date1.getHours()
+      let dateminute = date1.getMinutes()
       if (datehour < 10) {
         datehour = `0${datehour}`
       }
       if (dateminute < 10) {
         dateminute = `0${dateminute}`
       }
-      var date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
+      let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
       this.$request({
         type: 'get',
         url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=104001&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,

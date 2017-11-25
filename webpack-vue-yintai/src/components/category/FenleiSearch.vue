@@ -79,15 +79,6 @@
           console.log(err)
         }
       })
-    },
-    created () {
-//      Bus.$on('xinxin', function (undf, foodsName) {
-//        console.log(undf, foodsName)
-//        this.urlName = undf
-//        this.goodName = foodsName
-//      })
-      console.log(this.uname)
-      console.log(this.urlName)
     }
   }
 </script>
