@@ -92,7 +92,6 @@
 </template>
 
 <script>
-  import Bus from '../../common/js/eventBus'
   export default {
     name: '',
     data () {
@@ -134,37 +133,67 @@
         this.$refs.tabt[indexOne].style.color = '#e5004f'
         this.$refs.tabt[indexOne].style.borderRight = 'none'
         this.loadid = this.thisdata[indexOne].id
+        this.$request({
+          type: 'get',
+          url: `api?r=0.1610714925740102&methodName=products.category.getchildcategory_3.0.0&method=products.category.getchildcategory&ver=3.0.0&categoryid=${this.loadid}`,
+          header: {},
+          params: {},
+          success: function (res) {
+            this.thisdataCate = res.data.data.recommend.categoryrecommend
+            this.thisdataBrands = res.data.data.brand.brandrecommend
+            this.thisdataCategory = res.data.data.more.morerecommend
+          },
+          failed: function (err) {
+            console.log(err)
+          }
+        })
       },
       // 推荐类目
       SecondPage: function (index) {
         this.jump = this.thisdataCate[index].jumpurl
         this.undf = this.jump.split('N')[1].split('%')[1].split('D')[1].split('&')[0]
-        console.log(this.undf)
         this.foodsName = this.thisdataCate[index].name
-        Bus.$emit('xinxin', this.undf, this.foodsName)
-        this.myid = this.foodsName
-        this.$router.push({ path: `/Sales/${this.myid}` })
+        this.$router.push({
+          path: `/Sales`,
+          query: {
+            title: this.foodsName,
+            urlName: this.undf
+          }
+        })
       },
       brands: function (two) {
         this.brandsUrl = this.thisdataBrands[two].jumpurl.split('N')[1].split('d')[1]
         this.brandsName = this.thisdataBrands[two].name
-        Bus.$emit('xinxin', this.brandsUrl, this.brandsName)
-        this.brandsID = this.brandsName
-        this.$router.push({path: `/Sales/${this.brandsID}`})
+        this.$router.push({
+          path: '/Sales',
+          query: {
+            title: this.brandsName,
+            urlName: this.brandsUrl
+          }
+        })
       },
       more: function (three) {
         this.moreUrl = this.thisdataCategory[three].jumpurl.split('N')[1].split('D')[1].split('%')[0]
         this.moreName = this.thisdataCategory[three].name
-        Bus.$emit('xinxin', this.moreUrl, this.moreName)
-        this.moreID = this.moreName
-        this.$router.push({path: `/Sales/${this.moreID}`})
+        this.$router.push({
+          path: '/Sales',
+          query: {
+            title: this.moreName,
+            urlName: this.moreUrl
+          }
+        })
       },
       KSearch: function () {
-        let urlAdress = this.$refs.keyWordSearch.value
-        let urlCoding = encodeURI(urlAdress)
-        console.log(urlCoding)
-        Bus.$emit('xinxin', urlCoding, urlAdress)
-        this.$router.push({path: `/Sales/${urlAdress}`})
+        let urlCoding = this.$refs.keyWordSearch.value
+        let urlAdress = encodeURI(urlCoding)
+        console.log(urlAdress, urlCoding)
+        this.$router.push({
+          path: '/Sales',
+          query: {
+            title: urlCoding,
+            urlName: urlAdress
+          }
+        })
       }
     },
     mounted () {

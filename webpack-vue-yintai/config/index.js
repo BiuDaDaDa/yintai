@@ -20,6 +20,26 @@ module.exports = {
         headers:{
           Host:'m.yintai.com'
         }
+      },
+      '/login' : {
+        target: 'https://user-facade-prod.yintai.com',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/login' : '/facade/json/com.yintai.user'
+        },
+        headers:{
+          Host: 'user-facade-prod.yintai.com'
+        }
+      },
+      'Verification' : {
+        target: 'https://gw.yintai.com',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/Verification' : '/oauth'
+        },
+        headers:{
+          Host: 'gw.yintai.com'
+        }
       }
     },
 

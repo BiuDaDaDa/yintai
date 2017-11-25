@@ -7,7 +7,7 @@
         <router-link to="/"><img class="login-header-left" src="../../../src/assets/luhanran/loginleft.png" alt=""></router-link>
       </div>
       <div class="header-center">
-        <span class="login-header-center"></span>
+        <span class="login-header-center">{{uname}}</span>
       </div>
       <div @click="hr_more" class="header-right">
         <img class="login-header-right" src="../../assets/luhanran/loginRig.png" alt="">
@@ -39,6 +39,9 @@
 </template>
 
 <script>
+  import Bus from '../../common/js/eventBus'
+  import Vue from 'vue'
+  Vue.use(Bus)
   export default {
     name: '',
     data () {
@@ -46,13 +49,8 @@
         clickedThree: false,
         clickedThreeDot: false,
         threeDot: false,
-        thisdata: '',
-        thisdataCate: '',
-        thisdataBrands: '',
-        thisdataCategory: '',
-        loadid: 88,
-        jump: '',
-        undf: ''
+        urlName: this.$route.query.urlName,
+        uname: this.$route.query.title
       }
     },
     methods: {
@@ -69,6 +67,18 @@
       // 时尚名品
     },
     mounted () {
+      this.$request({
+        type: 'get',
+        url: `api?r=201711232104&method=products.getlist&ver=2.1&data=%7B"order_type"%3A0%2C"page_index"%3A1%2C"displaycount"%3A30%2C"query_string"%3A"N%3D${this.urlName}"%2C"keyword"%3A""%7D`,
+        header: {},
+        params: {},
+        success: function (res) {
+          console.log(res.data)
+        },
+        failed: function (err) {
+          console.log(err)
+        }
+      })
     }
   }
 </script>

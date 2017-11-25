@@ -4,7 +4,9 @@
     </div>
     <div class="header">
       <div class="header-left">
-        <img class="login-header-left" src="../../assets/luhanran/loginleft.png" alt="">
+        <router-link to="/">
+          <img class="login-header-left" src="../../assets/luhanran/loginleft.png" alt="">
+        </router-link>
       </div>
       <div class="header-center">
         <span class="login-header-center">登录</span>
@@ -87,7 +89,6 @@
         （8:00-24:00）
       </p>
     </div>
-
   </div>
 </template>
 
@@ -128,6 +129,34 @@
         this.$refs.phoneDis.placeholder = '请输入手机/邮箱'
       },
       login: function () {
+        this.$request({
+          type: 'get',
+          url: 'Verification/token',
+          headers: {},
+          params: {},
+          success: function (res) {
+            console.log(res.data)
+          },
+          failed: function (err) {
+            console.log(err)
+          }
+        })
+        this.$request({
+          type: 'get',
+          url: '/login/User/getProfileForMe?params=%5B%5B%22BasicInfo%22%2C%22Account%22%2C%22Asset%22%2C%22BindInfo%22%2C%22OrderCount%22%5D%2C%221090000%22%5D',
+          headers: {
+            'Authorization': 'Bearer f994bd165807c24a179a512cbf1b48116489d077',
+            'X-Auth-Token': 'e606d865b2fa4e5bb25440b3b631c4c0'
+          },
+          params: {
+          },
+          success: function (res) {
+            console.log(res.data)
+          },
+          failed: function (err) {
+            console.log(err)
+          }
+        })
         var userLogin = this.$refs.phoneDis.value
         var userPassword = this.$refs.loginPass.value
         if (!(/^1[34578]\d{9}$/.test(userLogin))) {
@@ -150,8 +179,6 @@
     width: 100%;
     text-align: center;
   }
-
-
 
   .clear-two{
     clear: both;

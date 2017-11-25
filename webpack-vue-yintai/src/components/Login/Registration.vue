@@ -4,7 +4,7 @@
     </div>
     <div class="header">
       <div class="header-left">
-        <router-link to="/Login"><img class="login-header-left" src="../../assets/luhanran/loginleft.png" alt=""></router-link>
+        <router-link to="/userinfo"><img class="login-header-left" src="../../assets/luhanran/loginleft.png" alt=""></router-link>
       </div>
       <div class="header-center">
         <span class="login-header-center">注册护照</span>

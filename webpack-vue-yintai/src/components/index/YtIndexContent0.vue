@@ -5,9 +5,9 @@
     <div class="search_box">
       <img src="../../assets/img/shangchangtk/logo.png">
       <div class="search_txt">
-        <input type="text" placeholder="搜索商品or品牌">
+        <input ref="indexSearch" type="text" placeholder="搜索商品or品牌">
         <span>
-          <i class="iconfont icon-search3"></i>
+          <i @click="clicked" class="iconfont icon-search3"></i>
         </span>
       </div>
       <div class="user">
@@ -17,7 +17,7 @@
     <div class="index_content">
       <!-- 首页轮播图 -->
       <div class="index_scrollimg">
-        <mt-swipe :auto="1000">
+        <mt-swipe :auto="4000">
           <!--绑定唯一的key值-->
           <mt-swipe-item v-for="myScrollImg in scrollImg" :key="myScrollImg.id">
             <a href="" class="scroll">
@@ -46,7 +46,8 @@
       data () {
         return {
           scrollImg: null,
-          myArr: null
+          myArr: null,
+          serchResult: ''
         }
       },
       mounted () {
@@ -58,13 +59,24 @@
           success: function (res) {
             this.scrollImg = res.data.data.bannerlist
             this.myArr = res.data.data.templatelist
-            console.log(this.myArr)
           },
           failed: function (err) {
             console.log(err)
           }
         })
 //        window.addEventListener('scroll', this.handleScroll)
+      },
+      methods: {
+        clicked: function () {
+          this.serchResult = this.$refs.indexSearch.value
+          this.$router.push({
+            path: '/Sales',
+            query: {
+              title: this.serchResult,
+              urlName: this.serchResult
+            }
+          })
+        }
       }
     }
 </script>
@@ -74,7 +86,12 @@
   .wrap {
     background-color: rgb(237, 237, 237);
   }
+  .box{
+    position: relative;
+  }
   .search_box {
+    position: relative;
+    top: 0;
     width: 100%;
     background-color: #fff;
     display: flex;
@@ -83,10 +100,11 @@
     height: 50px;
     font-size: 24px;
     padding: 5px;
-    position: fixed;
-    top: 71px;
     z-index: 1;
     box-sizing: border-box;
+    img{
+      width: 15%;
+    }
   }
   .search_box .search_txt {
     width: 80%;
@@ -114,16 +132,14 @@
     padding-left: 15px;
     color: #d2d2d2;
   }
-  .search_box .user {
-    height: 100%;
-    padding-right: 10px;
-  }
   .search_box .user .icon-weibiaoti1 {
     font-size: 32px;
     color: #d2d2d2;
     font-weight: lighter;
   }
   .index_content {
+    position: relative;
+    top: 0;
     width: 100%;
   }
   .index_scrollimg {
@@ -134,8 +150,6 @@
     width: 100%;
     height: 100%;
   }
-
-
   .index_nav {
     width: 100%;
     display: flex;
