@@ -5,9 +5,9 @@
     <div class="search_box">
       <img src="../../assets/img/shangchangtk/logo.png">
       <div class="search_txt">
-        <input type="text" placeholder="搜索商品or品牌">
+        <input ref="indexSearch" type="text" placeholder="搜索商品or品牌">
         <span>
-          <i class="iconfont icon-search3"></i>
+          <i @click="clicked" class="iconfont icon-search3"></i>
         </span>
       </div>
       <div class="user">
@@ -46,7 +46,8 @@
       data () {
         return {
           scrollImg: null,
-          myArr: null
+          myArr: null,
+          serchResult: ''
         }
       },
       mounted () {
@@ -64,6 +65,18 @@
           }
         })
 //        window.addEventListener('scroll', this.handleScroll)
+      },
+      methods: {
+        clicked: function () {
+          this.serchResult = this.$refs.indexSearch.value
+          this.$router.push({
+            path: '/Sales',
+            query: {
+              title: this.serchResult,
+              urlName: this.serchResult
+            }
+          })
+        }
       }
     }
 </script>
