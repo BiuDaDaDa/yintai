@@ -1,8 +1,8 @@
 <template>
   <div>
     <yt-index-content-one></yt-index-content-one>
-    <!--<yt-index-content-two></yt-index-content-two>-->
-    <!--<yt-index-content-three></yt-index-content-three>-->
+    <yt-index-content-two></yt-index-content-two>
+    <yt-index-content-three></yt-index-content-three>
     <!--<router-view></router-view>-->
   </div>
 </template>

@@ -1,26 +1,26 @@
 <template>
-  <div class="wrap" v-if="thisdata != null">
+  <div class="wrap" v-if="thisdata != null && newArr != null">
     <!-- 品质箱包 -- 精选好货 -->
-    <div class="pinzhi-xb" v-for="(tag,index) in newArr">
+    <div class="pinzhi-xb" v-for="(tag,index) in newArr" v-if="index >0">
       <!--表头-->
-      <div class="top">
+      <div class="top" v-if="tag[0].items!=null">
         <img :src="tag[0].items[0].imgurl" alt="">
       </div>
       <!--大图-->
-      <div :class="(tag[1].templatetype === 'ThreeImgLeftTwo')?name1: name2">
+      <div :class="(tag[1].templatetype === 'ThreeImgLeftTwo')?name1: name2" v-if="tag[1].items!=null">
         <a href="" v-for="val in tag[1].items" v-if="val.height === 302">
           <img :src="val.imgurl" alt="">
         </a>
       </div>
       <!--两个小图-->
       <div class="imgbox">
-        <a href="" v-for="val in tag[1].items" v-if="val.height === 150">
+        <a href="" v-for="val in tag[1].items" v-if="val.height === 150 && tag[1].items!=null">
           <img :src="val.imgurl" alt="">
         </a>
       </div>
       <!--三个小图-->
       <div class="content2">
-        <div class="tag_content2_box" v-for="val in tag[2].items" v-if="tag[2]!=null">
+        <div class="tag_content2_box" v-for="val in tag[2].items" v-if="tag[2].items!=null">
           <a href="">
             <img :src="val.imgurl" alt="">
           </a>
@@ -30,11 +30,11 @@
 
     <!-- 精选好货 -->
     <div class="title">
-      <img :src="thisdata8[0]['imgurl']" alt="">
+      <img :src="thisdata9[0]['imgurl']" alt="">
     </div>
     <div class="jingxuan-hh">
       <div class="jingxuan-hh-content">
-        <div class="jingxuan-hh-content-A" v-for="(aa, index) in thisdata" v-if="index>8">
+        <div class="jingxuan-hh-content-A" v-for="(aa, index) in thisdata" v-if="index>9">
           <div class="jingxuan-hh-content-A-left" v-for="bb in aa.items">
             <img :src="bb['imgurl']" alt="">
             <div class="jingxuan-hh-content-A-left-a">{{bb['extra']['productdetail']['name']}}</div>
@@ -98,7 +98,7 @@
           }
           this.newArr = allArr
           console.dir(this.newArr)
-          this.thisdata8 = this.thisdata[8].items
+          this.thisdata9 = this.thisdata[9].items
         },
         failed: function (err) {
           console.log(err)
