@@ -3,7 +3,8 @@
   <div class="box" v-if="scrollImg != null || myArr != null">
     <!-- 首页搜索框 -->
     <div class="search_box">
-      <img src="../../assets/img/shangchangtk/logo.png">
+      <!--<img src="../../assets/img/shangchangtk/newlogo.png">-->
+      <div class="logo"></div>
       <div class="search_txt">
         <input ref="indexSearch" type="text" placeholder="搜索商品or品牌">
         <span>
@@ -11,7 +12,7 @@
         </span>
       </div>
       <div class="user">
-        <i class="iconfont icon-weibiaoti1"></i>
+        <i class="iconfont icon-user1"></i>
       </div>
     </div>
     <div class="index_content">
@@ -47,7 +48,7 @@
         return {
           scrollImg: null,
           myArr: null,
-          serchResult: ''
+          searchResult: ''
         }
       },
       mounted () {
@@ -68,12 +69,12 @@
       },
       methods: {
         clicked: function () {
-          this.serchResult = this.$refs.indexSearch.value
+          this.searchResult = this.$refs.indexSearch.value
           this.$router.push({
             path: '/Sales',
             query: {
-              title: this.serchResult,
-              urlName: this.serchResult
+              title: this.searchResult,
+              urlName: this.searchResult
             }
           })
         }
@@ -88,6 +89,12 @@
   }
   .box{
     position: relative;
+  }
+  .logo{
+    width: 11.7%;
+    height:42.5px;
+    background: url("../../assets/img/shangchangtk/newlogo.png") no-repeat ;
+    background-size: 100% 42.5px;
   }
   .search_box {
     position: relative;
@@ -132,7 +139,7 @@
     padding-left: 15px;
     color: #d2d2d2;
   }
-  .search_box .user .icon-weibiaoti1 {
+  .search_box .user .icon-user1 {
     font-size: 32px;
     color: #d2d2d2;
     font-weight: lighter;
