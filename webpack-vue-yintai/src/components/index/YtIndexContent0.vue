@@ -20,20 +20,18 @@
       <div class="index_scrollimg">
         <mt-swipe :auto="4000">
           <!--绑定唯一的key值-->
-          <mt-swipe-item v-for="myScrollImg in scrollImg" :key="myScrollImg.id">
-            <a href="" class="scroll">
+          <mt-swipe-item v-for="(myScrollImg,index) in scrollImg" :key="myScrollImg.id">
+            <a @click="pageidPage(index)" class="scroll">
               <img :src="myScrollImg.imgurl" alt="">
             </a>
           </mt-swipe-item>
         </mt-swipe>
       </div>
       <!-- 首页导航图 -->
-        <div class="index_nav" v-for="aaa in myArr" v-if="aaa.templatename === '功能区-5图-搭'">
-          <div class="nav_img" v-for="myNav in aaa.items" :key="myNav.itemid">
-              <img :src="myNav.imgurl" alt="">
+        <div class="index_nav" v-for="(aaa,index) in myArr" v-if="aaa.templatename === '功能区-5图-搭'">
+          <div class="nav_img" v-for="(myNav,key) in aaa.items" :key="myNav.itemid" @click="pageidPage2(index,key)">
+              <img :src="myNav.imgurl" alt="" >
               <p>{{myNav.imgname}}</p>
-             <!--<router-link :to="'/' + myNavImg.itemid" class="nav_btn">-->
-            <!--</router-link>-->
           </div>
         </div>
     </div>
@@ -48,13 +46,26 @@
         return {
           scrollImg: null,
           myArr: null,
-          searchResult: ''
+          searchResult: '',
+          pageid: '',
+          title: '',
+          url: ''
         }
       },
       mounted () {
+        let date1 = new Date()
+        let datehour = date1.getHours()
+        let dateminute = date1.getMinutes()
+        if (datehour < 10) {
+          datehour = `0${datehour}`
+        }
+        if (dateminute < 10) {
+          dateminute = `0${dateminute}`
+        }
+        let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
         this.$request({
           type: 'get',
-          url: 'api?r=201711211140&os=HTML5&client_v=1.0.0&pageid=104001&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
+          url: `api?r=${date2}0&os=HTML5&client_v=1.0.0&pageid=104001&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,
           header: {},
           params: {},
           success: function (res) {
@@ -65,7 +76,6 @@
             console.log(err)
           }
         })
-//        window.addEventListener('scroll', this.handleScroll)
       },
       methods: {
         clicked: function () {
@@ -73,8 +83,41 @@
           this.$router.push({
             path: '/Sales',
             query: {
-              title: this.searchResult,
-              urlName: this.searchResult
+              url: this.searchResult,
+              title: this.searchResult
+            }
+          })
+        },
+        pageidPage2 (i, j) {
+          this.title = decodeURI(this.myArr[i].items[j].jumpurl.split('title=')[1].split('&')[0])
+          if (j === 1) {
+            this.pageid = this.myArr[i].items[j].jumpurl.split('pageid%')[1].split('&')[0]
+            this.$router.push({
+              path: 'Sales',
+              query: {
+                url: this.pageid,
+                title: this.title
+              }
+            })
+          } else {
+            this.pageid = this.myArr[i].items[j].jumpurl.split('pageid%3D')[1].split('&')[0]
+            this.$router.push({
+              path: 'ActivitiesTemplate',
+              query: {
+                pageid: this.pageid,
+                title: this.title
+              }
+            })
+          }
+        },
+        pageidPage (i) {
+          this.pageid = this.scrollImg[i].jumpurl.split('pageid%3D')[1].split('&')[0]
+          this.title = decodeURI(this.scrollImg[i].jumpurl.split('title=')[1].split('&')[0])
+          this.$router.push({
+            path: '/ActivitiesTemplate',
+            query: {
+              pageid: this.pageid,
+              title: this.title
             }
           })
         }

@@ -4,25 +4,25 @@
     <div class="pinzhi-xb" v-for="(tag,index) in newArr" v-if="index >0">
       <!--表头-->
       <div class="top" v-if="tag[0].items!=null">
-        <img :src="tag[0].items[0].imgurl" alt="">
+        <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(0,0)">
       </div>
       <!--大图-->
       <div :class="(tag[1].templatetype === 'ThreeImgLeftTwo')?name1: name2" v-if="tag[1].items!=null">
-        <a href="" v-for="val in tag[1].items" v-if="val.height === 302">
-          <img :src="val.imgurl" alt="">
+        <a v-for="(val,key) in tag[1].items" v-if="val.height === 302">
+          <img :src="val.imgurl" alt="" @click="redirectimg(1,key)">
         </a>
       </div>
       <!--两个小图-->
       <div class="imgbox">
-        <a href="" v-for="val in tag[1].items" v-if="val.height === 150 && tag[1].items!=null">
-          <img :src="val.imgurl" alt="">
+        <a v-for="(val,key) in tag[1].items" v-if="val.height === 150 && tag[1].items!=null">
+          <img :src="val.imgurl" alt="" @click="redirectimg(1,key)">
         </a>
       </div>
       <!--三个小图-->
       <div class="content2">
-        <div class="tag_content2_box" v-for="val in tag[2].items" v-if="tag[2].items!=null">
-          <a href="">
-            <img :src="val.imgurl" alt="">
+        <div class="tag_content2_box" v-for="(val,key) in tag[2].items" v-if="tag[2].items!=null">
+          <a @click="redirectimg(2,key)">
+            <img :src="val.imgurl" alt="" >
           </a>
         </div>
       </div>
@@ -35,8 +35,8 @@
     <div class="jingxuan-hh">
       <div class="jingxuan-hh-content">
         <div class="jingxuan-hh-content-A" v-for="(aa, index) in thisdata" v-if="index>9">
-          <div class="jingxuan-hh-content-A-left" v-for="bb in aa.items">
-            <img :src="bb['imgurl']" alt="">
+          <div class="jingxuan-hh-content-A-left" v-for="(bb,key) in aa.items">
+            <img :src="bb['imgurl']" alt="" @click="redirectimg(index,key)">
             <div class="jingxuan-hh-content-A-left-a">{{bb['extra']['productdetail']['name']}}</div>
             <div class="jingxuan-hh-content-A-left-b">
               <span class="jx-c-left-b1">￥</span>
@@ -44,7 +44,7 @@
               <span class="jx-c-left-b3">￥</span>
               <span class="jx-c-left-b4">{{bb['extra']['productdetail']['marketprice']}}.00</span>
             </div>
-            <div class="pink" v-for="cc in bb['extra']['productdetail']['prmotionlist']">{{cc['plabel']}}</div>
+            <div class="pink" v-for="(cc,num) in bb['extra']['productdetail']['prmotionlist']">{{cc['plabel']}}</div>
           </div>
         </div>
       </div>
@@ -60,7 +60,9 @@
         thisdata: null,
         newArr: null,
         name1: 'imgleft',
-        name2: 'imgright'
+        name2: 'imgright',
+        url: '',
+        title: ''
       }
     },
     mounted () {
@@ -104,6 +106,20 @@
           console.log(err)
         }
       })
+    },
+    methods: {
+      redirectimg (i, j) {
+        this.url = this.newArr[i][i].items[j].jumpurl.split('Condition=')[1].split('&')[0] || this.newArr[i][i].items[j].jumpurl.split('Customlistid=')[1].split('&')[0]
+        this.title = decodeURI(this.newArr[i][i].items[j].jumpurl.split('title=')[1].split('&')[0])
+        this.$router.push({
+          path: `/Sales`,
+          query: {
+            searchCondition: this.url,
+            title: this.title
+          }
+        })
+        console.log(this.url, this.title)
+      }
     }
   }
 </script>

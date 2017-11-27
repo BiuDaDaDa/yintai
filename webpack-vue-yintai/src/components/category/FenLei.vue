@@ -14,19 +14,25 @@
         <img v-if="threeDot" class="login-header-pink" src="../../assets/luhanran/loginPink.png" alt="">
         <div v-if="clickedThreeDot" class="header-more">
           <div>
-            <img src="../../assets/luhanran/loginIndex.png" alt="">
-            <span>银泰首页</span>
+            <router-link to="/">
+              <img src="../../assets/luhanran/loginIndex.png" alt="">
+              <span>银泰首页</span>
+            </router-link>
           </div>
           <div id="hm-neither">
-            <img class="neither" src="../../assets/luhanran/loginfenlei.png" alt="">
-            <span>分类</span>
+            <router-link to="/category">
+              <img class="neither" src="../../assets/luhanran/loginfenlei.png" alt="">
+              <span>分类</span>
+            </router-link>
           </div>
           <div>
-            <img src="../../assets/luhanran/loginCar.png" alt="">
-            <span>购物车</span>
+            <router-link to="/shoppingcar">
+              <img src="../../assets/luhanran/loginCar.png" alt="">
+              <span>购物车</span>
+            </router-link>
           </div>
           <div>
-            <router-link to="/Login">
+            <router-link to="/userinfo">
               <img src="../../assets/luhanran/login-myself.png" alt="">
               <span>我的银泰</span>
             </router-link>
@@ -100,11 +106,10 @@
         clickedThreeDot: false,
         threeDot: false,
         thisdata: '',
-        thisdataCate: '',
+        thisdataCate: {},
         thisdataBrands: '',
         thisdataCategory: '',
         loadid: 88,
-        jump: '',
         undf: '',
         foodsName: '',
         brandsUrl: '',
@@ -125,7 +130,7 @@
         this.threeDot = false
       },
       // 时尚名品
-      tab_toggle: function (indexOne) {
+      tab_toggle (indexOne) {
         for (let x in this.thisdata) {
           this.$refs.tabt[x].style.color = ''
           this.$refs.tabt[x].style.borderRight = 1 + 'px solid #d2d2d2'
@@ -149,42 +154,52 @@
         })
       },
       // 推荐类目
-      SecondPage: function (index) {
-        this.jump = this.thisdataCate[index].jumpurl
-        this.undf = this.jump.split('N')[1].split('%')[1].split('D')[1].split('&')[0]
+      SecondPage (index) {
+        this.undf = this.thisdataCate[index].jumpurl.split('Condition=')[1].split('&')[0]
         this.foodsName = this.thisdataCate[index].name
+        console.log(this.undf, this.foodsName)
+        this.$router.push({
+          path: 'Sales',
+          redirect: {name: '/Sales/SalesProductList'},
+          query: {
+            searchCondition: this.undf,
+            title: this.foodsName
+          }
+        })
       },
-      brands: function (two) {
-        this.brandsUrl = this.thisdataBrands[two].jumpurl.split('N')[1].split('d')[1]
+      brands (two) {
+        this.brandsUrl = this.thisdataBrands[two].jumpurl.split('Condition=')[1].split('d')[1]
         this.brandsName = this.thisdataBrands[two].name
         this.$router.push({
-          path: '/Sales',
+          path: 'Sales',
+          redirect: {name: '/Sales/SalesProductList'},
           query: {
-            title: this.brandsName,
-            urlName: this.brandsUrl
+            searchCondition: this.brandsUrl,
+            title: this.brandsName
           }
         })
       },
-      more: function (three) {
-        this.moreUrl = this.thisdataCategory[three].jumpurl.split('N')[1].split('D')[1].split('%')[0]
+      more (three) {
+        this.moreUrl = this.thisdataCategory[three].jumpurl.split('Condition=')[1].split('%')[0]
         this.moreName = this.thisdataCategory[three].name
         this.$router.push({
-          path: '/Sales',
+          path: 'Sales',
+          redirect: {name: '/Sales/SalesProductList'},
           query: {
-            title: this.moreName,
-            urlName: this.moreUrl
+            searchCondition: this.moreUrl,
+            title: this.moreName
           }
         })
       },
-      KSearch: function () {
+      KSearch () {
         let urlCoding = this.$refs.keyWordSearch.value
         let urlAdress = encodeURI(urlCoding)
         console.log(urlAdress, urlCoding)
         this.$router.push({
           path: '/Sales',
+          redirect: {name: '/Sales/SalesProductList'},
           query: {
-            title: urlCoding,
-            urlName: urlAdress
+            title: urlCoding
           }
         })
       }

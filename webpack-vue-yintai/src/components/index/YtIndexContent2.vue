@@ -3,36 +3,36 @@
     <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 6">
       <!-- tagTitle -->
       <div class="top">
-        <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,this.num1,this.num0)">
+        <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,1,0)">
       </div>
       <div class="content1">
         <!--大图-->
         <div :class="(tag[1].templatetype == 'ThreeImgLeftOne')?name1: name2">
           <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 302 && tag[1].templateid !== 20024064">
-            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,this.num1, key)">
+            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--两个小图-->
         <div class="imgbox" >
           <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !== 20024064">
-            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,this.num1,key)">
+            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--海淘馆的特殊样式-->
         <div class="imgbox" v-for="(aaa,key) in tag[1].items" v-if="tag[1].templateid === 20024064">
-          <a><img :src="aaa.imgurl" alt="" @click="redirectimg(index,this.num1,key)"></a>
+          <a><img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)"></a>
         </div>
       </div>
       <div class="content2">
         <div class="tag_content2_box" v-for="(aaa,key) in tag[2].items" v-if="tag[2]!=null">
           <a>
-            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,this.num2,key)">
+            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,2,key)">
           </a>
         </div>
       </div>
       <div class="tag_bottom" v-if="tag[3] !=null ">
         <div class="bottom_box">
-          <a><img :src="tag[3].items[0].imgurl" @click="redirectimg(index,this.num3,this.num0)" alt=""></a>
+          <a><img :src="tag[3].items[0].imgurl" alt=""></a>
         </div>
       </div>
     </div>
@@ -54,27 +54,18 @@
         // 传递值的数组
         busNav: [],
         url: '',
-        urlplace: '',
-        num0: 0,
-        num1: 1,
-        num2: 2,
-        num3: 3
+        title: ''
       }
     },
     methods: {
       redirectimg (i, j, k) {
-        console.log(i, j, k)
-        let rei1 = /searchCondition=N%3D(\S*)%/
-        let rei2 = /Customlistid=(\S*)&/
-        let ret = /title=(\S*)&s/
-        this.url = this.newArr[i].tag[j].items[k].jumpurl.match(rei1)[1] || this.newArr[i].tag[j].items[k].jumpurl.match(rei2)[1]
-        this.urlplace = this.newArr[i].tag[j].items[k].jumpurl.match(ret)[1]
-        console.log(this.url, this.urlplace)
+        this.url = this.newArr[i][j].items[k].jumpurl.split('Condition=')[1].split('&')[0] || this.newArr[i][j].items[k].jumpurl.split('Customlistid=')[1].split('&')[0]
+        this.title = decodeURI(this.newArr[i][j].items[k].jumpurl.split('title=')[1].split('&')[0])
         this.$router.push({
           path: `/Sales`,
           query: {
-            title: this.urlplace,
-            urlName: this.url
+            searchCondition: this.url,
+            title: this.title
           }
         })
       }

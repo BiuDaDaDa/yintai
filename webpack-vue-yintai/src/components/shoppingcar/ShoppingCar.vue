@@ -15,15 +15,21 @@
     <div class="sc-clear-kong1">
       <router-link to="/" class="routerto">随便逛逛</router-link>
     </div>
+    <sa-sa></sa-sa>
   </div>
 </template>
 
 <script>
+  import SaSa from '../index/YtActivitiesTemplate'
   import Vue from 'vue'
-  import { Header } from 'mint-ui'
+  import { Header, Button } from 'mint-ui'
   Vue.component(Header.name, Header)
+  Vue.component(Button.name, Button)
   export default {
     name: 'ShoppingCar',
+    components: {
+      SaSa
+    },
     mounted () {
       var date1 = new Date()
       var datehour = date1.getHours()

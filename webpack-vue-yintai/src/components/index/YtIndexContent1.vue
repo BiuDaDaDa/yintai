@@ -1,11 +1,11 @@
 <template>
   <div class="index-content" v-if="isloading">
-    <div :class="'contentlist'+index" v-for="(arrs, index) in arr['templatelist']" v-if="index<9&&arrs.items&&(arrs.bottommargin!=10)">
+    <div :class="'contentlist'+index" v-for="(arrs, index) in arr['templatelist']" v-if="index<10&&arrs.items&&(arrs.bottommargin!=10)">
       <!-- title图-->
       <img v-if="arrs.templatetype=='FloorHead'" v-for="(arritems, key) in arrs.items" class="listone" :src="arritems.imgurl" alt="" @click="redirectimg(index,key)">
 
       <div id="outer" v-if="arrs.templatetype=='ProductSingleRow'" >
-        <div v-for="(arritems, key) in arrs.items" class="listimg" >
+        <div v-for="(arritems, key) in arrs.items" class="listimg" @click="jumpThird(index,key)">
           <img :src="arritems.imgurl" alt="">
           <div class="ct-text">{{arritems.extra.productdetail.name}}
             <div class="ct-tag" v-for="tag in arritems.extra.productdetail.prmotionlist">{{tag.plabel}}</div>
@@ -29,10 +29,8 @@
 </template>
 
 <script>
-  import { InfiniteScroll, Swipe, SwipeItem } from 'mint-ui'
+  import { Swipe, SwipeItem } from 'mint-ui'
   import Vue from 'vue'
-  Vue.use(InfiniteScroll)
-
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)
   export default {
@@ -43,23 +41,28 @@
         arra: [],
         isloading: false,
         jump: '',
-        undf: '',
-        goodsName: ''
+        url: '',
+        title: ''
       }
     },
     methods: {
-      redirectimg (index, index1) {
-        this.jump = this.arr.templatelist[index].items[index1].jumpurl
-        let re = /Customlistid=(\S*)[0-9]{4}(\S*)/
-        this.undf = this.jump.match(re)[1].substr(0, 4)
-        console.log(this.undf)
-        this.goodsName = this.arr.templatelist[index].items[index1].imgname
-        console.log(this.goodsName)
+      jumpThird (index, key) {
+        let inputUrl = this.arr.templatelist[index].items[key].itemid
         this.$router.push({
-          path: `/Sales`,
+          path: '/prd',
           query: {
-            title: this.goodsName,
-            urlName: this.undf
+            title: inputUrl
+          }
+        })
+      },
+      redirectimg (index, index1) {
+        this.url = this.arr.templatelist[index].items[index1].jumpurl.split('Condition=')[1].split('&')[0]
+        this.title = this.arr.templatelist[index].items[index1].imgname
+        this.$router.push({
+          path: '/Sales',
+          query: {
+            searchCondition: this.url,
+            title: this.title
           }
         })
       }
@@ -179,6 +182,23 @@
       img{
         width: 50%;
       }
+    }
+    .listimgrow{
+      width: 100%;
+      height:140px;
+      img{
+        height:100%;
+      }
+    }
+  }
+  @media screen and (max-width: 640px) and (min-width: 320px) {
+    .listimgrow{
+      height: 100%;
+    }
+  }
+  @media screen and (min-width: 641px){
+    .listimgrow{
+      height: 100%;
     }
   }
 </style>
