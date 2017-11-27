@@ -23,22 +23,23 @@ module.exports = {
       },
       '/login' : {
         target: 'https://user-facade-prod.yintai.com',
-        changeOrigin:true,
+        changeOrigin: true,
         pathRewrite:{
           '^/login' : '/facade/json/com.yintai.user'
         },
         headers:{
-          Host: 'user-facade-prod.yintai.com'
+          Host: 'user-facade-prod.yintai.com',
+          Origin: 'https://h5.yintai.com'
         }
       },
-      'Verification' : {
+      '/oauth' : {
         target: 'https://gw.yintai.com',
-        changeOrigin:true,
         pathRewrite:{
-          '^/Verification' : '/oauth'
+          '^/oauth' : '/oauth'
         },
         headers:{
-          Host: 'gw.yintai.com'
+          Host: 'gw.yintai.com',
+          Origin: 'https://h5.yintai.com'
         }
       }
     },

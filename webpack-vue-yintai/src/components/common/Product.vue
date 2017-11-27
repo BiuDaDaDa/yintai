@@ -147,7 +147,7 @@
         num1: null,
         likeShow: false,
         likeor: true,
-        changeUrl: this.$route.query.title,
+        changeUrl: this.$route.query.title
       }
     },
     mounted: function () {
