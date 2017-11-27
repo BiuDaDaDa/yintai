@@ -153,13 +153,6 @@
         this.jump = this.thisdataCate[index].jumpurl
         this.undf = this.jump.split('N')[1].split('%')[1].split('D')[1].split('&')[0]
         this.foodsName = this.thisdataCate[index].name
-        this.$router.push({
-          path: `/Sales`,
-          query: {
-            title: this.foodsName,
-            urlName: this.undf
-          }
-        })
       },
       brands: function (two) {
         this.brandsUrl = this.thisdataBrands[two].jumpurl.split('N')[1].split('d')[1]

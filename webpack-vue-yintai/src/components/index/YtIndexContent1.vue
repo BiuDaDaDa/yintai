@@ -2,26 +2,25 @@
   <div class="index-content" v-if="isloading">
     <div :class="'contentlist'+index" v-for="(arrs, index) in arr['templatelist']" v-if="index<9&&arrs.items&&(arrs.bottommargin!=10)">
       <!-- title图-->
-      <img v-if="arrs.templatetype=='FloorHead'" v-for="(arritems, key) in arrs.items" class="listone" :src="arritems.imgurl" alt="">
+      <img v-if="arrs.templatetype=='FloorHead'" v-for="(arritems, key) in arrs.items" class="listone" :src="arritems.imgurl" alt="" @click="redirectimg(index,key)">
 
       <div id="outer" v-if="arrs.templatetype=='ProductSingleRow'" >
         <div v-for="(arritems, key) in arrs.items" class="listimg" >
           <img :src="arritems.imgurl" alt="">
           <div class="ct-text">{{arritems.extra.productdetail.name}}
-            <div class="ct-tag" v-for="tag in arritems.extra.productdetail.prmotionlist" >{{tag.plabel}}</div>
+            <div class="ct-tag" v-for="tag in arritems.extra.productdetail.prmotionlist">{{tag.plabel}}</div>
           </div>
           <div class="ct-price">￥{{arritems.extra.productdetail.price}}</div>
         </div>
       </div>
-
       <div v-if="arrs.templatetype=='TwoImgAverage'" class="listimg22"  >
-        <img v-for="(arritems, key) in arrs.items" :src="arritems.imgurl" alt="" :class="'lefttwo'+key">
+        <img v-for="(arritems, key) in arrs.items" :src="arritems.imgurl" alt="" :class="'lefttwo'+key" @click="redirectimg(index,key)">
       </div>
       <!--轮播图-->
       <div v-if="arrs.templatetype=='CarouselFigure'" class="listimgrow">
         <mt-swipe :auto="4000">
           <mt-swipe-item v-for="(arritems, key) in arrs.items" :class="'cf'+key">
-            <img :src="arritems.imgurl" alt="" >
+            <img :src="arritems.imgurl" alt=""  @click="redirectimg(index,key)">
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -41,7 +40,28 @@
     data () {
       return {
         arr: [],
-        isloading: false
+        arra: [],
+        isloading: false,
+        jump: '',
+        undf: '',
+        goodsName: ''
+      }
+    },
+    methods: {
+      redirectimg (index, index1) {
+        this.jump = this.arr.templatelist[index].items[index1].jumpurl
+        let re = /Customlistid=(\S*)[0-9]{4}(\S*)/
+        this.undf = this.jump.match(re)[1].substr(0, 4)
+        console.log(this.undf)
+        this.goodsName = this.arr.templatelist[index].items[index1].imgname
+        console.log(this.goodsName)
+        this.$router.push({
+          path: `/Sales`,
+          query: {
+            title: this.goodsName,
+            urlName: this.undf
+          }
+        })
       }
     },
     mounted () {
@@ -62,7 +82,6 @@
         params: {},
         success: function (res) {
           this.arr = res.data.data
-          console.log(res.data.data)
           this.isloading = true
         },
         failed: function (err) {

@@ -12,10 +12,9 @@
       <p>购物车空空哒！</p>
       <p>快去随便逛逛吧~</p>
     </div>
-    <div>
+    <div class="sc-clear-kong1">
       <router-link to="/" class="routerto">随便逛逛</router-link>
     </div>
-
   </div>
 </template>
 
@@ -61,17 +60,25 @@
     .sc-clear-bg{
       background: url("../../assets/img/shepin/clearcart2.png")  no-repeat  center 100px;
       background-size: 110px;
-      height:166px;
+      height:250px;
       .sc-clear-kong{
-        height:200px;
+        height:100px;
       }
      }
     .routerto{
-      padding: 20px;
-      border: 1px solid @product-policy-color-color;
-      color: @product-policy-color-color;
+      padding: 10px 100px;
+      border: 1px solid @login-button-color;
+      color: @login-button-color;
       border-radius: 5px;
     }
-  }
+    .sc-clear-kong, .sc-clear-kong1{
+      padding-top: 120px;
+      height:100px;
+    }
+    .sc-clear-kong1{
+      padding-top: 20px;
+      margin-bottom: 20px;
+    }
 
+  }
 </style>

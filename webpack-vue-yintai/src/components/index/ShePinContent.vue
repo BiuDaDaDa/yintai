@@ -3,7 +3,7 @@
     <div class="listTitle">
       <div class="list" @click="returnLastPage"><i class="iconfont icon-back"></i></div>
       <div class="list">{{uname}}</div>
-      <div class="list"> <img class="neither" src="../../assets/luhanran/loginfenlei.png" alt=""></div>
+      <div class="list"> . . . </div>
     </div>
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
@@ -34,8 +34,9 @@
                 </div>
                 <div class="info-text">
                   <div>{{ saleproduct.name }}</div>
+                  <div v-if="saleproduct.promotionlabel!=null">{{salepriduct.promotionlabel}}</div>
                   <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
+                  <div class="newprice"><span v-if="saleproduct.exclusivemobile"><i class="iconfont icon-phone"></i></span>￥{{saleproduct.yt_price}}.00</div>
                 </div>
               </div>
             </li>
@@ -99,11 +100,6 @@
         uname: this.$route.query.title
       }
     },
-//    component: {
-//      Header,
-//      TabItem,
-//      Popup
-//    },
     methods: {
       rightlistisShow () {
         this.rightlist = !this.rightlist
@@ -183,8 +179,9 @@
         if (dateminute < 10) {
           dateminute = `0${dateminute}`
         }
+//        https:/stomtopiclist&ver=3.0.0&client_v=3.1.5&apptype=10&data=%7B%22order_type%22%3A%220%22%2C%22page_index%22%3A1%2C%22displaycount%22%3A10%2C%22keyword%22%3A%224409%22%7D
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.urlName}%2B60827091%22%2C%22keyword%22%3A%22${this.uname}%22%7D`
+        this.url = `api?r=${date2}&method=${'products.getlist' || 'product.customtopticlist'}&ver=${'2.1' || '3.0.0'}&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.urlName}%2B60827091%22%2C%22keyword%22%3A%22${this.uname}%22%7D`
         console.log(this.url)
         this.$request({
           type: 'get',
