@@ -146,14 +146,15 @@
         num: null,
         num1: null,
         likeShow: false,
-        likeor: true
+        likeor: true,
+        changeUrl: this.$route.query.title,
       }
     },
     mounted: function () {
       this.$request(
         {
           type: 'get',
-          url: 'api?data=%7B%22itemcode%22%3A%2221-478-9896%22%2C%22userid%22%3A%22%22%7D&userid=&methodName=products.getproductdetail_1.0.0&method=products.getproductdetail&ver=1.0.0&r=20171124901',
+          url: `api?data=%7B%22itemcode%22%3A%22${this.changeUrl}%22%2C%22userid%22%3A%22M2itx5sUa5GpFMcpvWPSEJFybFHc1It1R2JjF2bWdwvgfvQVvCJiOVMdnXBD%2FuBmB3dHmRdxxWiPs8cLi92vQQ%3D%3D%22%7D&userid=M2itx5sUa5GpFMcpvWPSEJFybFHc1It1R2JjF2bWdwvgfvQVvCJiOVMdnXBD%2FuBmB3dHmRdxxWiPs8cLi92vQQ%3D%3D&methodName=products.getproductdetail_1.0.0&method=products.getproductdetail&ver=1.0.0&r=201711251503`,
           headers: {},
           params: {},
           success: function (res) {

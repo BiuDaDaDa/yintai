@@ -223,6 +223,12 @@
 <style scoped lang="less">
   @import "../../common/css/index";
 
+  .big {
+    -ms-overflow-style:none;
+    overflow:-moz-scrollbars-none;
+  }
+  .big::-webkit-scrollbar{width:0px}
+
   @-webkit-keyframes move1 {
     0% {
       opacity: 0;
