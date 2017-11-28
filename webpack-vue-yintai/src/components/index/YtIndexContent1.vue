@@ -1,27 +1,26 @@
 <template>
   <div class="index-content" v-if="isloading">
-    <div :class="'contentlist'+index" v-for="(arrs, index) in arr['templatelist']" v-if="index<9&&arrs.items&&(arrs.bottommargin!=10)">
+    <div :class="'contentlist'+index" v-for="(arrs, index) in arr['templatelist']" v-if="index<10&&arrs.items&&(arrs.bottommargin!=10)">
       <!-- title图-->
-      <img v-if="arrs.templatetype=='FloorHead'" v-for="(arritems, key) in arrs.items" class="listone" :src="arritems.imgurl" alt="">
+      <img v-if="arrs.templatetype=='FloorHead'" v-for="(arritems, key) in arrs.items" class="listone" :src="arritems.imgurl" alt="" @click="redirectimg(index,key)">
 
       <div id="outer" v-if="arrs.templatetype=='ProductSingleRow'" >
-        <div v-for="(arritems, key) in arrs.items" class="listimg" >
+        <div v-for="(arritems, key) in arrs.items" class="listimg" @click="jumpThird(index,key)">
           <img :src="arritems.imgurl" alt="">
           <div class="ct-text">{{arritems.extra.productdetail.name}}
-            <div class="ct-tag" v-for="tag in arritems.extra.productdetail.prmotionlist" >{{tag.plabel}}</div>
+            <div class="ct-tag" v-for="tag in arritems.extra.productdetail.prmotionlist">{{tag.plabel}}</div>
           </div>
           <div class="ct-price">￥{{arritems.extra.productdetail.price}}</div>
         </div>
       </div>
-
       <div v-if="arrs.templatetype=='TwoImgAverage'" class="listimg22"  >
-        <img v-for="(arritems, key) in arrs.items" :src="arritems.imgurl" alt="" :class="'lefttwo'+key">
+        <img v-for="(arritems, key) in arrs.items" :src="arritems.imgurl" alt="" :class="'lefttwo'+key" @click="redirectimg(index,key)">
       </div>
       <!--轮播图-->
       <div v-if="arrs.templatetype=='CarouselFigure'" class="listimgrow">
         <mt-swipe :auto="4000">
           <mt-swipe-item v-for="(arritems, key) in arrs.items" :class="'cf'+key">
-            <img :src="arritems.imgurl" alt="" >
+            <img :src="arritems.imgurl" alt=""  @click="redirectimg(index,key)">
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -30,10 +29,8 @@
 </template>
 
 <script>
-  import { InfiniteScroll, Swipe, SwipeItem } from 'mint-ui'
+  import { Swipe, SwipeItem } from 'mint-ui'
   import Vue from 'vue'
-  Vue.use(InfiniteScroll)
-
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)
   export default {
@@ -41,7 +38,33 @@
     data () {
       return {
         arr: [],
-        isloading: false
+        arra: [],
+        isloading: false,
+        jump: '',
+        url: '',
+        title: ''
+      }
+    },
+    methods: {
+      jumpThird (index, key) {
+        let inputUrl = this.arr.templatelist[index].items[key].itemid
+        this.$router.push({
+          path: '/prd',
+          query: {
+            title: inputUrl
+          }
+        })
+      },
+      redirectimg (index, index1) {
+        this.url = this.arr.templatelist[index].items[index1].jumpurl.split('Condition=')[1].split('&')[0]
+        this.title = this.arr.templatelist[index].items[index1].imgname
+        this.$router.push({
+          path: '/SalesProductList',
+          query: {
+            searchCondition: this.url,
+            title: this.title
+          }
+        })
       }
     },
     mounted () {
@@ -62,7 +85,6 @@
         params: {},
         success: function (res) {
           this.arr = res.data.data
-          console.log(res.data.data)
           this.isloading = true
         },
         failed: function (err) {
@@ -160,6 +182,23 @@
       img{
         width: 50%;
       }
+    }
+    .listimgrow{
+      width: 100%;
+      height:140px;
+      img{
+        height:100%;
+      }
+    }
+  }
+  @media screen and (max-width: 640px) and (min-width: 320px) {
+    .listimgrow{
+      height: 100%;
+    }
+  }
+  @media screen and (min-width: 641px){
+    .listimgrow{
+      height: 100%;
     }
   }
 </style>

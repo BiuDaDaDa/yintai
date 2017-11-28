@@ -89,18 +89,22 @@
         （8:00-24:00）
       </p>
     </div>
-
   </div>
 </template>
 
 <script>
+  import querystring from 'qs'
   export default {
     name: '',
     data () {
       return {
         clickedThree: false,
         clickedThreeDot: false,
-        threeDot: false
+        threeDot: false,
+        token: '',
+        userLogin: '',
+        userPassword: '',
+        userKey: ''
       }
     },
     methods: {
@@ -130,11 +134,94 @@
         this.$refs.phoneDis.placeholder = '请输入手机/邮箱'
       },
       login: function () {
-        var userLogin = this.$refs.phoneDis.value
-        var userPassword = this.$refs.loginPass.value
-        if (!(/^1[34578]\d{9}$/.test(userLogin))) {
+//        this.$request({
+//          type: 'get',
+//          url: '/login/User/getProfileForMe?params=%5B%5B%22BasicInfo%22%2C%22Account%22%2C%22Asset%22%2C%22BindInfo%22%2C%22OrderCount%22%5D%2C%221090000%22%5D',
+//          headers: {
+//            Authorization: `Bearer 1094079719e2f71a113da5ac9c04595d2692c9f0`,
+//            'X-Auth-Token': '396dda8162034599b72b7a48e16aa5dd'
+//          },
+//          params: {
+//          },
+//          success: function (res) {
+//            console.log(res.data)
+//          },
+//          failed: function (err) {
+//            console.log(err)
+//          }
+//        })
+        this.userLogin = this.$refs.phoneDis.value
+        this.userPassword = this.$refs.loginPass.value
+        if (!(/^1[34578]\d{9}$/.test(this.userLogin))) {
           alert('请输入正确的手机号')
-        } else if (userPassword) {
+        } else if (this.userPassword) {
+          this.$request({
+            type: 'POST',
+            url: '/oauth/token',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: querystring.stringify({
+              grant_type: 'client_credentials',
+              client_id: '560b5da9-a046-4f4c-ba1d-2be2cae250ba',
+              client_secret: 'yhLVp7Nbfp3D'
+            }),
+            success: function (res) {
+              console.log(res.data.access_token)
+              this.token = res.data.access_token
+              let _this = this
+              _this.$request({
+                type: 'POST',
+                url: '/login/User/loginByPassport',
+                headers: {
+                  Authorization: `Bearer ${this.token}`
+                },
+                data: `params=%5B%22${this.userLogin}%22%2C%22${this.userPassword}%22%2C%22undefined%22%2C%22%22%5D`,
+                success: function (res) {
+                  let that = _this
+                  console.log(res.data.val)
+                  this.userKey = res.data.val
+                  that.$request({
+                    type: 'get',
+                    url: '/login/User/getProfileForMe?params=%5B%5B%22BasicInfo%22%2C%22Account%22%2C%22Asset%22%2C%22BindInfo%22%2C%22OrderCount%22%5D%2C%221090000%22%5D',
+                    headers: {
+                      Authorization: 'Bearer bd237e1915d85033500ef90c5e89689ab3b87699',
+                      'X-Auth-Token': `${this.userKey}`
+                    },
+                    success: function (res) {
+                      console.log(res.data)
+                    },
+                    failed: function (err) {
+                      console.log(err)
+                    }
+                  })
+                },
+                failed: function (err) {
+                  console.log(err)
+                }
+              })
+
+//            _this.$request({
+//              type: 'get',
+//              url: '/login/User/getProfileForMe?params=%5B%5B%22BasicInfo%22%2C%22Account%22%2C%22Asset%22%2C%22BindInfo%22%2C%22OrderCount%22%5D%2C%221090000%22%5D',
+//              headers: {
+//                Authorization: `Bearer ${this.token}`,
+//                'X-Auth-Token': '15e1ee052c3a430dbf6058031637aade'
+//              },
+//              params: {
+//              },
+//              success: function (res) {
+//                console.log(res.data)
+//              },
+//              failed: function (err) {
+//                console.log(err)
+//              }
+//            })
+            },
+            failed: function (err) {
+              console.log(err)
+            }
+          })
         }
       }
     }
@@ -153,7 +240,9 @@
     text-align: center;
   }
 
-
+  .content-button-login input{
+     outline: none;
+  }
 
   .clear-two{
     clear: both;

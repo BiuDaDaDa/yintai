@@ -42,7 +42,7 @@ export default [
   },
   // 首页下抢先页面专区
   {
-    path: '/QiangXian',
+    path: '/limitbuy',
     name: 'QiangXian',
     component: QiangXian
   }

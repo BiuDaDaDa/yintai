@@ -3,36 +3,36 @@
     <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 6">
       <!-- tagTitle -->
       <div class="top">
-        <img :src="tag[0].items[0].imgurl" alt="">
+        <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,1,0)">
       </div>
       <div class="content1">
         <!--大图-->
         <div :class="(tag[1].templatetype == 'ThreeImgLeftOne')?name1: name2">
-          <a href="" v-for="aaa in tag[1].items"  v-if="aaa.height === 302 && tag[1].templateid !== 20024064">
-            <img :src="aaa.imgurl" alt="">
+          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 302 && tag[1].templateid !== 20024064">
+            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--两个小图-->
         <div class="imgbox" >
-          <a href="" v-for="aaa in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !== 20024064">
-            <img :src="aaa.imgurl" alt="">
+          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !== 20024064">
+            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--海淘馆的特殊样式-->
-        <div class="imgbox" v-for="aaa in tag[1].items" v-if="tag[1].templateid === 20024064">
-          <a href=""><img :src="aaa.imgurl" alt=""></a>
+        <div class="imgbox" v-for="(aaa,key) in tag[1].items" v-if="tag[1].templateid === 20024064">
+          <a><img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)"></a>
         </div>
       </div>
       <div class="content2">
-        <div class="tag_content2_box" v-for="aaa in tag[2].items" v-if="tag[2]!=null">
-          <a href="">
-            <img :src="aaa.imgurl" alt="">
+        <div class="tag_content2_box" v-for="(aaa,key) in tag[2].items" v-if="tag[2]!=null">
+          <a>
+            <img :src="aaa.imgurl" alt="" @click="redirectimg(index,2,key)">
           </a>
         </div>
       </div>
       <div class="tag_bottom" v-if="tag[3] !=null ">
         <div class="bottom_box">
-          <a href=""><img :src="tag[3].items[0].imgurl" alt=""></a>
+          <a><img :src="tag[3].items[0].imgurl" alt=""></a>
         </div>
       </div>
     </div>
@@ -52,7 +52,22 @@
         name1: 'imgleft',
         name2: 'imgright',
         // 传递值的数组
-        busNav: []
+        busNav: [],
+        url: '',
+        title: ''
+      }
+    },
+    methods: {
+      redirectimg (i, j, k) {
+        this.url = this.newArr[i][j].items[k].jumpurl.split('Condition=')[1].split('&')[0] || this.newArr[i][j].items[k].jumpurl.split('Customlistid=')[1].split('&')[0]
+        this.title = decodeURI(this.newArr[i][j].items[k].jumpurl.split('title=')[1].split('&')[0])
+        this.$router.push({
+          path: '/SalesProductList',
+          query: {
+            searchCondition: this.url,
+            title: this.title
+          }
+        })
       }
     },
     mounted () {

@@ -30,6 +30,27 @@ module.exports = {
         headers: {
           Host: 'gw.yintai.com'
         }
+      },
+      '/login' : {
+        target: 'https://user-facade-prod.yintai.com',
+        changeOrigin: true,
+        pathRewrite:{
+          '^/login' : '/facade/json/com.yintai.user'
+        },
+        headers:{
+          Host: 'user-facade-prod.yintai.com',
+          Origin: 'https://h5.yintai.com'
+        }
+      },
+      '/oauth' : {
+        target: 'https://gw.yintai.com',
+        pathRewrite:{
+          '^/oauth' : '/oauth'
+        },
+        headers:{
+          Host: 'gw.yintai.com',
+          Origin: 'https://h5.yintai.com'
+        }
       }
     },
 

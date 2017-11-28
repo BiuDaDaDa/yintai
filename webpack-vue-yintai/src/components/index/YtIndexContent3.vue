@@ -1,28 +1,28 @@
 <template>
-  <div class="wrap" v-if="thisdata != null">
+  <div class="wrap" v-if="thisdata != null && newArr != null">
     <!-- 品质箱包 -- 精选好货 -->
-    <div class="pinzhi-xb" v-for="(tag,index) in newArr">
+    <div class="pinzhi-xb" v-for="(tag,index) in newArr" v-if="index >0">
       <!--表头-->
-      <div class="top">
-        <img :src="tag[0].items[0].imgurl" alt="">
+      <div class="top" v-if="tag[0].items!=null">
+        <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,0,0)">
       </div>
       <!--大图-->
-      <div :class="(tag[1].templatetype === 'ThreeImgLeftTwo')?name1: name2">
-        <a href="" v-for="val in tag[1].items" v-if="val.height === 302">
-          <img :src="val.imgurl" alt="">
+      <div :class="(tag[1].templatetype === 'ThreeImgLeftTwo')?name1: name2" v-if="tag[1].items!=null">
+        <a v-for="(val,key) in tag[1].items" v-if="val.height === 302">
+          <img :src="val.imgurl" alt="" @click="redirectimg(index,1,key)">
         </a>
       </div>
       <!--两个小图-->
       <div class="imgbox">
-        <a href="" v-for="val in tag[1].items" v-if="val.height === 150">
-          <img :src="val.imgurl" alt="">
+        <a v-for="(val,key) in tag[1].items" v-if="val.height === 150 && tag[1].items!=null">
+          <img :src="val.imgurl" alt="" @click="redirectimg(index,1,key)">
         </a>
       </div>
       <!--三个小图-->
       <div class="content2">
-        <div class="tag_content2_box" v-for="val in tag[2].items" v-if="tag[2]!=null">
-          <a href="">
-            <img :src="val.imgurl" alt="">
+        <div class="tag_content2_box" v-for="(val,key) in tag[2].items" v-if="tag[2].items!=null">
+          <a @click="redirectimg(index,2,key)">
+            <img :src="val.imgurl" alt="" >
           </a>
         </div>
       </div>
@@ -30,13 +30,13 @@
 
     <!-- 精选好货 -->
     <div class="title">
-      <img :src="thisdata8[0]['imgurl']" alt="">
+      <img :src="thisdata9[0]['imgurl']" alt="">
     </div>
     <div class="jingxuan-hh">
       <div class="jingxuan-hh-content">
-        <div class="jingxuan-hh-content-A" v-for="(aa, index) in thisdata" v-if="index>8">
-          <div class="jingxuan-hh-content-A-left" v-for="bb in aa.items">
-            <img :src="bb['imgurl']" alt="">
+        <div class="jingxuan-hh-content-A" v-for="(aa, index) in thisdata" v-if="index>9">
+          <div class="jingxuan-hh-content-A-left" v-for="(bb,key) in aa.items">
+            <img :src="bb['imgurl']" alt="" @click="redirectimg(index,key)">
             <div class="jingxuan-hh-content-A-left-a">{{bb['extra']['productdetail']['name']}}</div>
             <div class="jingxuan-hh-content-A-left-b">
               <span class="jx-c-left-b1">￥</span>
@@ -44,7 +44,7 @@
               <span class="jx-c-left-b3">￥</span>
               <span class="jx-c-left-b4">{{bb['extra']['productdetail']['marketprice']}}.00</span>
             </div>
-            <div class="pink" v-for="cc in bb['extra']['productdetail']['prmotionlist']">{{cc['plabel']}}</div>
+            <div class="pink" v-for="(cc,num) in bb['extra']['productdetail']['prmotionlist']">{{cc['plabel']}}</div>
           </div>
         </div>
       </div>
@@ -57,10 +57,12 @@
     name: '',
     data () {
       return {
-        thisdata: null,
-        newArr: null,
+        thisdata: {},
+        newArr: {},
         name1: 'imgleft',
-        name2: 'imgright'
+        name2: 'imgright',
+        url: '',
+        title: ''
       }
     },
     mounted () {
@@ -81,7 +83,6 @@
         params: {},
         success: function (res) {
           this.thisdata = res.data.data.templatelist
-          console.log(this.thisdata)
           // 存放分割大数组
           let allArr = []
           // 存放分割小数组
@@ -97,14 +98,25 @@
             arr.push(this.thisdata[i])
           }
           this.newArr = allArr
-          console.dir(this.newArr)
-          this.thisdata8 = this.thisdata[8].items
-          this.thisdata = true
+          this.thisdata9 = this.thisdata[9].items
         },
         failed: function (err) {
           console.log(err)
         }
       })
+    },
+    methods: {
+      redirectimg (i, j, k) {
+        this.url = this.newArr[i][j].items[k].jumpurl.split('Condition=')[1].substring(0, 14)
+        this.title = decodeURI(this.newArr[i][j].items[k].jumpurl.split('title=')[1].split('&')[0])
+        this.$router.push({
+          path: '/SalesProductList',
+          query: {
+            searchCondition: this.url,
+            title: this.title
+          }
+        })
+      }
     }
   }
 </script>

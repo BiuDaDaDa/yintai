@@ -5,7 +5,7 @@
     <div class="qiangxian">
       <!--抢先：固定定位-->
       <div class="qiangxian-top">
-        <img src="../../common/img/shangchangtk/arrow-left.png" alt="" class="qiangxian-top1">
+        <router-link to="/"><img class="qiangxian-top1" src="../../../src/assets/luhanran/loginleft.png" alt=""></router-link>
         <div class="qiangxian-top2">抢先</div>
         <img src="../../common/img/shangchangtk/shenglue.png" alt="" class="qiangxian-top3" @click="clickList">
         <img src="../../common/img/shangchangtk/pink-shenglue.png" alt="" class="qiangxian-top4" @click="closeList"
@@ -31,18 +31,16 @@
       </div>
       <!--导航栏-->
       <div class="qiangxian-header">
-        <div class="qiangxian-header-left" v-for="(dat,index) in arr['data']" ref="thisTitle" @click="thistitle(index)">
-          <span>{{dat['bargaintagname']}}</span>
-        </div>
+        <div class="qiangxian-header-left" v-for="(dat,index) in arr['data']" ref="thisTitle" @click="thistitle(index)">{{dat['bargaintagname']}}</div>
       </div>
       <!--导航栏下内容区-->
-      <div class="qiangxian-content" v-for="info in thisdata.data.activityinfo">
-        <div class="typeOne" v-for="(act,index) in info['activitylist']">
-          <img :src="act['imgurl']" alt="">
+      <div class="qiangxian-content" v-for="(info, index) in thisdata.data.activityinfo">
+        <div  class="typeOne" v-for="(act,key) in info['activitylist']" >
+          <img :src="act['imgurl']" alt="" @click="jump(index,key)" >
           <div class="qiangxian-content-bottom">
             <div class="qiangxian-content-bottom-left">{{act['title']}}</div>
-            <div class="qiangxian-content-bottom-right" v-if="time">{{timeZong(index)}}</div>
-            <div class="qiangxian-content-bottom-right-clone" v-if="day">{{dayZong(index)}}</div>
+            <div class="qiangxian-content-bottom-right" v-if="time">{{timeZong(key)}}</div>
+            <div class="qiangxian-content-bottom-right-clone" v-if="day">{{dayZong(key)}}</div>
           </div>
           <div class="qiangxian-content-position">{{act['discount']}}</div>
         </div>
@@ -115,6 +113,18 @@
       })
     },
     methods: {
+      jump (index, index1) {
+        this.Qiangxianid = this.thisdata.data.activityinfo[index].activitylist[index1].id
+        this.QiangxianName = this.thisdata.data.activityinfo[index].activitylist[index1].name
+        console.log(this.Qiangxianid, this.QiangxianName)
+        this.$router.push({
+          path: '/SalesProductlist',
+          query: {
+            title: this.QiangxianName,
+            bargainid: this.Qiangxianid
+          }
+        })
+      },
       // 获取时间倒计时
       timeZong (index) {
         for (let i = 0; i < this.thisdata.data.activityinfo.length; i++) {
@@ -150,7 +160,7 @@
           this.$refs.thisTitle[i].style.color = 'rgb(83,83,83)'
           this.$refs.thisTitle[i].style.borderBottom = 'none'
         }
-        this.$refs.thisTitle[index].style.borderBottom = 1 + 'px solid red'
+        this.$refs.thisTitle[index].style.borderBottom = 2 + 'px solid rgba(229,0,79,0.8)'
         this.$refs.thisTitle[index].style.color = 'black'
         // 点击改变接口
         this.thisType = this.arr.data[index].bargaintagtype
@@ -252,7 +262,7 @@
     padding: 0px 15px 0px 15px;
     box-sizing: border-box;
     border-bottom: @border-color-more;
-    line-height: 40px;
+    line-height: 30px;
     position: relative;
     z-index: 400;
     ul {
@@ -287,20 +297,21 @@
   }
 
   .qiangxian-top1 {
-    width: 15px;
-    height: 15px;
-    margin-top: 13px;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
   }
 
   .qiangxian-top2 {
     font-size: @font-size-medium;
     font-weight: 500;
+    margin-top: 5px;
   }
 
   .qiangxian-top3 {
     width: 20px;
     height: 20px;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .qiangxian-top4 {
@@ -316,16 +327,16 @@
     display: inline-flex;
     justify-content: space-between;
     border-bottom: 1px solid rgb(163, 163, 163);
+    padding-top: 3px;
     .qiangxian-header-left {
       color: @index-boom-introduce-color;
       font-size: @font-size-medium;
       text-align: center;
+      width: 20%;
       box-sizing: border-box;
-      padding: 10px;
-      span {
-        padding-right: 20px;
-        border-right: 1px solid rgb(232, 233, 232);
-      }
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-right: 1px solid rgb(232, 233, 232);
     }
   }
 

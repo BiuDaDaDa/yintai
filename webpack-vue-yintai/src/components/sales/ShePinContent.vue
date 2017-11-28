@@ -2,8 +2,8 @@
   <div id="saleProduct">
     <div class="listTitle">
       <div class="list" @click="returnLastPage"><i class="iconfont icon-back"></i></div>
-      <div class="list">{{uname}}</div>
-      <div class="list"> <img class="neither" src="../../assets/luhanran/loginfenlei.png" alt=""></div>
+      <div class="list">{{title}}</div>
+      <div class="list"> . . . </div>
     </div>
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
@@ -27,15 +27,16 @@
       <mt-tab-container class="page-tabbar-tab-container" v-model="active"  v-show="isload">
         <mt-tab-container-item :id="'tab-container'+this.tabID" class="item" >
           <ul class="sp-ul">
-            <li class="sp-li" v-for="saleproduct in arr1['product_list']">
+            <li @click="jumpThird(index)" class="sp-li" v-for="(saleproduct,index) in arr1['product_list']">
               <div class="sp-li-info">
                 <div class="info-img">
                   <img :src="saleproduct.midimageurl" alt="">
                 </div>
                 <div class="info-text">
                   <div>{{ saleproduct.name }}</div>
+                  <div v-if="saleproduct.promotionlabel!=null">{{saleproduct.promotionlabel}}</div>
                   <p class="oldprice">￥{{saleproduct.price}}.00</p>
-                  <div class="newprice">￥{{saleproduct.yt_price}}.00</div>
+                  <div class="newprice"><span v-if="saleproduct.exclusivemobile"><i class="iconfont icon-phone" style="color:#b2b2b2"></i></span>￥{{saleproduct.yt_price}}.00</div>
                 </div>
               </div>
             </li>
@@ -63,13 +64,14 @@
 <script>
   import Vue from 'vue'
   import Router from 'vue-router'
-  import { TabContainer, TabContainerItem, Header } from 'mint-ui'
+  import { TabContainer, TabContainerItem, Header, Button } from 'mint-ui'
   Vue.use(Router)
   Vue.component(TabContainer.name, TabContainer)
   Vue.component(TabContainerItem.name, TabContainerItem)
   Vue.component(Header.name, Header)
+  Vue.component(Button.name, Button)
   export default {
-    name: '',
+    name: 'SalesProductList',
     data () {
       return {
         components: {
@@ -95,28 +97,24 @@
         colordown1: 0,
         colordown2: 0,
         tabID: 1,
-        urlName: this.$route.query.urlName,
-        uname: this.$route.query.title
+        searchCondition: this.$route.query.searchCondition,
+        title: this.$route.query.title || this.$route.query.title1,
+        shortURL: this.$route.query.shortURL || ''
       }
     },
-//    component: {
-//      Header,
-//      TabItem,
-//      Popup
-//    },
     methods: {
+      jumpThird: function (index) {
+        let inputUrl = this.arr1.product_list[index].itemcode
+        console.log(inputUrl)
+        this.$router.push({
+          path: '/prd',
+          query: {
+            title: inputUrl
+          }
+        })
+      },
       rightlistisShow () {
         this.rightlist = !this.rightlist
-      },
-      loadMore () {
-        this.loading = true
-        setTimeout(() => {
-          let last = this.list[this.list.length - 1]
-          for (let i = 1; i <= 10; i++) {
-            this.list.push(last + i)
-          }
-          this.loading = false
-        }, 2500)
       },
       reloadRequest (a) {
         this.isload = false
@@ -184,7 +182,7 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        this.url = `api?r=${date2}&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.urlName}%2B60827091%22%2C%22keyword%22%3A%22${this.uname}%22%7D`
+        this.url = `api?r=${date2}&method=${'products.getlist' || 'product.customtopticlist'}&ver=${'2.1' || '3.0.0'}&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22${this.searchCondition}%2B60827091%22%2C%22keyword%22%3A%22${this.shortURL}%22%7D`
         console.log(this.url)
         this.$request({
           type: 'get',
@@ -248,7 +246,7 @@
       width: 100%;
       align-items: center;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       overflow: hidden;
       border-top:0.5px solid @product-price-title-description-color;
       border-bottom:1px solid @product-price-title-description-color;
@@ -264,7 +262,7 @@
         border-right:1px solid grey ;
         line-height: 30px;
         text-align: center;
-        width: 19.3%;
+        width: 20%;
         border-radius: 0;
         margin: 0;
         padding: 0;
@@ -273,6 +271,7 @@
         height:30px;
         font-size: @font-size-medium;
         color: @more-product-introduce-color;
+        box-shadow: none;
         div{
           display: inline-block;
           position: relative;
