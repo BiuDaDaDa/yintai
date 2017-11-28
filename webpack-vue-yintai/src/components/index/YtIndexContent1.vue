@@ -59,7 +59,7 @@
         this.url = this.arr.templatelist[index].items[index1].jumpurl.split('Condition=')[1].split('&')[0]
         this.title = this.arr.templatelist[index].items[index1].imgname
         this.$router.push({
-          path: '/Sales',
+          path: '/SalesProductList',
           query: {
             searchCondition: this.url,
             title: this.title

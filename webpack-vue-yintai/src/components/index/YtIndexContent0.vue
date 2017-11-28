@@ -91,18 +91,20 @@
         pageidPage2 (i, j) {
           this.title = decodeURI(this.myArr[i].items[j].jumpurl.split('title=')[1].split('&')[0])
           if (j === 1) {
-            this.pageid = this.myArr[i].items[j].jumpurl.split('pageid%')[1].split('&')[0]
+            this.url = this.myArr[i].items[j].jumpurl.split('pageid%')[1].split('&')[0]
+            console.log(this.title, this.url)
             this.$router.push({
-              path: 'Sales',
+              path: '/SalesProductList',
               query: {
-                url: this.pageid,
+                SearchCondition: this.url,
                 title: this.title
               }
             })
           } else {
             this.pageid = this.myArr[i].items[j].jumpurl.split('pageid%3D')[1].split('&')[0]
+            console.log(this.title, this.pageid)
             this.$router.push({
-              path: 'ActivitiesTemplate',
+              path: '/ActivitiesTemplate',
               query: {
                 pageid: this.pageid,
                 title: this.title
@@ -113,6 +115,7 @@
         pageidPage (i) {
           this.pageid = this.scrollImg[i].jumpurl.split('pageid%3D')[1].split('&')[0]
           this.title = decodeURI(this.scrollImg[i].jumpurl.split('title=')[1].split('&')[0])
+          console.log(this.title, this.pageid)
           this.$router.push({
             path: '/ActivitiesTemplate',
             query: {

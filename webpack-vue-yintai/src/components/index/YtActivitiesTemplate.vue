@@ -1,6 +1,11 @@
 <template>
-  <div id="ActivitiesTemplate" v-if="thisdata != null">
-    <div class="AT-top" v-for="(tl,index) in this.data.templatelist">
+  <div id="ActivitiesTemplate">
+    <div class="AT-header">
+      <div class="AT-header-left"><i class="iconfont icon-back"></i></div>
+      <div class="AT-header-middle">{{title}}</div>
+      <div class="AT-header-right">. . .</div>
+    </div>
+    <div class="AT-top" v-for="(tl,index) in this.data.templatelist"  v-if="this.data != null">
       <div v-if="tl.templatetype=='FuncAreaFourImg'" class="FAFI-box">
         <img :src="tlimg.imgurl" v-for="(tlimg,key) in tl.items" alt="" class="FAFI">
       </div>
@@ -13,13 +18,14 @@
         </div>
       </div>
     </div>
-
+    <router-view></router-view>
   </div>
+
 </template>
 
 <script>
   export default {
-    name: '',
+    name: 'ActivitiesTemplate',
     data () {
       return {
         data: null,
@@ -27,40 +33,45 @@
         title: this.$route.query.title
       }
     },
-    mounted () {
-      var date1 = new Date()
-      var datehour = date1.getHours()
-      var dateminute = date1.getMinutes()
-      if (datehour < 10) {
-        datehour = `0${datehour}`
-      }
-      if (dateminute < 10) {
-        dateminute = `0${dateminute}`
-      }
-      var date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-      this.$request({
-        type: 'get',
-        url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=${this.pageid}&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,
-        header: {},
-        params: {},
-        success: function (res) {
-          this.data = res.data.data
-        },
-        failed: function (err) {
-          console.log(err)
+    methods: {
+      requestAPI (pageid) {
+        let date1 = new Date()
+        let datehour = date1.getHours()
+        let dateminute = date1.getMinutes()
+        if (datehour < 10) {
+          datehour = `0${datehour}`
         }
-      })
+        if (dateminute < 10) {
+          dateminute = `0${dateminute}`
+        }
+        let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
+        this.$request({
+          type: 'get',
+          url: `api?r=${date2}&os=HTML5&client_v=1.0.0&pageid=${pageid}&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1`,
+          header: {},
+          params: {},
+          success: function (res) {
+            this.data = res.data.data
+            console.log(this.data)
+          },
+          failed: function (err) {
+            console.log(err)
+          }
+        })
+      }
+    },
+    mounted () {
+      this.requestAPI()
     }
   }
 </script>
 
 <style scoped lang="less">
   @import "../../common/css/index";
-  img{
-    margin-top:-3px;
-  }
-  .desk {
-    height: 40px;
+  .AT-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .vip-top {

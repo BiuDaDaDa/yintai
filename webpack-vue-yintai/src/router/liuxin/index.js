@@ -1,8 +1,7 @@
-import Sales from '@/components/index/ShePin'
-// import SalesProductList from '@/components/index/ShePinContent'
+import SalesProductList from '@/components/sales/ShePinContent'
 import Index from '@/components/index/YtIndex'
 import ShoppingCar from '@/components/shoppingcar/ShoppingCar'
-import ActivitiesTemplate from '@/components/index/YtActivitiesTemplate'
+import ActivitiesTemplate from '@/components/sales/YtActivitiesTemplate'
 import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
 import Vue from 'vue'
 // import Mint from 'mint-ui'
@@ -14,21 +13,14 @@ Vue.component(Popup.name, Popup)
 Vue.component(Header.name, Header)
 export default [
   {
-    path: '/Sales',
-    name: 'Sales',
-    component: Sales
-    // children: [
-    //   {
-    //     path: '/SalesProductList',
-    //     name: 'SalesProductList',
-    //     components: SalesProductList
-    //   }
-    // ]
-  },
-  {
     path: '/',
     name: 'Index',
     component: Index
+  },
+  {
+    path: '/SalesProductList',
+    name: 'SalesProductList',
+    component: SalesProductList
   },
   {
     path: '/shoppingcar',

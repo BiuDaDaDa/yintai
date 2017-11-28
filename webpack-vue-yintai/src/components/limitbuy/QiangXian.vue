@@ -118,7 +118,7 @@
         this.QiangxianName = this.thisdata.data.activityinfo[index].activitylist[index1].name
         console.log(this.Qiangxianid, this.QiangxianName)
         this.$router.push({
-          path: '/Sales/Productlist',
+          path: '/SalesProductlist',
           query: {
             title: this.QiangxianName,
             bargainid: this.Qiangxianid

@@ -159,7 +159,7 @@
         this.foodsName = this.thisdataCate[index].name
         console.log(this.undf, this.foodsName)
         this.$router.push({
-          path: 'Sales',
+          path: 'SalesProductList',
           redirect: {name: '/Sales/SalesProductList'},
           query: {
             searchCondition: this.undf,
@@ -171,7 +171,7 @@
         this.brandsUrl = this.thisdataBrands[two].jumpurl.split('Condition=')[1].split('d')[1]
         this.brandsName = this.thisdataBrands[two].name
         this.$router.push({
-          path: 'Sales',
+          path: 'SalesProductList',
           redirect: {name: '/Sales/SalesProductList'},
           query: {
             searchCondition: this.brandsUrl,
@@ -183,7 +183,7 @@
         this.moreUrl = this.thisdataCategory[three].jumpurl.split('Condition=')[1].split('%')[0]
         this.moreName = this.thisdataCategory[three].name
         this.$router.push({
-          path: 'Sales',
+          path: '/SalesProductList',
           redirect: {name: '/Sales/SalesProductList'},
           query: {
             searchCondition: this.moreUrl,
@@ -196,7 +196,7 @@
         let urlAdress = encodeURI(urlCoding)
         console.log(urlAdress, urlCoding)
         this.$router.push({
-          path: '/Sales',
+          path: '/SalesProductList',
           redirect: {name: '/Sales/SalesProductList'},
           query: {
             title: urlCoding

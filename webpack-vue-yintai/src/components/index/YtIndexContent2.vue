@@ -62,7 +62,7 @@
         this.url = this.newArr[i][j].items[k].jumpurl.split('Condition=')[1].split('&')[0] || this.newArr[i][j].items[k].jumpurl.split('Customlistid=')[1].split('&')[0]
         this.title = decodeURI(this.newArr[i][j].items[k].jumpurl.split('title=')[1].split('&')[0])
         this.$router.push({
-          path: `/Sales`,
+          path: '/SalesProductList',
           query: {
             searchCondition: this.url,
             title: this.title

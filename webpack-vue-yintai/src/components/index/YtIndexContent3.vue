@@ -4,24 +4,24 @@
     <div class="pinzhi-xb" v-for="(tag,index) in newArr" v-if="index >0">
       <!--表头-->
       <div class="top" v-if="tag[0].items!=null">
-        <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(0,0)">
+        <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,0,0)">
       </div>
       <!--大图-->
       <div :class="(tag[1].templatetype === 'ThreeImgLeftTwo')?name1: name2" v-if="tag[1].items!=null">
         <a v-for="(val,key) in tag[1].items" v-if="val.height === 302">
-          <img :src="val.imgurl" alt="" @click="redirectimg(1,key)">
+          <img :src="val.imgurl" alt="" @click="redirectimg(index,1,key)">
         </a>
       </div>
       <!--两个小图-->
       <div class="imgbox">
         <a v-for="(val,key) in tag[1].items" v-if="val.height === 150 && tag[1].items!=null">
-          <img :src="val.imgurl" alt="" @click="redirectimg(1,key)">
+          <img :src="val.imgurl" alt="" @click="redirectimg(index,1,key)">
         </a>
       </div>
       <!--三个小图-->
       <div class="content2">
         <div class="tag_content2_box" v-for="(val,key) in tag[2].items" v-if="tag[2].items!=null">
-          <a @click="redirectimg(2,key)">
+          <a @click="redirectimg(index,2,key)">
             <img :src="val.imgurl" alt="" >
           </a>
         </div>
@@ -57,8 +57,8 @@
     name: '',
     data () {
       return {
-        thisdata: null,
-        newArr: null,
+        thisdata: {},
+        newArr: {},
         name1: 'imgleft',
         name2: 'imgright',
         url: '',
@@ -83,7 +83,6 @@
         params: {},
         success: function (res) {
           this.thisdata = res.data.data.templatelist
-          console.log(this.thisdata)
           // 存放分割大数组
           let allArr = []
           // 存放分割小数组
@@ -99,7 +98,6 @@
             arr.push(this.thisdata[i])
           }
           this.newArr = allArr
-          console.dir(this.newArr)
           this.thisdata9 = this.thisdata[9].items
         },
         failed: function (err) {
@@ -108,17 +106,16 @@
       })
     },
     methods: {
-      redirectimg (i, j) {
-        this.url = this.newArr[i][i].items[j].jumpurl.split('Condition=')[1].split('&')[0] || this.newArr[i][i].items[j].jumpurl.split('Customlistid=')[1].split('&')[0]
-        this.title = decodeURI(this.newArr[i][i].items[j].jumpurl.split('title=')[1].split('&')[0])
+      redirectimg (i, j, k) {
+        this.url = this.newArr[i][j].items[k].jumpurl.split('Condition=')[1].substring(0, 14)
+        this.title = decodeURI(this.newArr[i][j].items[k].jumpurl.split('title=')[1].split('&')[0])
         this.$router.push({
-          path: `/Sales`,
+          path: '/SalesProductList',
           query: {
             searchCondition: this.url,
             title: this.title
           }
         })
-        console.log(this.url, this.title)
       }
     }
   }

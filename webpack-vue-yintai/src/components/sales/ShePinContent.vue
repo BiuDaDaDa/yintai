@@ -71,7 +71,7 @@
   Vue.component(Header.name, Header)
   Vue.component(Button.name, Button)
   export default {
-    name: '',
+    name: 'SalesProductList',
     data () {
       return {
         components: {
