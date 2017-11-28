@@ -1,13 +1,12 @@
-import IndexScrollPd from '../../components/index/IndexScroll/IndexScrollPd.vue'
-import IndexScrollShoes from '../../components/index/IndexScroll/IndexScrollShoes.vue'
-import IndexScrollUnderwear from '../../components/index/IndexScroll/IndexScrollUnderwear.vue'
-import IndexScrollChild from '../../components/index/IndexScroll/IndexScrollChild.vue'
-import IndexScrollCrazy from '../../components/index/IndexScroll/IndexScrollCrazy.vue'
-import IndexScrollMoneyOff from '../../components/index/IndexScroll/IndexScrollMoneyOff.vue'
+import IndexScrollOne from '../../components/index/indexScroll/IndexScrollOne.vue'
+import IndexScrollThree from '../../components/index/indexScroll/IndexScrollThree.vue'
+import IndexScrollFour from '../../components/index/indexScroll/IndexScrollFour.vue'
+import IndexScrollFive from '../../components/index/indexScroll/IndexScrollFive.vue'
 import YtIndexContent0 from '../../components/index/YtIndexContent0.vue'
 import YtIndexContent2 from '../../components/index/YtIndexContent2.vue'
 import Prd from '../../components/common/Product.vue'
-
+import UserCollect from '../../components/Login/UserCollect.vue'
+import HaveLogin from '../../components/Login/HaveLogin.vue'
 export default [
   // 大图滚动
   {
@@ -22,43 +21,41 @@ export default [
   },
   // 大图滚动1
   {
-    path: '/IndexScrollPd',
-    name: 'IndexScrollPd',
-    component: IndexScrollPd
-  },
-  // 大图滚动2
-  {
-    path: '/IndexScrollShoes',
-    name: 'IndexScrollShoes',
-    component: IndexScrollShoes
+    path: '/IndexScrollOne',
+    name: 'One',
+    component: IndexScrollOne
   },
   // 大图滚动3
   {
-    path: '/IndexScrollUnderwear',
-    name: 'IndexScrollUnderwear',
-    component: IndexScrollUnderwear
+    path: '/IndexScrollThree',
+    name: 'Three',
+    component: IndexScrollThree
   },
   // 4
   {
-    path: '/IndexScrollChild',
-    name: 'IndexScrollChild',
-    component: IndexScrollChild
+    path: '/IndexScrollFour',
+    name: 'Four',
+    component: IndexScrollFour
   },
   // 5
   {
-    path: '/IndexScrollCrazy',
-    name: 'IndexScrollCrazy',
-    component: IndexScrollCrazy
+    path: '/IndexScrollFive',
+    name: 'Five',
+    component: IndexScrollFive
   },
-  {
-    path: '/IndexScrollMoneyOff',
-    name: 'IndexScrollMoneyOff',
-    component: IndexScrollMoneyOff
-  },
-  // 6
   {
     path: '/prd',
     name: 'prd',
     component: Prd
+  },
+  {
+    path: '/UserCollect',
+    name: 'UserCollect',
+    component: UserCollect
+  },
+  {
+    path: '/HaveLogin',
+    name: 'HaveLogin',
+    component: HaveLogin
   }
 ]

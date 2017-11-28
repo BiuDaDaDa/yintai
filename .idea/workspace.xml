@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e38d697d-40cc-4cfd-87b7-17f00997cae0" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollChild.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollOne.vue" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollCrazy.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollTwo.vue" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollMoneyOff.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollThree.vue" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollPd.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollFour.vue" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollShoes.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollFive.vue" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollUnderwear.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollSix.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/config/index.js" afterPath="$PROJECT_DIR$/webpack-vue-yintai/config/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/index.html" afterPath="$PROJECT_DIR$/webpack-vue-yintai/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/App.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack-vue-yintai/src/router/duanyiwen/index.js" afterPath="$PROJECT_DIR$/webpack-vue-yintai/src/router/duanyiwen/index.js" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="HaveLogin.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/Login/HaveLogin.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="84" column="45" lean-forward="true" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#5;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#a#0;n#div#5;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#a#0;n#div#6;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#7;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#4711#5192#0" expanded="false" />
+                <element signature="e#5211#5437#0" expanded="false" />
+                <element signature="e#5455#5525#0" expanded="false" />
+                <element signature="e#5545#5592#0" expanded="false" />
+                <element signature="e#5618#5677#0" expanded="false" />
+                <element signature="e#5698#5797#0" expanded="false" />
+                <element signature="e#5825#5857#0" expanded="false" />
+                <element signature="e#5888#5941#0" expanded="false" />
+                <element signature="e#5976#6068#0" expanded="false" />
+                <element signature="e#6115#6207#0" expanded="false" />
+                <element signature="e#6239#6284#0" expanded="false" />
+                <element signature="e#6317#6419#0" expanded="false" />
+                <element signature="e#6433#6844#0" expanded="false" />
+                <element signature="e#6868#7298#0" expanded="false" />
+                <element signature="e#7324#8112#0" expanded="false" />
+                <element signature="e#8132#8172#0" expanded="false" />
+                <element signature="e#8204#8255#0" expanded="false" />
+                <element signature="e#8271#8325#0" expanded="false" />
+                <element signature="e#8343#8456#0" expanded="false" />
+                <element signature="e#8492#8516#0" expanded="false" />
+                <element signature="e#8537#8866#0" expanded="false" />
+                <element signature="e#8927#8950#0" expanded="false" />
+                <element signature="e#8977#9009#0" expanded="false" />
+                <element signature="e#9038#9062#0" expanded="false" />
+                <element signature="e#9173#9233#0" expanded="false" />
+                <element signature="e#9261#9311#0" expanded="false" />
+                <element signature="e#9331#9409#0" expanded="false" />
+                <element signature="e#9424#9502#0" expanded="false" />
+                <element signature="e#9526#9635#0" expanded="false" />
+                <element signature="e#9658#9718#0" expanded="false" />
+                <element signature="e#9733#9758#0" expanded="false" />
+                <element signature="e#9777#9806#0" expanded="false" />
+                <element signature="e#9821#9846#0" expanded="false" />
+                <element signature="e#9861#9886#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/router/duanyiwen/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-901">
+              <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent0.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/category/FenleiSearch.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/App.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/config/index.js" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/Login/UserCollect.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollUnderwear.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollCrazy.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollChild.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollPd.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollOne.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollThree.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollFour.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollFive.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/111" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/index.html" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/components/Login/HaveLogin.vue" />
+        <option value="$PROJECT_DIR$/webpack-vue-yintai/src/router/duanyiwen/index.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/webpack-vue-yintai/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="351" />
+    <option name="y" value="66" />
+    <option name="width" value="1793" />
+    <option name="height" value="973" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+              <item name="indexScroll" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yintai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="webpack-vue-yintai" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v8.7.0/bin/node" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/webpack-vue-yintai/node_modules/eslint" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.standard" value="$USER_HOME$/.nvm/versions/node/v8.7.0/lib/node_modules/standard" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webpack-vue-yintai/src/assets" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e38d697d-40cc-4cfd-87b7-17f00997cae0" name="Default" comment="" />
+      <created>1511515558035</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1511515558035</updated>
+      <workItem from="1511515566568" duration="34372000" />
+      <workItem from="1511781952084" duration="7984000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="42356000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="351" y="66" width="1793" height="973" extended-state="1" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20993228" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5027435" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3257403" sideWeight="0.4975978" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollFour.vue</url>
+          <line>164</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="18" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/Login/HaveLogin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#a#0;n#div#5;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#a#0;n#div#6;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#7;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#4711#5192#0" expanded="false" />
+            <element signature="e#5211#5437#0" expanded="false" />
+            <element signature="e#5455#5525#0" expanded="false" />
+            <element signature="e#5545#5592#0" expanded="false" />
+            <element signature="e#5618#5677#0" expanded="false" />
+            <element signature="e#5698#5797#0" expanded="false" />
+            <element signature="e#5825#5857#0" expanded="false" />
+            <element signature="e#5888#5941#0" expanded="false" />
+            <element signature="e#5976#6068#0" expanded="false" />
+            <element signature="e#6115#6207#0" expanded="false" />
+            <element signature="e#6239#6284#0" expanded="false" />
+            <element signature="e#6317#6419#0" expanded="false" />
+            <element signature="e#6433#6844#0" expanded="false" />
+            <element signature="e#6868#7298#0" expanded="false" />
+            <element signature="e#7324#8112#0" expanded="false" />
+            <element signature="e#8132#8172#0" expanded="false" />
+            <element signature="e#8204#8255#0" expanded="false" />
+            <element signature="e#8271#8325#0" expanded="false" />
+            <element signature="e#8343#8456#0" expanded="false" />
+            <element signature="e#8492#8516#0" expanded="false" />
+            <element signature="e#8537#8866#0" expanded="false" />
+            <element signature="e#8927#8950#0" expanded="false" />
+            <element signature="e#8977#9009#0" expanded="false" />
+            <element signature="e#9038#9062#0" expanded="false" />
+            <element signature="e#9173#9233#0" expanded="false" />
+            <element signature="e#9261#9311#0" expanded="false" />
+            <element signature="e#9331#9409#0" expanded="false" />
+            <element signature="e#9424#9502#0" expanded="false" />
+            <element signature="e#9526#9635#0" expanded="false" />
+            <element signature="e#9658#9718#0" expanded="false" />
+            <element signature="e#9733#9758#0" expanded="false" />
+            <element signature="e#9777#9806#0" expanded="false" />
+            <element signature="e#9821#9846#0" expanded="false" />
+            <element signature="e#9861#9886#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent1.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/category/FenleiSearch.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="81" column="5" lean-forward="false" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/YtIndexContent0.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-200">
+          <caret line="53" column="10" lean-forward="false" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#mt-swipe-item#0;n#mt-swipe#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#2172#2219#0" expanded="false" />
+            <element signature="e#2540#2565#0" expanded="false" />
+            <element signature="e#2596#2737#0" expanded="false" />
+            <element signature="e#2770#2951#0" expanded="false" />
+            <element signature="e#2983#3128#0" expanded="false" />
+            <element signature="e#3166#3238#0" expanded="false" />
+            <element signature="e#3256#3314#0" expanded="false" />
+            <element signature="e#3334#3375#0" expanded="false" />
+            <element signature="e#3401#3441#0" expanded="false" />
+            <element signature="e#3455#3554#0" expanded="false" />
+            <element signature="e#3577#3622#0" expanded="false" />
+            <element signature="e#3649#3671#0" expanded="false" />
+            <element signature="e#3696#3720#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/.postcssrc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/build/build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/build/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/Login/UserCollect.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="98" column="8" lean-forward="true" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
+          <folding>
+            <element signature="e#1416#1861#0" expanded="false" />
+            <element signature="e#1883#2328#0" expanded="false" />
+            <element signature="e#2330#2353#0" expanded="false" />
+            <element signature="e#3058#3129#0" expanded="false" />
+            <element signature="e#3309#3767#0" expanded="false" />
+            <element signature="e#3343#3763#0" expanded="false" />
+            <element signature="e#4841#4946#0" expanded="false" />
+            <element signature="e#4983#5210#0" expanded="false" />
+            <element signature="e#5250#5275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/common/js/requestServerSetting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollTwo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="14" column="85" lean-forward="true" selection-start-line="14" selection-start-column="85" selection-end-line="14" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <element signature="e#1518#1580#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollThree.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="317" column="5" lean-forward="true" selection-start-line="317" selection-start-column="5" selection-end-line="317" selection-end-column="5" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#8999#9477#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollOne.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="134" column="16" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#5101#5579#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/common/Product.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="387" column="5" lean-forward="false" selection-start-line="387" selection-start-column="5" selection-end-line="387" selection-end-column="5" />
+          <folding>
+            <element signature="e#6871#6907#0" expanded="false" />
+            <element signature="e#6921#6979#0" expanded="false" />
+            <element signature="e#6993#7160#0" expanded="false" />
+            <element signature="e#7129#7156#0" expanded="false" />
+            <element signature="e#7173#8278#0" expanded="false" />
+            <element signature="e#8293#8686#0" expanded="false" />
+            <element signature="e#8699#8872#0" expanded="false" />
+            <element signature="e#8886#9011#0" expanded="false" />
+            <element signature="e#9026#9605#0" expanded="false" />
+            <element signature="e#10289#10941#0" expanded="false" />
+            <element signature="e#10955#11000#0" expanded="false" />
+            <element signature="e#11010#11232#0" expanded="false" />
+            <element signature="e#11247#11386#0" expanded="false" />
+            <element signature="e#11407#11642#0" expanded="false" />
+            <element signature="e#11657#12491#0" expanded="false" />
+            <element signature="e#12507#12818#0" expanded="false" />
+            <element signature="e#12834#13614#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollSix.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="25" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollFive.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#4692#5173#0" expanded="false" />
+            <element signature="e#5368#6852#0" expanded="false" />
+            <element signature="e#5549#6848#0" expanded="false" />
+            <element signature="e#6864#6906#0" expanded="false" />
+            <element signature="e#6921#7015#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/index/indexScroll/IndexScrollFour.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1301">
+          <caret line="108" column="9" lean-forward="true" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#img#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#4484#4965#0" expanded="false" />
+            <element signature="e#5160#6644#0" expanded="false" />
+            <element signature="e#5341#6640#0" expanded="false" />
+            <element signature="e#6656#6698#0" expanded="false" />
+            <element signature="e#6713#6807#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/111">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8559">
+          <caret line="117" column="0" lean-forward="true" selection-start-line="58" selection-start-column="2" selection-end-line="117" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/components/Login/HaveLogin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="84" column="45" lean-forward="true" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#a#0;n#div#5;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#a#0;n#div#6;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#7;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#4711#5192#0" expanded="false" />
+            <element signature="e#5211#5437#0" expanded="false" />
+            <element signature="e#5455#5525#0" expanded="false" />
+            <element signature="e#5545#5592#0" expanded="false" />
+            <element signature="e#5618#5677#0" expanded="false" />
+            <element signature="e#5698#5797#0" expanded="false" />
+            <element signature="e#5825#5857#0" expanded="false" />
+            <element signature="e#5888#5941#0" expanded="false" />
+            <element signature="e#5976#6068#0" expanded="false" />
+            <element signature="e#6115#6207#0" expanded="false" />
+            <element signature="e#6239#6284#0" expanded="false" />
+            <element signature="e#6317#6419#0" expanded="false" />
+            <element signature="e#6433#6844#0" expanded="false" />
+            <element signature="e#6868#7298#0" expanded="false" />
+            <element signature="e#7324#8112#0" expanded="false" />
+            <element signature="e#8132#8172#0" expanded="false" />
+            <element signature="e#8204#8255#0" expanded="false" />
+            <element signature="e#8271#8325#0" expanded="false" />
+            <element signature="e#8343#8456#0" expanded="false" />
+            <element signature="e#8492#8516#0" expanded="false" />
+            <element signature="e#8537#8866#0" expanded="false" />
+            <element signature="e#8927#8950#0" expanded="false" />
+            <element signature="e#8977#9009#0" expanded="false" />
+            <element signature="e#9038#9062#0" expanded="false" />
+            <element signature="e#9173#9233#0" expanded="false" />
+            <element signature="e#9261#9311#0" expanded="false" />
+            <element signature="e#9331#9409#0" expanded="false" />
+            <element signature="e#9424#9502#0" expanded="false" />
+            <element signature="e#9526#9635#0" expanded="false" />
+            <element signature="e#9658#9718#0" expanded="false" />
+            <element signature="e#9733#9758#0" expanded="false" />
+            <element signature="e#9777#9806#0" expanded="false" />
+            <element signature="e#9821#9846#0" expanded="false" />
+            <element signature="e#9861#9886#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack-vue-yintai/src/router/duanyiwen/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-901">
+          <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

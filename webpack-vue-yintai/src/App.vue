@@ -5,7 +5,7 @@
     <!--<yt-footer></yt-footer>-->
     <router-view/>
     <!--<router-view/>-->
-    <footer-hui v-if="fthui"></footer-hui>
+    <!--<footer-hui v-if="fthui"></footer-hui>-->
     <yt-footer></yt-footer>
   </div>
 </template>
