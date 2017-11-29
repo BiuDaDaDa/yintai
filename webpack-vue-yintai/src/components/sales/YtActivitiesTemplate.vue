@@ -48,7 +48,7 @@
     },
     methods: {
       returnLastPage () {
-        this.route.go(-1)
+        this.$router.go(-1)
       },
       toPro (i, j) {
         this.newtitle = this.data.templatelist[i].items[j].itemid
@@ -139,23 +139,28 @@
     }
     .OneImg{
       float: left;
+      width:100%;
     }
     .pdc-index{
       background-color: @color-bgc-footer;
       .PDC-box{
         width: 50%;
-        height:500px;
         box-sizing: border-box;
         margin-bottom: 12px;
         padding:4px;
         display: inline-block;
-        .pdc-img{  width: 100%;  }
+        .pdc-img{
+          width: 100%;
+          img{
+            width:100%
+          }
+        }
         .pdc{  width: 100%;  }
         .pdc-info{
           position: relative;
           top:-4px;
           background-color: #fff;
-          padding: 6px;
+          padding: 0px;
           /*align-items: center;*/
           font-size: @font-size;
           .pdc-info-text{
@@ -169,7 +174,7 @@
             margin-right: 5px;
           }
           .pdc-info-price{
-            padding:5px 0;
+            padding:2px 0;
             .newprice{
               color: @color-sale-red;
               font-size: @font-size-medium-x;
@@ -181,7 +186,6 @@
             }
           }
         }
-
       }
     }
 

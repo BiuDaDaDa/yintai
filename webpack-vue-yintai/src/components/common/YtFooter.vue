@@ -2,30 +2,30 @@
 <div id="footer">
   <i class="iconfont icon-up" @click="returnTop"></i>
   <div class="nav-ul">
-    <button @click="indexs" class="nav-list" ref="btn">
+    <div @click="indexs" class="nav-list">
       <div><i class="icon-home iconfont" ></i></div>
       <div>首页</div>
-    </button>
+    </div>
 
-    <button @click="limitBuy" class="nav-list" ref="btn">
+    <div @click="limitBuy" class="nav-list">
       <div><i class="icon-icon-buy iconfont" ></i></div>
       <div>抢先</div>
-    </button>
+    </div>
 
-    <button @click="categorys" class="nav-list" ref="btn">
+    <div @click="categorys" class="nav-list">
       <div><i class="icon-categorynormal iconfont" ></i></div>
       <div>分类 </div>
-    </button>
+    </div>
 
-    <button @click="shoppingcart" class="nav-list" ref="btn">
+    <div @click="shoppingcart" class="nav-list">
       <div><i class="icon-cart iconfont" ></i></div>
       <div>购物车</div>
-    </button>
+    </div>
 
-    <button @click="userinfo" class="nav-list" ref="btn">
+    <div @click="userinfo" class="nav-list" >
       <div><i class="icon-user iconfont" ></i></div>
       <div>我的银泰</div>
-    </button>
+    </div>
   </div>
 </div>
 </template>
@@ -42,30 +42,21 @@
     methods: {
       indexs () {
         this.$router.push('/')
-        this.changeButtonStyle()
       },
       limitBuy () {
         this.$router.push('/limitbuy')
-        this.changeButtonStyle()
       },
       categorys () {
         this.$router.push('/category')
-        this.changeButtonStyle()
       },
       shoppingcart () {
         this.$router.push('/shoppingcar')
-        this.changeButtonStyle()
       },
       userinfo () {
         this.$router.push('/userinfo')
-        this.changeButtonStyle()
       },
       returnTop () {
         document.documentElement.scrollTop = 0
-      },
-      changeButtonStyle () {
-        this.$ref.btn.style.color = '#000'
-        this.$ref.btn.style.color = '#fff'
       }
     }
   }
