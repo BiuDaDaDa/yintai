@@ -5,7 +5,9 @@
       <div class="list">{{title}}</div>
       <div class="list"> . . . </div>
     </div>
+    <!--<div v-if="this.bargainid">-->
 
+    <!--</div>-->
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container2'" @click="reloadRequest(5)">销量</mt-button>
@@ -35,7 +37,7 @@
                 </div>
                 <div class="info-text">
                   <div>{{ saleproduct.name }}</div>
-                  <div v-if="saleproduct.promotionlabel!=null">{{saleproduct.promotionlabel}}</div>
+                  <!--<div v-if="saleproduct.promotionlabel">{{saleproduct.promotionlabel}}</div>-->
                   <p class="oldprice">￥{{saleproduct.price}}.00</p>
                   <div class="newprice"><span v-if="saleproduct.exclusivemobile"><i class="iconfont icon-phone" style="color:#b2b2b2"></i></span>￥{{saleproduct.yt_price}}.00</div>
                 </div>
@@ -75,11 +77,11 @@
     name: 'SalesProductList',
     data () {
       return {
-        components: {
-        },
+        navArr: [ '首页', '抢先', '分类', '购物车', '我的银泰' ],
+        routerArr: [ '/', '/limitbuy', '/category', '/shoppingcar', '/userinfo' ],
+        imgArr: [ '<i class="icon-home iconfont" ></i>', '<i class="icon-icon-buy iconfont" ></i>', '<i class="icon-categorynormal iconfont" ></i>', '<i class="icon-cart iconfont" ></i>icon-cart iconfont', '<i class="icon-user iconfont" ></i>' ],
         active: 'tab-container1',
-        arr: {},
-        arr1: {},
+        arr1: '',
         isload: false,
         isshowlist: false,
         a1: 3,
@@ -184,7 +186,13 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        this.url = `api?r=${date2}&method=${'products.getlist' || 'product.customtopticlist'}&ver=${'2.1' || '3.0.0'}&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22${this.searchCondition}%22%2C%22keyword%22%3A%22${this.keywords}%22%7D`
+        if (this.bargainid !== '') {
+          this.url = `api?r=0.9456637478507168&order_type=${this.a}&page_index=1&displaycount=30&query_string=&keyword=&bargainid=${this.bargainid}&method=products.getlimitlist&ver=2.1`
+        } else if (this.searchCondition !== '') {
+          this.url = `api?r=${date2}&&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.searchCondition}%22%2C%22keyword%22%3A%22%22%7D`
+        } else if (this.keywords !== '') {
+          this.url = `api?r=${date2}&&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D%22%2C%22keyword%22%3A%22${this.keywords}%22%7D`
+        }
         this.$request({
           type: 'get',
           url: this.url,
