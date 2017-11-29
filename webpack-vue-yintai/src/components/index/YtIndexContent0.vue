@@ -83,7 +83,7 @@
           this.$router.push({
             path: '/Sales',
             query: {
-              url: this.searchResult,
+              SearchCondition: this.searchResult,
               title: this.searchResult
             }
           })

@@ -57,7 +57,7 @@
         </div>
         <div class="cp-pas">
           <img src="../../assets/luhanran/loginPassword.png" alt="">
-          <input ref="loginPass" type="text" placeholder="请输入密码">
+          <input ref="loginPass" type="password" placeholder="请输入密码">
         </div>
       </div>
 
@@ -104,7 +104,9 @@
         token: '',
         userLogin: '',
         userPassword: '',
-        userKey: ''
+        userKey: '',
+        thisdata: '',
+        nikename: ''
       }
     },
     methods: {
@@ -185,11 +187,23 @@
                     type: 'get',
                     url: '/login/User/getProfileForMe?params=%5B%5B%22BasicInfo%22%2C%22Account%22%2C%22Asset%22%2C%22BindInfo%22%2C%22OrderCount%22%5D%2C%221090000%22%5D',
                     headers: {
-                      Authorization: 'Bearer bd237e1915d85033500ef90c5e89689ab3b87699',
+                      Authorization: 'Bearer 03123b509ed26804ebebc9fb5d8449dce2fc2a37',
                       'X-Auth-Token': `${this.userKey}`
                     },
                     success: function (res) {
                       console.log(res.data)
+                      this.thisdata = res.data
+                      if (this.thisdata === null) {
+                        alert('请输入正确的账号密码')
+                      } else {
+//                        this.myCookie =
+                        this.$router.push({
+                          path: '/HaveLogin',
+                          query: {
+                            nameOne: this.userKey
+                          }
+                        })
+                      }
                     },
                     failed: function (err) {
                       console.log(err)
