@@ -81,9 +81,9 @@
         clicked: function () {
           this.searchResult = this.$refs.indexSearch.value
           this.$router.push({
-            path: '/Sales',
+            path: '/SalesProductList',
             query: {
-              url: this.searchResult,
+              keywords: this.searchResult,
               title: this.searchResult
             }
           })
@@ -96,7 +96,7 @@
             this.$router.push({
               path: '/SalesProductList',
               query: {
-                SearchCondition: this.url,
+                pargainid: this.url,
                 title: this.title
               }
             })

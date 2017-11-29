@@ -12,7 +12,7 @@
   import YtIndexContentOne from './YtIndexContent0.vue'
   import YtIndexContentTwo from './YtIndexContent1.vue'
   import YtIndexContentThree from './YtIndexContent2.vue'
-  import YtIndexContentFour from './YtIndexContent3.vue'
+  import YtIndexContentFour from './YtIndexContent4.vue'
   export default {
     name: 'Index',
     components: {
