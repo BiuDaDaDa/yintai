@@ -232,16 +232,13 @@
 
 <style scoped lang="less">
   @import "../../common/css/index";
-
   .wrap {
     background-color: #f1f1f1;
   }
-
   .prd_title {
     margin-bottom: 10px;
     background-color: #fff;
   }
-
   .scrollimg {
     background-color: #fff;
     width: 100%;
@@ -254,7 +251,6 @@
       width: 240px;
     }
   }
-
   .name_box {
     background-color: #fff;
     padding: 10px 10px 0;
@@ -308,7 +304,6 @@
       }
     }
   }
-
   .prd_choose {
     background-color: #fff;
     width: 100%;
@@ -329,7 +324,6 @@
       }
     }
   }
-
   .prd_move {
     background-color: white;
     padding: 10px;
@@ -341,7 +335,6 @@
       }
     }
   }
-
   .move_size {
     width: 100%;
     .sizetop {
@@ -350,7 +343,6 @@
       padding: 10px 0;
     }
   }
-
   .move_count {
     padding: 10px 10px 0 10px;
     align-items: center;
@@ -378,7 +370,6 @@
       }
     }
   }
-
   .myPrdChoose {
     color: #ff6d9d;
     border-bottom: 1px dashed #dbdbdb;
@@ -408,7 +399,6 @@
       text-align: center;
     }
   }
-
   .myPrdChooseSize {
     color: #ff6d9d;
     border-bottom: 1px dashed #dbdbdb;
@@ -438,11 +428,9 @@
       text-align: center;
     }
   }
-
   .xuanxiang {
     color: @index-boom-introduce-color;
   }
-
   .brand {
     padding: 0 10px;
     background-color: #fff;
@@ -454,7 +442,6 @@
     height: 45px;
     box-sizing: border-box;
   }
-
   .brandright {
     height: 100%;
     display: flex;
@@ -464,7 +451,6 @@
       height: 100%;
     }
   }
-
   .prd_introduction {
     background-color: #fff;
     text-align: center;
@@ -479,7 +465,6 @@
       }
     }
   }
-
   .prd_module {
     width: 100%;
     position: fixed;
@@ -487,6 +472,7 @@
     bottom: 0;
     height: 45px;
     background-color: #fff;
+    z-index: 999;
     .go_car {
       border-top: 1px solid #d2d2d2;
       padding: 3px 5px;
@@ -522,7 +508,6 @@
       }
     }
   }
-
   .successLike {
     position: fixed;
     left: 0;
@@ -538,7 +523,6 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9999;
   }
-
   .likecontent {
     width: 80%;
     max-width: 360px;

@@ -1,36 +1,90 @@
 <template>
-  <div class="Nav_pd" v-if="pdArr != null">
+  <div class="Nav_title" v-if="pdArr != null">
     <!--会场展示大图-->
-    <div class="pd_top">
-      <div class="pd_nav">
-        <i class="iconfont icon-houtui"></i>
+    <div class="title_top">
+      <div class="title_nav">
+        <i class="iconfont icon-jiantou-left"></i>
         <span>{{title}}</span>
         <i class="iconfont icon-more"></i>
       </div>
       <img class="tagimg" :src="goods.items[0].imgurl" alt="" v-for="goods in pdArr" v-if="goods.templatename === '头图'" :key="goods.templateid">
-      <img class="tagimg" :src="goods.items[0].imgurl" alt="" v-for="goods in pdArr" v-if="goods.templatename === '满299减100 可累计'" :key="goods.templateid">
-      <!--品牌展示图-->
-      <div class="pinpai">
-        <div class="pinpaiimg" v-for="goods in pdArr" v-if="goods.templatetype === 'ThreeImgAbreast'" :key="goods.templateid">
-          <img :src="aaa.imgurl" alt="" v-for="aaa in goods.items" :key="aaa.itemid ">
-        </div>
-      </div>
-      <img class="tagimg" :src="goods.items[0].imgurl" alt="" v-for="goods in pdArr" v-if="goods.templatename === '爆款推荐'" :key="goods.templateid">
     </div>
+
+
     <!--爆款列表-->
     <div class="pd_content">
+      <!--丝绒楼层-->
+      <img class="tagimg" :src="goods.items[0].imgurl" alt="" v-for="goods in pdArr" v-if="goods.templatename === '丝绒'" :key="goods.templateid">
       <div class="pd_goodsShow">
         <div class="goods_wrap">
-          <div class="pd_goods" v-for="goods in pdArr" :key="goods.templateid" v-if="goods.templatename === '爆款列表'">
+          <div class="pd_goods" v-for="goods in pdArr" :key="goods.templateid" v-if="goods.templatename === '丝绒-楼层'">
             <div class="good_details" v-for="aaa in goods.items">
+              <!--满减-->
               <div class="manjian" v-for="bbb in aaa.extra.productdetail.prmotionlist">{{bbb.plabel}}</div>
               <a>
+                <!--商品图-->
                 <div class="goods_img">
                   <img :src="aaa.imgurl" alt="" :key="aaa.itemid">
                 </div>
+                <!--商品名字-->
                 <div class="goods_name">
                   {{aaa.extra.productdetail.name}}
                 </div>
+                <!--商品价格-->
+                <div class="goods_price">
+                  <span class="pd_price">￥<span>{{aaa.extra.productdetail.price}}.00</span></span>
+                  <span class="price">￥<span>{{aaa.extra.productdetail.marketprice}}.00</span></span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--针织楼层-->
+      <img class="tagimg" :src="goods.items[0].imgurl" alt="" v-for="goods in pdArr" v-if="goods.templatename === '趣味针织'" :key="goods.templateid">
+      <div class="pd_goodsShow">
+        <div class="goods_wrap">
+          <div class="pd_goods" v-for="goods in pdArr" :key="goods.templateid" v-if="goods.templatename === '趣味针织-楼层'">
+            <div class="good_details" v-for="aaa in goods.items">
+              <!--满减-->
+              <div class="manjian" v-for="bbb in aaa.extra.productdetail.prmotionlist">{{bbb.plabel}}</div>
+              <a>
+                <!--商品图-->
+                <div class="goods_img">
+                  <img :src="aaa.imgurl" alt="" :key="aaa.itemid">
+                </div>
+                <!--商品名字-->
+                <div class="goods_name">
+                  {{aaa.extra.productdetail.name}}
+                </div>
+                <!--商品价格-->
+                <div class="goods_price">
+                  <span class="pd_price">￥<span>{{aaa.extra.productdetail.price}}.00</span></span>
+                  <span class="price">￥<span>{{aaa.extra.productdetail.marketprice}}.00</span></span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--包袋楼层-->
+      <img class="tagimg" :src="goods.items[0].imgurl" alt="" v-for="goods in pdArr" v-if="goods.templatename === '包袋'" :key="goods.templateid">
+      <div class="pd_goodsShow">
+        <div class="goods_wrap">
+          <div class="pd_goods" v-for="goods in pdArr" :key="goods.templateid" v-if="goods.templatename === '包袋-楼层'">
+            <div class="good_details" v-for="aaa in goods.items">
+              <!--满减-->
+              <div class="manjian" v-for="bbb in aaa.extra.productdetail.prmotionlist">{{bbb.plabel}}</div>
+              <a>
+                <!--商品图-->
+                <div class="goods_img">
+                  <img :src="aaa.imgurl" alt="" :key="aaa.itemid">
+                </div>
+                <!--商品名字-->
+                <div class="goods_name">
+                  {{aaa.extra.productdetail.name}}
+                </div>
+                <!--商品价格-->
                 <div class="goods_price">
                   <span class="pd_price">￥<span>{{aaa.extra.productdetail.price}}.00</span></span>
                   <span class="price">￥<span>{{aaa.extra.productdetail.marketprice}}.00</span></span>
@@ -46,7 +100,7 @@
 
 <script>
   export default {
-    name: 'IndexScrollShoes',
+    name: 'IndexScrollOne',
     data () {
       return {
         title: null,
@@ -56,7 +110,7 @@
     mounted () {
       this.$request({
         type: 'get',
-        url: 'api?r=201711201440&os=HTML5&client_v=1.0.0&pageid=30002284&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
+        url: 'api?r=201711271511&os=HTML5&client_v=1.0.0&pageid=30002291&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
         headers: {},
         params: {},
         success: function (res) {
@@ -74,19 +128,20 @@
 
 <style scoped lang="less">
   @import "../../../common/css/index.less";
-  .Nav_pd{
+  .Nav_title{
     width: 100%;
-    .dct_top{
+    .title_top{
       width: 100%;
-      .dct_nav{
+      .title_nav{
         width: 100%;
         background-color: #fff;
         height: 40px;
         font-size: 16px;
+        font-weight: 500;
         display: flex;
+        padding: 0 10px;
         justify-content: space-between;
         align-items: center;
-        padding: 0 10px;
         box-sizing: border-box;
         span{
           font-weight: 500;

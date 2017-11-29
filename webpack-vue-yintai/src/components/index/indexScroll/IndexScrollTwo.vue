@@ -44,7 +44,7 @@
     mounted () {
       this.$request({
         type: 'get',
-        url: 'api?r=201711201746&os=HTML5&client_v=1.0.0&pageid=30002276&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
+        url: 'api?r=201711271510&os=HTML5&client_v=1.0.0&pageid=30002290&previewtime=0&methodName=products.template.getpage_1.0.0&method=products.template.getpage&apptype=10&ver=1.0.0&pageindex=1',
         headers: {},
         params: {},
         success: function (res) {

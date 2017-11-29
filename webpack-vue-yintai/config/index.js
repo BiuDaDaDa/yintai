@@ -11,14 +11,24 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api':{
-        target:'https://m.yintai.com',
-        changeOrigin:true,
-        pathRewrite:{
-          '^/api' : '/Services/Proxy.ashx'
+      '/api': {
+        target: 'https://m.yintai.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/Services/Proxy.ashx'
         },
-        headers:{
-          Host:'m.yintai.com'
+        headers: {
+          Host: 'm.yintai.com'
+        }
+      },
+      '/verification': {
+        target: 'https://gw.yintai.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/verification': '/oauth'
+        },
+        headers: {
+          Host: 'gw.yintai.com'
         }
       },
       '/login' : {
