@@ -2,6 +2,7 @@ import SalesProductList from '@/components/sales/ShePinContent'
 import Index from '@/components/index/YtIndex'
 import ShoppingCar from '@/components/shoppingcar/ShoppingCar'
 import ActivitiesTemplate from '@/components/sales/YtActivitiesTemplate'
+import Nav from '@/components/common/YtRightNav'
 import { Navbar, TabItem, InfiniteScroll, Header, Popup } from 'mint-ui'
 import Vue from 'vue'
 // import Mint from 'mint-ui'
@@ -31,5 +32,10 @@ export default [
     path: '/ActivitiesTemplate',
     name: ActivitiesTemplate,
     component: ActivitiesTemplate
+  },
+  {
+    path: '/nav',
+    name: 'Nav',
+    component: Nav
   }
 ]

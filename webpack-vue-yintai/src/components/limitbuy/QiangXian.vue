@@ -120,8 +120,8 @@
         this.$router.push({
           path: '/SalesProductlist',
           query: {
-            title: this.QiangxianName,
-            bargainid: this.Qiangxianid
+            bargainid: this.Qiangxianid,
+            title: this.QiangxianName
           }
         })
       },

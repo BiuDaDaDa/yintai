@@ -5,6 +5,7 @@
       <div class="list">{{title}}</div>
       <div class="list"> . . . </div>
     </div>
+
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container2'" @click="reloadRequest(5)">销量</mt-button>
@@ -51,7 +52,7 @@
               </div>
               <div class="rl-list-con1" v-for="(list, index) in arr1['filter_group']" >
                 <div @click="con(index+1)">{{list.title}}<i class="iconfont icon-down1"></i></div>
-                <!--<div><p v-show=`rlcon+${index+1}` v-for="(listli, key) in list.items">{{listli.name}}</p></div>-->
+                <!--<div><p v-show=`rlcon+${index+1}` v-if="key" v-for="(listli, key) in list.items">{{listli.name}}</p></div>-->
               </div>
             </div>
           </mt-popup>
@@ -97,9 +98,10 @@
         colordown1: 0,
         colordown2: 0,
         tabID: 1,
-        searchCondition: this.$route.query.searchCondition,
+        searchCondition: this.$route.query.searchCondition || '',
         title: this.$route.query.title || this.$route.query.title1,
-        shortURL: this.$route.query.shortURL || ''
+        bargainid: ('bargainid' && this.$route.query.bargainid) || '',
+        keywords: this.$route.query.keywords
       }
     },
     methods: {
@@ -182,8 +184,7 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        this.url = `api?r=${date2}&method=${'products.getlist' || 'product.customtopticlist'}&ver=${'2.1' || '3.0.0'}&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22${this.searchCondition}%2B60827091%22%2C%22keyword%22%3A%22${this.shortURL}%22%7D`
-        console.log(this.url)
+        this.url = `api?r=${date2}&method=${'products.getlist' || 'product.customtopticlist'}&ver=${'2.1' || '3.0.0'}&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22${this.searchCondition}%22%2C%22keyword%22%3A%22${this.keywords}%22%7D`
         this.$request({
           type: 'get',
           url: this.url,
