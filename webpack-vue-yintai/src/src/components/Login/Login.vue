@@ -187,7 +187,7 @@
                     type: 'get',
                     url: '/login/User/getProfileForMe?params=%5B%5B%22BasicInfo%22%2C%22Account%22%2C%22Asset%22%2C%22BindInfo%22%2C%22OrderCount%22%5D%2C%221090000%22%5D',
                     headers: {
-                      Authorization: 'Bearer 67bfe21495f4b1969fb87e7105c5c10003de0801',
+                      Authorization: 'Bearer 03123b509ed26804ebebc9fb5d8449dce2fc2a37',
                       'X-Auth-Token': `${this.userKey}`
                     },
                     success: function (res) {
