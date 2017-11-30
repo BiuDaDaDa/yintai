@@ -38,9 +38,12 @@
             </p>
           </div>
         </div>
-        <!--活动-->
-        <div class="active">
-          <span>活动</span>
+        <!-- 活动-->
+        <div class="myactive">
+          <div class="actlist" v-for="act in myArr.promotions" v-if="act.promotions!==[]">
+            <span class="span1">{{act.name}}</span>
+            <span>{{act.desc[0]}}</span>
+          </div>
         </div>
         <!--已选绑定-->
         <div class="prd_choose">
@@ -232,6 +235,22 @@
 
 <style scoped lang="less">
   @import "../../common/css/index";
+
+  .myactive{
+    background-color: #fff;
+    margin-bottom: 8px;
+    .actlist {
+      color: #999999;
+      padding: 10px;
+      .span1{
+        color: white;
+        background-color: #FF3C7E;
+        padding: 0 8px;
+        border-radius: 3px;
+        margin-right: 5px;
+      }
+    }
+  }
   .wrap {
     background-color: #f1f1f1;
   }
@@ -262,7 +281,7 @@
       justify-content: space-around;
       .title {
         height: 100%;
-        line-height: 20px;
+        line-height: 25px;
         padding: 3px 10px 3px 0;
         border-right: 1px solid #d5d5d5;
         font-size: 16px;
