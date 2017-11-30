@@ -5,9 +5,10 @@
       <div class="list">{{title}}</div>
       <div class="list"> . . . </div>
     </div>
-    <!--<div v-if="this.bargainid">-->
-
-    <!--</div>-->
+    <div v-if="this.bargainid" class="lastTime">
+      <!--<span id="countCown">{{arr1.leftsecond}}</span>-->
+      <i class="iconfont icon-clock"></i>剩 <span v-html="this.lastDay"></span>天{{lastHour}}小时{{lastMinute}}分{{lastSecond}}秒
+    </div>
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container2'" @click="reloadRequest(5)">销量</mt-button>
@@ -100,10 +101,14 @@
         colordown1: 0,
         colordown2: 0,
         tabID: 1,
-        searchCondition: this.$route.query.searchCondition || '',
+        searchCondition: this.$route.query.searchCondition,
         title: this.$route.query.title || this.$route.query.title1,
-        bargainid: ('bargainid' && this.$route.query.bargainid) || '',
-        keywords: this.$route.query.keywords
+        bargainid: ('bargainid' && this.$route.query.bargainid),
+        keywords: this.$route.query.keywords,
+        lastDay: '',
+        lastHour: '',
+        lastMinute: '',
+        lastSecond: ''
       }
     },
     methods: {
@@ -201,11 +206,42 @@
           success: function (res) {
             this.arr1 = res.data.data
             this.isload = true
+            let times = parseInt(this.arr1.leftsecond)
+            if (times >= 0) {
+              setInterval(function () {
+                console.log(times)
+                let day = 24 * 60 * 60
+                let hour = 60 * 60
+                let minute = 60
+                this.lastDay = times / day
+                this.lastHour = times % day / hour
+                this.lastMinute = times % day % hour / minute
+                this.lastSecond = times % day % hour % minute
+              }, 1000)
+              times--
+            }
           },
           failed: function (err) {
             console.log(err)
           }
         })
+        if (this.arr1.leftsecond !== 0) {
+          let times = 0 + this.arr1.leftsecond
+          console.log(times)
+//          window.setInterval(function () {
+//            let day = 24 * 60 * 60
+//            let hour = 60 * 60
+//            let minute = 60
+//            this.lastDay = times / day
+//            this.lastHour = times % day / hour
+//            this.lastMinute = times % day % hour / minute
+//            this.lastSecond = times % day % hour % minute
+//            times--
+//            clearInterval()
+//          }, 1000000)
+        } else {
+          window.clearInterval()
+        }
       },
       con (k) {
         if (k === 1) {
