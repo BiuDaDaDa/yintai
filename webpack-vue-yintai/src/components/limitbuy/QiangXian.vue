@@ -83,8 +83,9 @@
       if (dateminute < 10) {
         dateminute = `0${dateminute}`
       }
-      var date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
+      var date2 = `${date1.getFullYear()}/${date1.getMonth() + 1}/${date1.getDate()} ${datehour}:${dateminute}`
       this.timestamp = Date.parse(new Date())
+      console.log(date2)
 //      下半部分内容
       this.$request({
         type: 'get',

@@ -2,30 +2,30 @@
 <div id="footer">
   <i class="iconfont icon-up" @click="returnTop"></i>
   <div class="nav-ul">
-    <div @click="indexs" class="nav-list">
+    <router-link to="/" class="nav-list" exact>
       <div><i class="icon-home iconfont" ></i></div>
       <div>首页</div>
-    </div>
+    </router-link>
 
-    <div @click="limitBuy" class="nav-list">
+    <router-link to="/limitBuy" class="nav-list">
       <div><i class="icon-icon-buy iconfont" ></i></div>
       <div>抢先</div>
-    </div>
+    </router-link>
 
-    <div @click="categorys" class="nav-list">
+    <router-link to="/category" class="nav-list">
       <div><i class="icon-categorynormal iconfont" ></i></div>
       <div>分类 </div>
-    </div>
+    </router-link>
 
-    <div @click="shoppingcart" class="nav-list">
+    <router-link to="/shoppingcart" class="nav-list">
       <div><i class="icon-cart iconfont" ></i></div>
       <div>购物车</div>
-    </div>
+    </router-link>
 
-    <div @click="userinfo" class="nav-list" >
+    <router-link to="userinfo" class="nav-list" >
       <div><i class="icon-user iconfont" ></i></div>
       <div>我的银泰</div>
-    </div>
+    </router-link>
   </div>
 </div>
 </template>
@@ -40,21 +40,6 @@
   export default {
     name: '',
     methods: {
-      indexs () {
-        this.$router.push('/')
-      },
-      limitBuy () {
-        this.$router.push('/limitbuy')
-      },
-      categorys () {
-        this.$router.push('/category')
-      },
-      shoppingcart () {
-        this.$router.push('/shoppingcar')
-      },
-      userinfo () {
-        this.$router.push('/userinfo')
-      },
       returnTop () {
         document.documentElement.scrollTop = 0
       }
@@ -94,13 +79,12 @@
         .iconfont{
           font-size: 26px;
         }
-        button{
-          background-color: green;
+        router-link-active{
+          div{
+            color: @color-sale-red !important;
+          }
         }
-        button:focus{
-          color:@color-sale-red;
-          border-style: none;
-        }
+
         div:nth-child(1){
           padding-bottom: 5px;
         }

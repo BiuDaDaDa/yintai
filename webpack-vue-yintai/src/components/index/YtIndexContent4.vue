@@ -79,7 +79,7 @@
       },
       toPro (i, j) {
         this.title = this.tagArr[i].items[j].itemid
-        this.$router.push({path: '/pro', query: {title: this.title}})
+        this.$router.push({path: '/prd', query: {title: this.title}})
       }
     },
     mounted () {

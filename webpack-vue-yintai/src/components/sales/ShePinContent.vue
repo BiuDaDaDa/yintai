@@ -5,8 +5,11 @@
       <div class="list">{{title}}</div>
       <div class="list"> . . . </div>
     </div>
-    <!--<div v-if="this.bargainid">-->
-
+    <div >
+    </div>
+    <!--<div v-if="isload && arr1.leftsecond != undefined" class="lastTime">-->
+      <!--&lt;!&ndash;<span id="countCown">{{arr1.leftsecond}}</span>&ndash;&gt;-->
+      <!--<i class="iconfont icon-clock"></i>剩 <span :v-model="this.lastDay"></span>天{{lastHour}}小时{{lastMinute}}分{{lastSecond}}秒-->
     <!--</div>-->
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
@@ -27,10 +30,10 @@
     </div>
     <div class="YTloading" v-show="!isload"><img src="../../assets/h5-loading.gif" alt=""></div>
     <div class="page-tab-container">
-      <mt-tab-container class="page-tabbar-tab-container" v-model="active"  v-show="isload">
+      <mt-tab-container class="page-tabbar-tab-container" v-model="active"  v-if="isload">
         <mt-tab-container-item :id="'tab-container'+this.tabID" class="item" >
           <ul class="sp-ul">
-            <li @click="jumpThird(index)" class="sp-li" v-for="(saleproduct,index) in arr1['product_list']">
+            <li @click="jumpThird(index)" class="sp-li" v-for="(saleproduct,index) in this.arr1['product_list']">
               <div class="sp-li-info">
                 <div class="info-img">
                   <img :src="saleproduct.midimageurl" alt="">
@@ -54,7 +57,7 @@
               </div>
               <div class="rl-list-con1" v-for="(list, index) in arr1['filter_group']" >
                 <div @click="con(index+1)">{{list.title}}<i class="iconfont icon-down1"></i></div>
-                <!--<div><p v-show=`rlcon+${index+1}` v-if="key" v-for="(listli, key) in list.items">{{listli.name}}</p></div>-->
+                <div><p v-show=`rlcon+${index+1}` v-if="key" v-for="(listli, key) in list.items">{{arr1['filter_group'][index].name}}</p></div>
               </div>
             </div>
           </mt-popup>
@@ -100,15 +103,19 @@
         colordown1: 0,
         colordown2: 0,
         tabID: 1,
-        searchCondition: this.$route.query.searchCondition || '',
+        searchCondition: this.$route.query.searchCondition,
         title: this.$route.query.title || this.$route.query.title1,
-        bargainid: ('bargainid' && this.$route.query.bargainid) || '',
-        keywords: this.$route.query.title
+        lastDay: '',
+        lastHour: '',
+        lastMinute: '',
+        lastSecond: '',
+//        bargainid: this.$route.query.bargainid,
+        keywords: this.$route.query.keywords
       }
     },
     methods: {
       jumpThird: function (index) {
-        let inputUrl = this.arr1.product_list[index].itemcode
+        let inputUrl = this.arr1['product_list'][index].itemcode
         console.log(inputUrl)
         this.$router.push({
           path: '/prd',
@@ -186,12 +193,13 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        if (this.bargainid !== '') {
-          this.url = `api?r=0.9456637478507168&order_type=${this.a}&page_index=1&displaycount=30&query_string=&keyword=&bargainid=${this.bargainid}&method=products.getlimitlist&ver=2.1`
-        } else if (this.searchCondition !== '') {
+//        if (this.bargainid !== '') {
+//          this.url = `api?order_type=${this.a}&page_index=1&displaycount=30&query_string=&keyword=&bargainid=${this.bargainid}&method=products.getlimitlist&ver=2.1`
+//        }
+        if (this.searchCondition !== '') {
           this.url = `api?r=${date2}&&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.searchCondition}%22%2C%22keyword%22%3A%22%22%7D`
         } else if (this.keywords !== '') {
-          this.url = `api?r=${date2}&&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D%22%2C%22keyword%22%3A%22${this.keywords}%22%7D`
+          this.url = `api?r=${date2}&&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22%22%2C%22keyword%22%3A%22${this.keywords}%22%7D`
         }
         this.$request({
           type: 'get',
@@ -200,6 +208,7 @@
           params: {},
           success: function (res) {
             this.arr1 = res.data.data
+            console.log(this.arr1)
             this.isload = true
           },
           failed: function (err) {
