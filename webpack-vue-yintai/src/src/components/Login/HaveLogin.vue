@@ -8,8 +8,8 @@
     <div class="viewport">
       <div class="user-information">
         <div class="user-img"><img src="../../assets/user-head.png"/></div>
-        <p class="user-name">{{thatdata}}</p>
-        <p class="user-level">{{vip}}</p>
+        <p class="user-name">{{}}</p>
+        <p class="user-level">{{}}</p>
       </div>
       <!--订单售后-->
       <div class="user-order cf">
@@ -53,12 +53,12 @@
         <a href="#" class="yt-uc-huzhao">
           <i class="iconfont icon-huzhao"></i>
           <div class="user-center-catlog"><span class="yt-center-title">银泰护照</span><span
-            class="yt-center-val">{{telephone}}</span></div>
+            class="yt-center-val">{{thisdata}}</span></div>
         </a>
         <a href="#" class="yt-uc-phone">
           <i class="iconfont icon-shouji"></i>
           <div class="user-center-catlog"><span class="yt-center-title">手机号</span><span
-            class="yt-center-val">{{password}}</span>
+            class="yt-center-val">{{}}</span>
           </div>
         </a>
       </div>
@@ -121,11 +121,7 @@
     data () {
       return {
         keyKey: this.$route.query.nameOne,
-        thisdata: '',
-        thatdata: '',
-        vip: '',
-        telephone: '',
-        password: ''
+        thisdata: ''
       }
     },
     mounted () {
@@ -135,16 +131,12 @@
         type: 'get',
         url: '/login/User/getProfileForMe?params=%5B%5B%22BasicInfo%22%2C%22Account%22%2C%22Asset%22%2C%22BindInfo%22%2C%22OrderCount%22%5D%2C%221090000%22%5D',
         headers: {
-          Authorization: 'Bearer 67bfe21495f4b1969fb87e7105c5c10003de0801',
+          Authorization: 'Bearer 03123b509ed26804ebebc9fb5d8449dce2fc2a37',
           'X-Auth-Token': `${this.keyKey}`
         },
         success: function (res) {
           console.log(res.data)
-          this.thatdata = res.data.val.BasicInfo.nickName
           this.thisdata = res.data
-          this.vip = res.data.val.BasicInfo.rankName
-          this.telephone = res.data.val.BindInfo.cellphone
-          this.cellphone = res.data.val.BindInfo.passportPrinciple
         },
         failed: function (err) {
           console.log(err)

@@ -21,16 +21,6 @@ module.exports = {
           Host: 'm.yintai.com'
         }
       },
-      '/verification': {
-        target: 'https://gw.yintai.com',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/verification': '/oauth'
-        },
-        headers: {
-          Host: 'gw.yintai.com'
-        }
-      },
       '/login' : {
         target: 'https://user-facade-prod.yintai.com',
         changeOrigin: true,
@@ -55,7 +45,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.HOST, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,

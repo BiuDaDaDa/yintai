@@ -5,10 +5,7 @@
       <div class="list">{{title}}</div>
       <div class="list"> . . . </div>
     </div>
-    <div v-if="this.bargainid" class="lastTime">
-      <!--<span id="countCown">{{arr1.leftsecond}}</span>-->
-      <i class="iconfont icon-clock"></i>剩 <span v-html="this.lastDay"></span>天{{lastHour}}小时{{lastMinute}}分{{lastSecond}}秒
-    </div>
+
     <div id="nav" class="nav">
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container1'" @click="reloadRequest(0)">默认</mt-button>
       <mt-button class="nav-items" @click.native.prevent="active = 'tab-container2'" @click="reloadRequest(5)">销量</mt-button>
@@ -38,7 +35,7 @@
                 </div>
                 <div class="info-text">
                   <div>{{ saleproduct.name }}</div>
-                  <!--<div v-if="saleproduct.promotionlabel">{{saleproduct.promotionlabel}}</div>-->
+                  <div v-if="saleproduct.promotionlabel!=null">{{saleproduct.promotionlabel}}</div>
                   <p class="oldprice">￥{{saleproduct.price}}.00</p>
                   <div class="newprice"><span v-if="saleproduct.exclusivemobile"><i class="iconfont icon-phone" style="color:#b2b2b2"></i></span>￥{{saleproduct.yt_price}}.00</div>
                 </div>
@@ -82,7 +79,8 @@
         routerArr: [ '/', '/limitbuy', '/category', '/shoppingcar', '/userinfo' ],
         imgArr: [ '<i class="icon-home iconfont" ></i>', '<i class="icon-icon-buy iconfont" ></i>', '<i class="icon-categorynormal iconfont" ></i>', '<i class="icon-cart iconfont" ></i>icon-cart iconfont', '<i class="icon-user iconfont" ></i>' ],
         active: 'tab-container1',
-        arr1: '',
+        arr: {},
+        arr1: [],
         isload: false,
         isshowlist: false,
         a1: 3,
@@ -101,19 +99,10 @@
         colordown1: 0,
         colordown2: 0,
         tabID: 1,
-        searchCondition: this.$route.query.searchCondition,
+        searchCondition: this.$route.query.searchCondition || '',
         title: this.$route.query.title || this.$route.query.title1,
-<<<<<<< HEAD
-        bargainid: ('bargainid' && this.$route.query.bargainid),
-        keywords: this.$route.query.keywords,
-        lastDay: '',
-        lastHour: '',
-        lastMinute: '',
-        lastSecond: ''
-=======
         bargainid: ('bargainid' && this.$route.query.bargainid) || '',
-        keywords: this.$route.query.title
->>>>>>> 3fa189d5650f4d17bd38e22e8d0ee4665dc5cfa2
+        keywords: this.$route.query.keywords
       }
     },
     methods: {
@@ -196,13 +185,7 @@
           dateminute = `0${dateminute}`
         }
         let date2 = `${date1.getFullYear()}${date1.getMonth() + 1}${date1.getDate()}${datehour}${dateminute}`
-        if (this.bargainid !== '') {
-          this.url = `api?r=0.9456637478507168&order_type=${this.a}&page_index=1&displaycount=30&query_string=&keyword=&bargainid=${this.bargainid}&method=products.getlimitlist&ver=2.1`
-        } else if (this.searchCondition !== '') {
-          this.url = `api?r=${date2}&&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D${this.searchCondition}%22%2C%22keyword%22%3A%22%22%7D`
-        } else if (this.keywords !== '') {
-          this.url = `api?r=${date2}&&method=products.getlist&ver=2.1&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22N%3D%22%2C%22keyword%22%3A%22${this.keywords}%22%7D`
-        }
+        this.url = `api?r=${date2}&method=${'products.getlist' || 'product.customtopticlist'}&ver=${'2.1' || '3.0.0'}&data=%7B%22order_type%22%3A${this.a}%2C%22page_index%22%3A1%2C%22displaycount%22%3A30%2C%22query_string%22%3A%22${this.searchCondition}%22%2C%22keyword%22%3A%22${this.keywords}%22%7D` || `api?r=order_type=${this.a}&page_index=1&displaycount=30&query_string=&keyword=&bargainid=${this.bargainid}&method=products.getlimitlist&ver=2.1`
         this.$request({
           type: 'get',
           url: this.url,
@@ -211,42 +194,11 @@
           success: function (res) {
             this.arr1 = res.data.data
             this.isload = true
-            let times = parseInt(this.arr1.leftsecond)
-            if (times >= 0) {
-              setInterval(function () {
-                console.log(times)
-                let day = 24 * 60 * 60
-                let hour = 60 * 60
-                let minute = 60
-                this.lastDay = times / day
-                this.lastHour = times % day / hour
-                this.lastMinute = times % day % hour / minute
-                this.lastSecond = times % day % hour % minute
-              }, 1000)
-              times--
-            }
           },
           failed: function (err) {
             console.log(err)
           }
         })
-        if (this.arr1.leftsecond !== 0) {
-          let times = 0 + this.arr1.leftsecond
-          console.log(times)
-//          window.setInterval(function () {
-//            let day = 24 * 60 * 60
-//            let hour = 60 * 60
-//            let minute = 60
-//            this.lastDay = times / day
-//            this.lastHour = times % day / hour
-//            this.lastMinute = times % day % hour / minute
-//            this.lastSecond = times % day % hour % minute
-//            times--
-//            clearInterval()
-//          }, 1000000)
-        } else {
-          window.clearInterval()
-        }
       },
       con (k) {
         if (k === 1) {

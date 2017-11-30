@@ -1,29 +1,28 @@
 <template>
   <div class="wrap">
-    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 2 && tag.length>0">
+    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 6">
       <!-- tagTitle -->
       <div class="top">
         <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,1,0)">
       </div>
       <div class="content1">
         <!--大图-->
-        <div :class="(tag[1].templatetype === 'ThreeImgLeftOne')?name1: name2">
-          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 302 && tag[1].templateid !==  20000027">
+        <div :class="(tag[1].templatetype == 'ThreeImgLeftOne')?name1: name2">
+          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 302 && tag[1].templateid !== 20024064">
             <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--两个小图-->
         <div class="imgbox" >
-          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !==   20024178">
+          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !== 20024064">
             <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--海淘馆的特殊样式-->
-        <div class="imgbox" v-for="(aaa,key) in tag[1].items" v-if="tag[1].templateid === 20024178">
+        <div class="imgbox" v-for="(aaa,key) in tag[1].items" v-if="tag[1].templateid === 20024064">
           <a><img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)"></a>
         </div>
       </div>
-
       <div class="content2">
         <div class="tag_content2_box" v-for="(aaa,key) in tag[2].items" v-if="tag[2]!=null">
           <a>
@@ -31,7 +30,6 @@
           </a>
         </div>
       </div>
-
       <div class="tag_bottom" v-if="tag[3] !=null ">
         <div class="bottom_box">
           <a><img :src="tag[3].items[0].imgurl" alt=""></a>
@@ -86,7 +84,7 @@
           let goods = []
           for (let i = 0; i < this.tagArr.length; i++) {
             let type = this.tagArr[i].templatetype
-            if (type === 'FloorFoot' || type === 'FloorSpace' || type === 'CarouselFigure') {
+            if (type === 'FloorFoot' || type === 'FloorSpace') {
               let array = goods.slice(0)
               allGoods.push(array)
               goods = []
@@ -95,7 +93,6 @@
             goods.push(this.tagArr[i])
           }
           this.newArr = allGoods
-          console.log(this.newArr)
           // 向导航组件部分传值
           this.busNav = this.newArr
           bus.$emit('chuanzhi', this.busNav)

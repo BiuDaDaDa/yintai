@@ -38,10 +38,11 @@
             </p>
           </div>
         </div>
-        <!-- 活动-->
-        <div class="myactive">
-          <div class="actlist" v-for="act in myArr.promotions" v-if="act.promotions!==[]">
-            <span class="span1">{{act.name}}</span>
+        <!--活动-->
+        <div class="active">
+          dfngijshfigwROGWRG
+          <div v-for="act in myArr.promotions" v-if="act.promotions!==[]">
+            <span>{{act.name}}</span>
             <span>{{act.desc[0]}}</span>
           </div>
         </div>
@@ -151,14 +152,13 @@
         likeShow: false,
         likeor: true,
         changeUrl: this.$route.query.title
-
       }
     },
     mounted: function () {
       this.$request(
         {
           type: 'get',
-          url: `api?data=%7B%22itemcode%22%3A%22${this.changeUrl}%22%2C%22userid%22%3A%22%22%7D&userid=&methodName=products.getproductdetail_1.0.0&method=products.getproductdetail&ver=1.0.0`,
+          url: `api?data=%7B%22itemcode%22%3A%22${this.changeUrl}%22%2C%22userid%22%3A%22M2itx5sUa5GpFMcpvWPSEJFybFHc1It1R2JjF2bWdwvgfvQVvCJiOVMdnXBD%2FuBmB3dHmRdxxWiPs8cLi92vQQ%3D%3D%22%7D&userid=M2itx5sUa5GpFMcpvWPSEJFybFHc1It1R2JjF2bWdwvgfvQVvCJiOVMdnXBD%2FuBmB3dHmRdxxWiPs8cLi92vQQ%3D%3D&methodName=products.getproductdetail_1.0.0&method=products.getproductdetail&ver=1.0.0&r=201711251503`,
           headers: {},
           params: {},
           success: function (res) {
@@ -166,8 +166,8 @@
             this.brands = res.data.data.products
             this.myArrAll = res.data.data
             // 存放新的数组
-            let allGoods = {}
             let array = []
+            let allGoods = {}
             for (let i = 0; i < this.brands.length; i++) {
               let mybrand = this.brands[i]
               let mode = mybrand.imageitemcode
@@ -236,22 +236,6 @@
 
 <style scoped lang="less">
   @import "../../common/css/index";
-
-  .myactive{
-    background-color: #fff;
-    margin-bottom: 8px;
-    .actlist {
-      color: #999999;
-      padding: 10px;
-      .span1{
-        color: white;
-        background-color: #FF3C7E;
-        padding: 0 8px;
-        border-radius: 3px;
-        margin-right: 5px;
-      }
-    }
-  }
   .wrap {
     background-color: #f1f1f1;
   }
@@ -282,7 +266,7 @@
       justify-content: space-around;
       .title {
         height: 100%;
-        line-height: 25px;
+        line-height: 20px;
         padding: 3px 10px 3px 0;
         border-right: 1px solid #d5d5d5;
         font-size: 16px;
