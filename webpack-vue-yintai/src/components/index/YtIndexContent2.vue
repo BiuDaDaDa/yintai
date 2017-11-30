@@ -8,13 +8,13 @@
       <div class="content1">
         <!--大图-->
         <div :class="(tag[1].templatetype === 'ThreeImgLeftOne')?name1: name2">
-          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 302 && tag[1].templateid !==  20000027">
+          <a v-for="(aaa,key) in tag[1].items" v-if="aaa.height === 302 && tag[1].templateid !==  20000027">
             <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--两个小图-->
-        <div class="imgbox" >
-          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !==   20024178">
+        <div class="imgbox">
+          <a v-for="(aaa,key) in tag[1].items" v-if="aaa.height === 150 && tag[1].templateid !==   20024178">
             <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
@@ -43,6 +43,7 @@
 
 <script>
   import bus from '../common/eventBus'
+
   export default {
     name: 'YtIndexContent2',
     data () {
@@ -110,10 +111,11 @@
 </script>
 
 <style scoped lang="less">
-  .wrap{
+  .wrap {
     background-color: #f1f1f1;
   }
-  .tag_box{
+
+  .tag_box {
     width: 100%;
     margin-bottom: 10px;
     .top {
@@ -124,21 +126,21 @@
     }
     .content1 {
       width: 100%;
-      .imgbox{
+      .imgbox {
         width: 50%;
         display: inline-block;
         img {
           width: 100%;
         }
       }
-      .imgleft{
+      .imgleft {
         width: 50%;
         float: left;
         img {
           width: 100%;
         }
       }
-      .imgright{
+      .imgright {
         width: 50%;
         float: right;
         img {
@@ -147,6 +149,7 @@
       }
     }
   }
+
   .content2 {
     width: 100%;
     display: flex;
@@ -158,6 +161,7 @@
       }
     }
   }
+
   .tag_bottom {
     width: 100%;
     .bottom_box {
