@@ -4,7 +4,8 @@
       <!--<i class="iconfont icon-jiantou-left"></i>-->
       <span>oo</span>
       <span>我的收藏</span>
-      <span @click="del">编辑</span>
+      <span @click="del" v-show="!isShow">编辑</span>
+      <span @click="del" v-show="isShow">完成</span>
     </div>
     <div class="collect_content">
       <div class="con_table">
@@ -17,7 +18,7 @@
       <div class="goodslist">
         <div class="mygoods" v-for="(a,index) in myArr">
           <div class="mybutton" v-show="isShow">
-            <div class="checkbox"  @click="clear(index)" ref="checked"></div>
+            <div class="checkbox" @click="clear(index)" ref="checked"></div>
           </div>
           <div class="goodsbox">
             <div class="mygoodsLeft">
@@ -34,20 +35,22 @@
       <div class="pranglist"></div>
     </div>
 
-    <!--<div class="footer">-->
-      <!--<div class="leftFooter">-->
-        <!--<div></div>-->
-        <!--<span>全选</span>-->
-      <!--</div>-->
-      <!--<div class="rightFooter">-->
-        <!--<button>取消收藏</button>-->
-      <!--</div>-->
-    <!--</div>-->
+    <div class="footer" v-show="isShow">
+      <div class="allcheck">
+        <div class="check">
+          <div class="checkbox"></div>
+        </div>
+        <span>全选</span>
+      </div>
+      <div class="rightFooter">
+        <button id="quxiao">取消收藏</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-//  import axios from 'axios'
+  //  import axios from 'axios'
 
   export default {
     name: 'UserCollect',
@@ -120,15 +123,62 @@
     height: 100%;
     background-color: #f1f1f1;
   }
-
+  #quxiao {
+    width: 80px;
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    top: 10px;
+    border: 1px solid #ff3b7f;
+    color: #ff3b7f;
+    border-radius: 4px;
+    background: 0 0;
+    outline: 0;
+  }
+  .footer {
+    font-size: 14px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #d5d5d5;
+    position: fixed;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    .allcheck {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 20px;
+      border-right: 1px solid #d5d5d5;
+      .check {
+        .checkbox {
+          padding: 3px;
+          width: 18px;
+          height: 18px;
+          border: 1px solid #d2d2d2;
+          border-radius: 100%;
+          background-color: #fff;
+          background-clip: content-box;
+          box-sizing: border-box;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
   .collect_top {
+    z-index: 999999;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     border-bottom: 2px solid #d2d2d2;
   }
-
   .collect_content {
     width: 100%;
     .con_table {
@@ -151,7 +201,6 @@
       }
     }
   }
-
   .collect {
     width: 100%;
     .goodslist {
@@ -173,7 +222,7 @@
         .mybutton {
           margin-right: 10px;
           .checkbox {
-            background-color: pink;
+            background-color: #cccccc;
             display: inline-block;
             padding: 3px;
             width: 18px;
@@ -184,7 +233,7 @@
             box-sizing: border-box;
           }
         }
-        .goodsbox{
+        .goodsbox {
           display: flex;
           width: 100%;
           .mygoodsLeft {
@@ -213,10 +262,7 @@
       }
     }
   }
-
   .price {
     color: #ff3b7f;
   }
-
-
 </style>
