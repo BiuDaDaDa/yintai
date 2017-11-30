@@ -242,7 +242,7 @@
     color: @more-product-introduce-color;
     font-size: @font-size;
     box-sizing: border-box;
-    line-height: 20px;
+    line-height: 25px;
   }
 
   .jingxuan-hh-content-A-left-b {

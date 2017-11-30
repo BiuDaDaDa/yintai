@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 2">
+    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 2 && tag.length>0">
       <!-- tagTitle -->
       <div class="top">
         <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,1,0)">
@@ -86,7 +86,7 @@
           let goods = []
           for (let i = 0; i < this.tagArr.length; i++) {
             let type = this.tagArr[i].templatetype
-            if (type === 'FloorFoot') {
+            if (type === 'FloorFoot' || type === 'FloorSpace' || type === 'CarouselFigure') {
               let array = goods.slice(0)
               allGoods.push(array)
               goods = []
@@ -95,6 +95,7 @@
             goods.push(this.tagArr[i])
           }
           this.newArr = allGoods
+          console.log(this.newArr)
           // 向导航组件部分传值
           this.busNav = this.newArr
           bus.$emit('chuanzhi', this.busNav)

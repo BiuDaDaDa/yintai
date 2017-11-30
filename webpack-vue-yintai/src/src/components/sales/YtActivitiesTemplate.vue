@@ -160,7 +160,7 @@
           position: relative;
           top:-4px;
           background-color: #fff;
-          padding: 0px;
+          padding: 0;
           /*align-items: center;*/
           font-size: @font-size;
           .pdc-info-text{
