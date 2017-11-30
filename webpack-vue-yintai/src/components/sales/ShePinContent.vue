@@ -103,17 +103,12 @@
         tabID: 1,
         searchCondition: this.$route.query.searchCondition,
         title: this.$route.query.title || this.$route.query.title1,
-<<<<<<< HEAD
-        bargainid: ('bargainid' && this.$route.query.bargainid),
-        keywords: this.$route.query.keywords,
         lastDay: '',
         lastHour: '',
         lastMinute: '',
-        lastSecond: ''
-=======
-        bargainid: ('bargainid' && this.$route.query.bargainid) || '',
+        lastSecond: '',
+        bargainid: this.$route.query.bargainid,
         keywords: this.$route.query.title
->>>>>>> 3fa189d5650f4d17bd38e22e8d0ee4665dc5cfa2
       }
     },
     methods: {
@@ -230,23 +225,6 @@
             console.log(err)
           }
         })
-        if (this.arr1.leftsecond !== 0) {
-          let times = 0 + this.arr1.leftsecond
-          console.log(times)
-//          window.setInterval(function () {
-//            let day = 24 * 60 * 60
-//            let hour = 60 * 60
-//            let minute = 60
-//            this.lastDay = times / day
-//            this.lastHour = times % day / hour
-//            this.lastMinute = times % day % hour / minute
-//            this.lastSecond = times % day % hour % minute
-//            times--
-//            clearInterval()
-//          }, 1000000)
-        } else {
-          window.clearInterval()
-        }
       },
       con (k) {
         if (k === 1) {
