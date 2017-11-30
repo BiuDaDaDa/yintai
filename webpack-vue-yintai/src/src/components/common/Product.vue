@@ -40,7 +40,11 @@
         </div>
         <!--活动-->
         <div class="active">
-          <span>活动</span>
+          dfngijshfigwROGWRG
+          <div v-for="act in myArr.promotions" v-if="act.promotions!==[]">
+            <span>{{act.name}}</span>
+            <span>{{act.desc[0]}}</span>
+          </div>
         </div>
         <!--已选绑定-->
         <div class="prd_choose">
@@ -162,8 +166,8 @@
             this.brands = res.data.data.products
             this.myArrAll = res.data.data
             // 存放新的数组
-            let allGoods = {}
             let array = []
+            let allGoods = {}
             for (let i = 0; i < this.brands.length; i++) {
               let mybrand = this.brands[i]
               let mode = mybrand.imageitemcode

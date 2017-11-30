@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 0">
+    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null">
       <!-- tagTitle -->
       <div class="top">
         <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,1,0)">
@@ -17,10 +17,6 @@
           <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !== 20024064">
             <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
-        </div>
-        <!--海淘馆的特殊样式-->
-        <div class="imgbox" v-for="(aaa,key) in tag[1].items" v-if="tag[1].templateid === 20024064">
-          <a><img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)"></a>
         </div>
       </div>
       <div class="content2">

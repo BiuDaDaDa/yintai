@@ -17,7 +17,7 @@
       <div class="goodslist">
         <div class="mygoods" v-for="(a,index) in myArr">
           <div class="mybutton" v-show="isShow">
-            <div class="checkbox"  @click="clear" ref="checked"></div>
+            <div class="checkbox"  @click="clear(index)" ref="checked"></div>
           </div>
           <div class="goodsbox">
             <div class="mygoodsLeft">
@@ -33,6 +33,16 @@
       <!--收藏品牌列表-->
       <div class="pranglist"></div>
     </div>
+
+    <!--<div class="footer">-->
+      <!--<div class="leftFooter">-->
+        <!--<div></div>-->
+        <!--<span>全选</span>-->
+      <!--</div>-->
+      <!--<div class="rightFooter">-->
+        <!--<button>取消收藏</button>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -97,7 +107,7 @@
       del: function () {
         this.isShow = !this.isShow
       },
-      clear: function () {
+      clear: function (index) {
         this.$refs.checked.index.style.backgroundColor = 'black'
       }
     }

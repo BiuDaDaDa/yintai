@@ -78,8 +78,19 @@
         })
       },
       toPro (i, j) {
+<<<<<<< HEAD
         this.title = this.tagArr[i].items[j].itemid
         this.$router.push({path: '/prd', query: {title: this.title}})
+=======
+        this.title = this.tagArr1[i].items[j].itemid
+        console.log(this.title)
+        this.$router.push({
+          path: '/prd',
+          query: {
+            title: this.title
+          }
+        })
+>>>>>>> ea266ad1feebad4946ac06c59027a12ae3f439a7
       }
     },
     mounted () {
