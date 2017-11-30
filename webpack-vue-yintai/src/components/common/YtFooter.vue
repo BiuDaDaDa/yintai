@@ -80,7 +80,9 @@
           font-size: 26px;
         }
         router-link-active{
-          color: @color-sale-red;
+          div{
+            color: @color-sale-red !important;
+          }
         }
 
         div:nth-child(1){

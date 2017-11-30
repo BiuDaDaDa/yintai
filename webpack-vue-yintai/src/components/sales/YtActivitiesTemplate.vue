@@ -6,12 +6,13 @@
       <div class="AT-header-right">. . .</div>
     </div>
     <!--加载时出现的GIF-->
-    <div class="unload" v-if="data==''"><img src="../../assets/h5-loading.gif" alt=""></div>
+    <div class="unload" v-if="this.data==null"><img src="../../assets/h5-loading.gif" alt=""></div>
     <!--加载后出现的数据-->
     <div class="AT-top" v-for="(tl,index) in data.templatelist"  v-if="data != null">
       <!--图片宽度占屏幕的25%-->
-      <div v-if="tl.templatetype=='FuncAreaFourImg'" class="FAFI-box">
-        <img :src="tlimg.imgurl" v-for="(tlimg,key) in tl.items" alt="" class="FAFI" @click="toSales(index,key)">
+      <div v-if="tl.templatetype=='FuncAreaFourImg'" class="FAFI-box" v-for="(tlimg,key) in tl.items" >
+        <img :src="tlimg.imgurl"  alt="" class="FAFI" @click="toSales(index,key)">
+        <p>{{tlimg.imgname}}</p>
       </div>
       <!--图片宽度占屏幕的100%-->
       <img :src="tl.items[0].imgurl" v-if="tl.templatetype=='OneImg'" alt="" class="OneImg" @click="toSales(index,0)">
@@ -29,11 +30,10 @@
           </div>
         </div>
       </div>
-      <div class="dpc-indexe2">
-        div
-
-
-
+      <div class="dpc-index2">
+        <div v-if="tl.templatetype=='TwoImgAverage'" v-for="(tlimg,key) in tl.items" class="FAFI-box2">
+          <img :src="tlimg.imgurl" alt="" class="FAFI" @click="toPro(index,key)">
+        </div>
       </div>
     </div>
     <router-view></router-view>
@@ -129,11 +129,39 @@
       font-weight: 800;
       font-size: @font-size-medium;
     }
+    .AT-top{
+      width: 100%;
+      .FAFI-box{
+        width:25%;
+        float: left;
+        text-align: center;
+        background-color: #fff;
+        .FAFI{
+          width: 100%;
+        }
+        p{
+         padding-bottom:10px;
+        }
+      }
+      .FAFI-box2{
+        width:50%;
+        float: left;
+        text-align: center;
+        background-color: #fff;
+        .FAFI{
+          width: 100%;
+        }
+        p{
+          padding-bottom:10px;
+        }
+      }
+    }
+
     .unload{
       position: fixed;
       width: 100%;
       height:100%;
-      background-color:rgb(255,255,255);
+      background-color:rgba(255,255,255,0.6);
       img{
         position: fixed;
         margin: auto;

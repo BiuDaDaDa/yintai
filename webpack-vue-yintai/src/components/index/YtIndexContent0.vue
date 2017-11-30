@@ -2,8 +2,8 @@
 <div>
   <div class="box" v-if="scrollImg != null || myArr != null">
     <!-- 首页搜索框 -->
+    <div class="YTloading" v-show="!myArr"><img src="../../assets/h5-loading.gif" alt=""></div>
     <div class="search_box">
-      <!--<img src="../../assets/img/shangchangtk/newlogo.png">-->
       <div class="logo"></div>
       <div class="search_txt">
         <input ref="indexSearch" type="text" placeholder="搜索商品or品牌">
@@ -92,18 +92,17 @@
         pageidPage2 (i, j) {
           this.title = decodeURI(this.myArr[i].items[j].jumpurl.split('title=')[1].split('&')[0])
           if (j === 1) {
-            this.url = this.myArr[i].items[j].jumpurl.split('pageid%')[1].split('&')[0]
-            console.log(this.title, this.url)
+            this.url = this.myArr[i].items[1].jumpurl.split('Condition=N%3D')[1].split('&')[0]
+            console.log(this.url)
             this.$router.push({
               path: '/SalesProductList',
               query: {
-                pargainid: this.url,
+                searchCondition: this.url,
                 title: this.title
               }
             })
           } else {
             this.pageid = this.myArr[i].items[j].jumpurl.split('pageid%3D')[1].split('&')[0]
-            console.log(this.title, this.pageid)
             this.$router.push({
               path: '/ActivitiesTemplate',
               query: {
@@ -133,6 +132,24 @@
   @import "../../common/css/index";
   .wrap {
     background-color: rgb(237, 237, 237);
+  }
+  .YTloading{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    text-align: center;
+    img{
+      width: 84px;
+      position: fixed;
+      margin: auto;
+      top:0px;
+      bottom: 0;
+      left:0;
+      right:0;
+    }
   }
   .box{
     position: relative;

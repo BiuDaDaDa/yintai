@@ -148,16 +148,16 @@
     }
   }
   .content2 {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      .tag_content2_box {
-        width: 50%;
-        img {
-          width: 100%;
-        }
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .tag_content2_box {
+      width: 50%;
+      img {
+        width: 100%;
       }
     }
+  }
   .tag_bottom {
     width: 100%;
     .bottom_box {
