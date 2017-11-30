@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 2">
+    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 2 && tag.length>0">
       <!-- tagTitle -->
       <div class="top">
         <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,1,0)">
@@ -8,13 +8,13 @@
       <div class="content1">
         <!--大图-->
         <div :class="(tag[1].templatetype === 'ThreeImgLeftOne')?name1: name2">
-          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 302 && tag[1].templateid !==  20000027">
+          <a v-for="(aaa,key) in tag[1].items" v-if="aaa.height === 302 && tag[1].templateid !==  20000027">
             <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
         <!--两个小图-->
-        <div class="imgbox" >
-          <a v-for="(aaa,key) in tag[1].items"  v-if="aaa.height === 150 && tag[1].templateid !==   20024178">
+        <div class="imgbox">
+          <a v-for="(aaa,key) in tag[1].items" v-if="aaa.height === 150 && tag[1].templateid !==   20024178">
             <img :src="aaa.imgurl" alt="" @click="redirectimg(index,1,key)">
           </a>
         </div>
@@ -43,6 +43,7 @@
 
 <script>
   import bus from '../common/eventBus'
+
   export default {
     name: 'YtIndexContent2',
     data () {
@@ -86,7 +87,7 @@
           let goods = []
           for (let i = 0; i < this.tagArr.length; i++) {
             let type = this.tagArr[i].templatetype
-            if (type === 'FloorFoot') {
+            if (type === 'FloorFoot' || type === 'FloorSpace' || type === 'CarouselFigure') {
               let array = goods.slice(0)
               allGoods.push(array)
               goods = []
@@ -95,6 +96,7 @@
             goods.push(this.tagArr[i])
           }
           this.newArr = allGoods
+          console.log(this.newArr)
           // 向导航组件部分传值
           this.busNav = this.newArr
           bus.$emit('chuanzhi', this.busNav)
@@ -109,10 +111,11 @@
 </script>
 
 <style scoped lang="less">
-  .wrap{
+  .wrap {
     background-color: #f1f1f1;
   }
-  .tag_box{
+
+  .tag_box {
     width: 100%;
     margin-bottom: 10px;
     .top {
@@ -123,21 +126,21 @@
     }
     .content1 {
       width: 100%;
-      .imgbox{
+      .imgbox {
         width: 50%;
         display: inline-block;
         img {
           width: 100%;
         }
       }
-      .imgleft{
+      .imgleft {
         width: 50%;
         float: left;
         img {
           width: 100%;
         }
       }
-      .imgright{
+      .imgright {
         width: 50%;
         float: right;
         img {
@@ -146,17 +149,19 @@
       }
     }
   }
+
   .content2 {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      .tag_content2_box {
-        width: 50%;
-        img {
-          width: 100%;
-        }
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .tag_content2_box {
+      width: 50%;
+      img {
+        width: 100%;
       }
     }
+  }
+
   .tag_bottom {
     width: 100%;
     .bottom_box {
