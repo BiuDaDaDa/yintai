@@ -103,7 +103,7 @@
         searchCondition: this.$route.query.searchCondition || '',
         title: this.$route.query.title || this.$route.query.title1,
         bargainid: ('bargainid' && this.$route.query.bargainid) || '',
-        keywords: this.$route.query.keywords
+        keywords: this.$route.query.title
       }
     },
     methods: {

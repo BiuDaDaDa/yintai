@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 6">
+    <div class="tag_box" v-for="(tag,index) in newArr" v-if="newArr != null && index > 3">
       <!-- tagTitle -->
       <div class="top">
         <img :src="tag[0].items[0].imgurl" alt="" @click="redirectimg(index,1,0)">

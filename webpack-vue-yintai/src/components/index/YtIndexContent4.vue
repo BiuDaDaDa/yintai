@@ -195,7 +195,7 @@
       }
       .pdc-info-text{
         height:50px;
-        line-height:25%;
+        line-height:25px;
         overflow: hidden;
         img{
           height:40%;
