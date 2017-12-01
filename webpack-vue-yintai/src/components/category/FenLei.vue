@@ -3,8 +3,8 @@
     <div v-if="clickedThree" @click="wrapBlank" class="wrap-blank">
     </div>
     <div class="header">
-      <div class="header-left">
-        <router-link to="/"><img class="login-header-left" src="../../../src/assets/luhanran/loginleft.png" alt=""></router-link>
+      <div class="header-left" @click="returnLastPage">
+        <img class="login-header-left" src="../../../src/assets/luhanran/loginleft.png" alt="">
       </div>
       <div class="header-center">
         <span class="login-header-center">分类</span>
@@ -198,6 +198,9 @@
             title: urlCoding
           }
         })
+      },
+      returnLastPage () {
+        this.$router.go(-1)
       }
     },
     mounted () {

@@ -47,16 +47,19 @@
       </div>
       <te-mai v-if="typeTwo"></te-mai>
     </div>
+    <yt-footer></yt-footer>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import TeMai from './TeMai'
-
+  import YtFooter from '../common/YtFooter'
   export default {
     name: '',
     components: {
-      TeMai
+      TeMai,
+      YtFooter
     },
     data () {
       return {

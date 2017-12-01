@@ -15,12 +15,10 @@
     <div class="sc-clear-kong1">
       <router-link to="/" class="routerto">随便逛逛</router-link>
     </div>
-    <sa-sa></sa-sa>
   </div>
 </template>
 
 <script>
-  import SaSa from '../index/YtActivitiesTemplate'
   import Vue from 'vue'
   import { Header, Button } from 'mint-ui'
   Vue.component(Header.name, Header)
@@ -28,7 +26,6 @@
   export default {
     name: 'ShoppingCar',
     components: {
-      SaSa
     }
   }
 </script>

@@ -4,6 +4,7 @@
     <yt-index-content-two></yt-index-content-two>
     <yt-index-content-three></yt-index-content-three>
     <yt-index-content-four></yt-index-content-four>
+    <yt-footer></yt-footer>
     <router-view></router-view>
   </div>
 </template>
@@ -13,13 +14,15 @@
   import YtIndexContentTwo from './YtIndexContent1.vue'
   import YtIndexContentThree from './YtIndexContent2.vue'
   import YtIndexContentFour from './YtIndexContent4.vue'
+  import YtFooter from '../common/YtFooter'
   export default {
     name: 'Index',
     components: {
       YtIndexContentOne,
       YtIndexContentTwo,
       YtIndexContentThree,
-      YtIndexContentFour
+      YtIndexContentFour,
+      YtFooter
     }
   }
 </script>
