@@ -82,7 +82,7 @@
       return {
         navArr: [ '首页', '抢先', '分类', '购物车', '我的银泰' ],
         routerArr: [ '/', '/limitbuy', '/category', '/shoppingcar', '/userinfo' ],
-        imgArr: [ '<i class="icon-home iconfont" ></i>', '<i class="icon-icon-buy iconfont" ></i>', '<i class="icon-categorynormal iconfont" ></i>', '<i class="icon-cart iconfont" ></i>icon-cart iconfont', '<i class="icon-user iconfont" ></i>' ],
+        imgArr: [ '<i class="icon-home iconfont" ></i>', '<i class="icon-icon-buy iconfont" ></i>', '<i class="icon-categorynormal iconfont" ></i>', '<i class="icon-cart iconfont" ></i>', '<i class="icon-user iconfont" ></i>' ],
         active: 'tab-container1',
         arr1: '',
         isload: false,
