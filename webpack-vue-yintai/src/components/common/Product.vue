@@ -103,6 +103,7 @@
     <!--图文介绍-->
     <div class="prd_introduction">
       <div class="title">图文介绍</div>
+      <iframe class="product-tuwen" :src='"//item.yintai.com/h5/"+changeUrl+".html?env=ish5"' style="width:100%;height: 800px;"></iframe>
       <div class="xiangqing">
       </div>
     </div>
