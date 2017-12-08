@@ -13,7 +13,8 @@ Object.keys(proxyTable).forEach(function (key,index,array) {
   app.use(key,proxy(proxyTable[key]))
 })
 
-// for(index in config.dev.proxyTable)console.log(index)
-app.listen(80,  () => {
+// for(index in
+// config.dev.proxyTable)console.log(index)
+app.listen(8080,  () => {
   console.log('server is running http://localhost')
 })
