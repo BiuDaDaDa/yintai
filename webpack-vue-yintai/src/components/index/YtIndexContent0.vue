@@ -83,7 +83,7 @@
           this.$router.push({
             path: '/SalesProductList',
             query: {
-              SearchCondition: this.searchResult,
+//              SearchCondition: this.searchResult,
               keywords: this.searchResult,
               title: this.searchResult
             }
