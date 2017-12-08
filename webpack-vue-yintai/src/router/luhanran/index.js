@@ -1,7 +1,7 @@
 import Login from '@/components/Login/Login'
 import Registration from '@/components/Login/Registration'
 import ForgetPassword from '@/components/Login/ForgetPassword'
-import CateGory from '@/components/category/Fenlei'
+import CateGory from '@/components/category/FenLei'
 
 export default [
   {
